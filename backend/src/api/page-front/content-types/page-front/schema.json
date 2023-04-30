@@ -1,0 +1,48 @@
+{
+  "kind": "singleType",
+  "collectionName": "page_fronts",
+  "info": {
+    "singularName": "page-front",
+    "pluralName": "page-fronts",
+    "displayName": "Страница - главная",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "content.gallery",
+        "content.image",
+        "content.location",
+        "content.project",
+        "content.rich-text",
+        "content.text",
+        "content.title",
+        "content.work"
+      ]
+    }
+  }
+}

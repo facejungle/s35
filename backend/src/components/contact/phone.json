@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_contact_phones",
+  "info": {
+    "displayName": "Телефон",
+    "description": "",
+    "icon": "phone-alt"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "default": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

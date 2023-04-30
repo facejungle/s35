@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_content_locations",
+  "info": {
+    "displayName": "Location"
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Description": {
+      "type": "text"
+    }
+  }
+}

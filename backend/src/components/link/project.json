@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_link_projects",
+  "info": {
+    "displayName": "Проект",
+    "description": "",
+    "icon": "home"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project"
+    },
+    "archive": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    }
+  }
+}

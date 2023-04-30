@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_content_projects",
+  "info": {
+    "displayName": "Ассоциация - проект",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project"
+    }
+  }
+}

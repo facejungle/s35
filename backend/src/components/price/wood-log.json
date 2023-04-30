@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_price_wood_logs",
+  "info": {
+    "displayName": "Wood Log",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "diameter": {
+      "type": "enumeration",
+      "enum": [
+        "d22-24",
+        "d24-26",
+        "d26-28",
+        "d28-30",
+        "d30-32"
+      ],
+      "required": false
+    },
+    "m2": {
+      "type": "biginteger"
+    },
+    "m3": {
+      "type": "biginteger"
+    }
+  }
+}

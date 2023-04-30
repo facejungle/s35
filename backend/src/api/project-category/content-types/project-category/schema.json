@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "project_categories",
+  "info": {
+    "singularName": "project-category",
+    "pluralName": "project-categories",
+    "displayName": "Проекты - категории",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {}
+    }
+  }
+}

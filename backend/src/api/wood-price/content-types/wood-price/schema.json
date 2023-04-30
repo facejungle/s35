@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "wood_prices",
+  "info": {
+    "singularName": "wood-price",
+    "pluralName": "wood-prices",
+    "displayName": "Цены - дерево",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "log": {
+      "type": "component",
+      "repeatable": true,
+      "component": "price.wood-log"
+    }
+  }
+}

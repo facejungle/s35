@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_content_works",
+  "info": {
+    "displayName": "Ассоциация - портфолио",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "works": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::work.work"
+    }
+  }
+}

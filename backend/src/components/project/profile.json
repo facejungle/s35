@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_project_profiles",
+  "info": {
+    "displayName": "Профиль",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "length": {
+      "type": "decimal",
+      "required": true
+    },
+    "width": {
+      "type": "decimal",
+      "required": true
+    },
+    "height": {
+      "type": "decimal",
+      "required": true
+    },
+    "gable": {
+      "type": "decimal",
+      "required": true
+    }
+  }
+}

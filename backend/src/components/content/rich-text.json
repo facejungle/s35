@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_content_rich_texts",
+  "info": {
+    "displayName": "Редактор",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

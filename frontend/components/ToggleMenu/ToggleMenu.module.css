@@ -1,0 +1,114 @@
+.button_wrapper {
+   z-index: 3;
+}
+
+.hidden_wrapper {
+   display: none;
+}
+
+.hidden_wrapper.active {
+   display: block;
+   position: absolute;
+   right: 0;
+   top: 0;
+   width: 480px;
+   height: 100vh;
+   background-color: rgba(0, 0, 0, 0.3);
+   z-index: 2;
+}
+
+/* 
+____________________________________________________
+
+-----> > > Toggle button menu < < <-----
+____________________________________________________
+
+*/
+.toggle_menu_button {
+   z-index: 33;
+   margin: 0;
+   padding: 10px;
+   transition: background-color .2s 0s ease-out, box-shadow .4s 0s ease-out;
+   border-radius: var(--radius);
+   background-color: var(--color_gray);
+   cursor: pointer;
+}
+
+.toggle_menu_button:hover {
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+   background-color: var(--color_white);
+   text-decoration: none;
+   color: var(--color_white);
+}
+
+.toggle_menu_button.cross {
+   background-color: var(--color_white);
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.toggle_menu_button.cross:hover {
+   box-shadow: var(--shadow_block);
+}
+
+.toggle_menu_button.cross .toggle_bar {
+   background-color: var(--color_gray);
+}
+
+.toggle_menu_button .toggle_bar:nth-of-type(1) {
+   margin-top: 0;
+}
+
+.toggle_menu_button .toggle_bar:nth-of-type(3) {
+   margin-bottom: 0;
+}
+
+.toggle_bar {
+   position: relative;
+   display: block;
+   width: 30px;
+   height: 3px;
+   margin: 10px auto;
+   transition: transform .4s, background-color .2s 0s ease-out;
+   ;
+   background-color: var(--color_white);
+}
+
+.toggle_menu_button:hover .toggle_bar {
+   background-color: var(--color_gray);
+}
+
+.toggle_menu_button:hover .toggle_bar:nth-of-type(1) {
+   transform: translatey(1.5px) rotate(-4.5deg);
+}
+
+.toggle_menu_button:hover .toggle_bar:nth-of-type(2) {
+   opacity: 0.9;
+}
+
+.toggle_menu_button:hover .toggle_bar:nth-of-type(3) {
+   transform: translatey(-1.5px) rotate(4.5deg);
+}
+
+.cross .toggle_bar:nth-of-type(1) {
+   transform: translatey(11px) rotate(-45deg);
+}
+
+.cross .toggle_bar:nth-of-type(2) {
+   opacity: 0;
+}
+
+.cross .toggle_bar:nth-of-type(3) {
+   transform: translatey(-15px) rotate(45deg);
+}
+
+.cross:hover .toggle_bar:nth-of-type(1) {
+   transform: translatey(13.5px) rotate(-40.5deg);
+}
+
+.cross:hover .toggle_bar:nth-of-type(2) {
+   opacity: 0;
+}
+
+.cross:hover .toggle_bar:nth-of-type(3) {
+   transform: translatey(-13.5px) rotate(40.5deg);
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_menus",
+  "info": {
+    "singularName": "site-menu",
+    "pluralName": "site-menus",
+    "displayName": "Сайт - меню",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "headerMenu": {
+      "type": "dynamiczone",
+      "components": [
+        "link.page",
+        "link.parent-page",
+        "link.parent-work",
+        "link.work",
+        "link.project"
+      ]
+    },
+    "workMenu": {
+      "type": "dynamiczone",
+      "components": [
+        "link.parent-work",
+        "link.work"
+      ]
+    }
+  }
+}

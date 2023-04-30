@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_link_parent_works",
+  "info": {
+    "displayName": "Работы (портфолио)",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::work.work"
+    },
+    "child": {
+      "type": "component",
+      "repeatable": true,
+      "component": "link.work"
+    }
+  }
+}

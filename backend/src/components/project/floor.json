@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_project_floors",
+  "info": {
+    "displayName": "Этаж",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "height": {
+      "type": "decimal"
+    },
+    "room": {
+      "type": "component",
+      "repeatable": true,
+      "component": "project.room"
+    },
+    "area": {
+      "type": "decimal"
+    }
+  }
+}

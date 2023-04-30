@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_content_titles",
+  "info": {
+    "displayName": "Заголовок",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "hashtag": {
+      "type": "string"
+    },
+    "size": {
+      "type": "integer",
+      "max": 5,
+      "min": 1,
+      "default": 2
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_project_rooms",
+  "info": {
+    "displayName": "Комната",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "area": {
+      "type": "decimal"
+    }
+  }
+}

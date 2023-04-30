@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "page_projects",
+  "info": {
+    "singularName": "page-project",
+    "pluralName": "page-projects",
+    "displayName": "Страница - проекты",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

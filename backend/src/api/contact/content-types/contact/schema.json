@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "contacts",
+  "info": {
+    "singularName": "contact",
+    "pluralName": "contacts",
+    "displayName": "Контакты",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "default": "Алексей Алексеев"
+    },
+    "email": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contact.email"
+    },
+    "phone": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contact.phone"
+    },
+    "social": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contact.social"
+    }
+  }
+}

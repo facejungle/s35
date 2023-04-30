@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_content_galleries",
+  "info": {
+    "displayName": "Галерея",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    }
+  }
+}

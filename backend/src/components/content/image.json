@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_content_images",
+  "info": {
+    "displayName": "Изображение",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
