@@ -1,4 +1,4 @@
-export default function pageContacts() {
+export default function PageContacts() {
    return (
       <>
          kontakty

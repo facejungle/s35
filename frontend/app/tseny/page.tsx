@@ -1,7 +1,7 @@
 import { Metadata } from "next/types";
 import { apiURL, apiPaths } from "@/shared/api/config";
 
-export default function pagePrices() {
+export default function PagePrices() {
    return (
       <>
          pagePrices

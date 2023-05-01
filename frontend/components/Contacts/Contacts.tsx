@@ -1,4 +1,4 @@
-import style from '@s/styles/contacts.module.css';
+import style from './contacts.module.css';
 import Link from 'next/link';
 import { getContactData } from '.';
 

@@ -1,12 +1,15 @@
-import { getSeo, getFrontPageData } from "@c/index";
+import { getSeo } from "@components/index";
+import { getFrontPageData } from "@/shared/api/pages";
 import { Metadata } from "next/types";
 import Image from 'next/image';
-import content from '@c/Content/Content';
+import ContentBlocks from '@components/Content/Content';
 import style from '@/shared/styles/frontpage.module.css';
 
 
-export default async function Home() {
+
+export default async function Home(): Promise<React.ReactElement> {
    const page = await getFrontPageData();
+   const content = page.data.attributes.content;
    return (
       <>
          <div className={`${style.hero} flex-column`}>
@@ -37,7 +40,7 @@ export default async function Home() {
                <h3>Проекты</h3>
             </div>
          </div>
-         {content(page.data.attributes.content)}
+         {ContentBlocks(content)}
       </>
    )
 }
@@ -53,4 +56,3 @@ export async function generateMetadata(): Promise<Metadata> {
    }
    return getSeo(seo.data.attributes);
 }
-

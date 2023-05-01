@@ -1,9 +1,9 @@
-import style from '@/shared/styles/projects.module.css';
-import { getProjectsPage } from '@/entities/Projects';
+import style from '@shared/styles/projects.module.css';
+import { getProjectsPage } from '@shared/api/projects/index';
 
 export const dynamicParams = false;
 
-export default async function ProjectsLayout({ children, }: { children: React.ReactElement }) {
+export default async function ProjectsLayout({ children, }: { children: React.ReactElement }): Promise<React.ReactElement> {
    const project = await getProjectsPage();
    return (
       <>

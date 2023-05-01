@@ -1,4 +1,4 @@
-export default function pagePortfolio() {
+export default function PagePortfolio() {
    return (
       <>
          portfolio

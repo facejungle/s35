@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { apiURL, apiPaths } from '@s/api/config';
+import { apiURL, apiPaths } from '@shared/api/config';
 
 export async function getContactData() {
    const contactData = await fetch(apiURL(apiPaths.contactsPath)).then((res) => res.json());
@@ -22,15 +22,6 @@ export async function getSiteSettingsData() {
    } else {
       return null;
    }
-}
-
-export async function getFrontPageData() {
-   const data = await fetch(apiURL(apiPaths.pageFront));
-   if (!data.ok) {
-      console.log('Failed to fetch > front page data | getFrontPageData()');
-      return null;
-   }
-   return data.json();
 }
 
 export function getSeo(seo: Metadata) {

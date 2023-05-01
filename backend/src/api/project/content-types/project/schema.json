@@ -55,14 +55,14 @@
       "type": "decimal",
       "required": true
     },
-    "floor": {
+    "floors": {
       "type": "dynamiczone",
       "components": [
         "project.floor"
       ],
       "required": true
     },
-    "parent": {
+    "category": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::project-category.project-category"

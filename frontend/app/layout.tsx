@@ -1,11 +1,11 @@
-import { getContactData, getSiteSettingsData } from '@c/index';
-import { getSiteLogo } from '@c/SiteLogo';
+import { getContactData, getSiteSettingsData } from '@components/index';
+import { getSiteLogo } from '@components/SiteLogo';
 import { Metadata } from "next/types";
 
-import '@/shared/styles/reset.css'
-import '@/shared/styles/globals.css'
-import { montserrat } from "@s/styles/fonts";
-import CheckDevice from '@c/checkDevice';
+import '@shared/styles/reset.css'
+import '@shared/styles/globals.css'
+import { montserrat } from "@shared/styles/fonts";
+import CheckDevice from '@components/checkDevice';
 
 import SiteHeader from '@/widgets/Header/Header';
 import Sidebar from '@/widgets/Sidebar/Sidebar';

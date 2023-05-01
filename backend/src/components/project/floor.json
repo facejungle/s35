@@ -13,13 +13,21 @@
     "height": {
       "type": "decimal"
     },
-    "room": {
+    "rooms": {
       "type": "component",
       "repeatable": true,
       "component": "project.room"
     },
     "area": {
       "type": "decimal"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

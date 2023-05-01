@@ -50,7 +50,7 @@ export default function HeaderMenu() {
             menuLinks.map((link, index) => {
                return (
                   <button
-                     key={index}
+                     key={link.slug + index}
                      className={`${style.menu_link} ${selectedButton === index ? style.active : ''}`}
 
                      id={link.slug}

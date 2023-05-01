@@ -1,4 +1,4 @@
-export default function pagePriceHouse() {
+export default function PagePriceHouse() {
    return (
       <>
          doma-bani

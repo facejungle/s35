@@ -1,4 +1,4 @@
-import { apiPaths, apiURL } from "@s/api/config";
+import { apiPaths, apiURL } from "@shared/api/config";
 
 type contentPromiseType = any;
 

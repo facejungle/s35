@@ -1,4 +1,4 @@
-export default function pageServices() {
+export default function PageServices(): React.ReactElement {
    return (
       <>
          uslugi

@@ -1,11 +1,11 @@
-import { getProjects, getProjectsPage } from "@/entities/Projects"
-import { getSeo } from "@/entities";
+import { getProjects, getProjectsPage } from "@shared/api/projects/index"
+import { getSeo } from "@components/index";
 import { Metadata } from "next/types";
 import { notFound } from 'next/navigation';
 
 export const dynamicParams = false;
 
-export default async function projects() {
+export default async function Projects(): Promise<React.ReactElement> {
    const projects = await getProjects();
    if (projects === null) {
       return notFound()

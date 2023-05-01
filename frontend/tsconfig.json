@@ -28,13 +28,13 @@
       "@/*": [
         "./*"
       ],
-      "@c/*": [
+      "@components/*": [
         "./components/*"
       ],
-      "@s/*": [
+      "@shared/*": [
         "./shared/*"
       ],
-      "@w/*": [
+      "@widgets/*": [
         "./widgets/*"
       ]
     }

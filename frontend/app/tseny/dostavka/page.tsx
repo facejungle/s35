@@ -1,4 +1,4 @@
-export default function pageDelivery() {
+export default function PageDelivery() {
    return (
       <>
          dostavka

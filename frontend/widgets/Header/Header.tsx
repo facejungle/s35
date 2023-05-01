@@ -1,8 +1,8 @@
 import style from "./Header.module.css";
-import SiteLogo from "@c/SiteLogo/SiteLogo";
-import HeaderContacts from "@c/Contacts/Contacts";
-import HeaderMenu from "@c/HeaderMenu/HeaderMenu";
-import ToggleMenu from "@c/ToggleMenu/ToggleMenu";
+import SiteLogo from "@components/SiteLogo/SiteLogo";
+import HeaderContacts from "@components/Contacts/Contacts";
+import HeaderMenu from "@components/HeaderMenu/HeaderMenu";
+import ToggleMenu from "@components/ToggleMenu/ToggleMenu";
 
 
 const SiteHeader = async (): Promise<React.ReactElement> => {

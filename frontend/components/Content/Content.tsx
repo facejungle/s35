@@ -1,47 +1,49 @@
 import styles from './Content.module.css';
+import ContentTitle from './blocks/Title';
 
-type contentType = [
-   {
-      __component: string;
-      title: string;
-      text: string;
-   }
-];
+type componentTitleType = {
+   __component: 'content.title' | 'content.text';
+   id: number,
+   text: string,
+   size: number,
+   hashtag?: string
+};
 
-export default function content(data: contentType): React.ReactNode {
-   if (!data[0]) {
+type componentType = {
+   __component: 'content.title' | 'content.text';
+   id: number,
+   text?: string,
+   size?: number,
+   hashtag?: string
+};
+
+export default function ContentBlocks(contentData: any): React.ReactElement {
+   if (!contentData[0]) {
       console.log(`>>> content data - not found (/content.tsx)`)
       return (
          <>
-            content data - not found (/content.tsx)
+            <p>Really? Content not found...</p>
          </>
       );
    }
    return (
-      <div className={`${styles.content_wrapper} flex-column`}>
+      <>
          {
-            data.map((component: any) => {
-               if (component.__component === 'content.title') {
-                  if (component.title) {
-                     return (
-                        <h2 key={component.__component + component.id} className={styles.title}>
-                           {component.title}
-                        </h2>
-                     );
-                  }
+            contentData.map((block: componentTitleType) => {
+
+               if (block.__component === 'content.title') {
+                  return (
+                     <ContentTitle key={block.id + '_title'} text={block.text} size={block.size} />
+                  );
                }
-               if (component.__component === 'content.text') {
-                  if (component.text) {
-                     return (
-                        <p key={component.__component + component.id} className={styles.text}>
-                           {component.text}
-                        </p>
-                     );
-                  }
+               if (block.__component === 'content.text') {
+                  return (
+                     <p key={block.id + '_text'}>{block.text}</p>
+                  );
                }
             })
          }
-      </div >
+      </>
    );
 }
 
