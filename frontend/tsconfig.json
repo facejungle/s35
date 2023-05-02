@@ -36,6 +36,9 @@
       ],
       "@widgets/*": [
         "./widgets/*"
+      ],
+      "@public/*": [
+        "./public/*"
       ]
     }
   },

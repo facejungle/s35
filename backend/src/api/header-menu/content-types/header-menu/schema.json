@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "header_menus",
+  "info": {
+    "singularName": "header-menu",
+    "pluralName": "header-menus",
+    "displayName": "Меню - header",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "links": {
+      "type": "dynamiczone",
+      "components": [
+        "link.page-static",
+        "link.page",
+        "link.project",
+        "link.work"
+      ],
+      "required": true
+    }
+  }
+}

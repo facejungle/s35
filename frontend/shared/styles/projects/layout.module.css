@@ -1,0 +1,6 @@
+.projects_wrapper {
+   flex: 1 1 auto;
+   justify-content: space-between;
+   padding: var(--padding25);
+   gap: var(--padding25);
+}

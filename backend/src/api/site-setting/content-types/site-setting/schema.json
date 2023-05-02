@@ -4,7 +4,7 @@
   "info": {
     "singularName": "site-setting",
     "pluralName": "site-settings",
-    "displayName": "Сайт - настройки",
+    "displayName": "Настройки - сайт",
     "description": ""
   },
   "options": {
@@ -29,14 +29,6 @@
       "allowedTypes": [
         "images"
       ]
-    },
-    "frontpage": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::page.page"
-    },
-    "projectsPrefix": {
-      "type": "string"
     }
   }
 }

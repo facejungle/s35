@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "site_menus",
+  "collectionName": "footer_menus",
   "info": {
-    "singularName": "site-menu",
-    "pluralName": "site-menus",
-    "displayName": "Сайт - меню",
+    "singularName": "footer-menu",
+    "pluralName": "footer-menus",
+    "displayName": "Меню - footer",
     "description": ""
   },
   "options": {
@@ -12,20 +12,21 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "headerMenu": {
+    "footerMenu1": {
       "type": "dynamiczone",
       "components": [
+        "link.page-static",
         "link.page",
-        "link.parent-page",
-        "link.parent-work",
-        "link.work",
-        "link.project"
+        "link.project",
+        "link.work"
       ]
     },
-    "workMenu": {
+    "footerMenu2": {
       "type": "dynamiczone",
       "components": [
-        "link.parent-work",
+        "link.page-static",
+        "link.page",
+        "link.project",
         "link.work"
       ]
     }

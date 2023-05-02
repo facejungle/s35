@@ -4,7 +4,7 @@
   "info": {
     "singularName": "project-setting",
     "pluralName": "project-settings",
-    "displayName": "Проекты - настройки",
+    "displayName": "Настройки - проекты",
     "description": ""
   },
   "options": {
@@ -25,11 +25,12 @@
       "required": true
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

@@ -21,6 +21,17 @@ export const apiPaths = {
 }
 export const apiPaths2 = ({ id, slug }: { id?: number, slug?: string }) => {
    return {
+      // Menu
+      headerMenu: '/header-menu?populate[0]=links&populate[1]=links.link.parent',
+
+      // Pages
+      pageFront: '/page-front/?populate=*',
+      pageContacts: '/page-contact/?populate=*',
+      pagePrices: '/page-price/?populate=*',
+      pagePortfolio: '/page-portfolio/?populate=*',
+      pageProjects: '/page-project/?populate=*',
+
+      // Projects
       projectsCategories: '/project-categories',
       projectCategoryBySlug: `/project-categories/slug/${slug}`,
       projectById: `/projects/${id}?populate=*`,

@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_link_page_statics",
+  "info": {
+    "displayName": "Страница (статика)",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "enumeration",
+      "enum": [
+        "front page",
+        "projects",
+        "portfolio",
+        "contacts",
+        "prices",
+        "prices - house",
+        "prices - service",
+        "prices - delivery"
+      ],
+      "required": true
+    }
+  }
+}

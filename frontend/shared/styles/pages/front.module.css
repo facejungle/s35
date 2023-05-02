@@ -1,3 +1,8 @@
+article.front_page {
+   flex: 1 1 100%;
+   padding: var(--padding25);
+}
+
 .hero {
    gap: var(--padding100);
    padding-top: var(--padding25);

@@ -1,20 +1,32 @@
+import style from '@shared/styles/projects/card.module.css';
 import { getProjects, getProjectsPage } from "@shared/api/projects"
 import { getSeo } from "@components/index";
 import { Metadata } from "next/types";
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
+import placeholderPic from '@public/images/480x300.png';
 
 export const dynamicParams = false;
 
 export default async function Projects(): Promise<React.ReactElement> {
    const projects = await getProjects();
-   if (projects === null) {
+   if (projects.data === null) {
       return notFound()
    }
-   return (
-      <>
-         projects
-      </>
-   )
+   return projects.data.map((project: any) => {
+      return (
+         <div className={style.card}>
+            <Image
+               src={placeholderPic}
+               alt="Picture of the author"
+               width={480}
+               height={300}
+            />
+            <h2>{project.attributes.title}</h2>
+            <p>{project.attributes.description}</p>
+         </div>
+      );
+   });
 }
 
 export async function generateMetadata(): Promise<Metadata> {

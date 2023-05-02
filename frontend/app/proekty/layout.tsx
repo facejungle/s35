@@ -1,13 +1,13 @@
-import style from '@shared/styles/projects.module.css';
-import { getProjectsPage } from '@shared/api/projects';
+import style from '@shared/styles/projects/layout.module.css';
 
 export const dynamicParams = false;
 
 export default async function ProjectsLayout({ children, }: { children: React.ReactElement }): Promise<React.ReactElement> {
-   const project = await getProjectsPage();
    return (
       <>
-         {children}
+         <div className={`${style.projects_wrapper} flex-row`}>
+            {children}
+         </div>
       </>
    )
 }

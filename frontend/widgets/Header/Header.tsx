@@ -1,7 +1,7 @@
 import style from "./Header.module.css";
 import SiteLogo from "@components/SiteLogo/SiteLogo";
 import HeaderContacts from "@components/Contacts/Contacts";
-import HeaderMenu from "@components/HeaderMenu/HeaderMenu";
+import { HeaderMenu } from "@components/Menu";
 import ToggleMenu from "@components/ToggleMenu/ToggleMenu";
 
 
@@ -20,7 +20,7 @@ const SiteHeader = async (): Promise<React.ReactElement> => {
                </div>
                <div className={`${style.menu_wrapper} flex-row`}>
                   <div className={style.header_menu}>
-                     <HeaderMenu />
+                     {await HeaderMenu()}
                   </div>
                   <ToggleMenu />
                </div>
