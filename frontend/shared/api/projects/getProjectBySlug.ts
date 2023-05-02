@@ -29,8 +29,9 @@ type projectType = {
       }];
    }];
 }
-export async function getProjectById(projectId: number): Promise<projectType> {
-   const data = await fetch(apiURL(apiPaths2({ id: projectId }).projectById));
+export async function getProjectBySlug(projectSlug: string): Promise<projectType> {
+   const data = await fetch(apiURL(apiPaths2({ slug: projectSlug }).projectBySlug));
+
    if (!data.ok) {
       console.log('Failed to fetch > project | getProject()');
       return notFound();
@@ -42,21 +43,21 @@ export async function getProjectById(projectId: number): Promise<projectType> {
       return notFound();
    }
 
-   const projectCat = project.data.attributes.category.data
+   const projectCat = project.category
    return {
-      title: project.data.attributes.title,
-      description: project.data.attributes.description,
-      totalArea: project.data.attributes.totalArea,
-      livingArea: project.data.attributes.livingArea,
+      title: project.title,
+      description: project.description,
+      totalArea: project.totalArea,
+      livingArea: project.livingArea,
       profile: {
-         length: project.data.attributes.profile.length,
-         width: project.data.attributes.profile.width,
-         height: project.data.attributes.profile.height,
-         gable: project.data.attributes.profile.height
+         length: project.profile.length,
+         width: project.profile.width,
+         height: project.profile.height,
+         gable: project.profile.height
       },
       category: {
-         title: projectCat === null ? 'no-category' : projectCat.attributes.title,
-         slug: projectCat === null ? 'no-category' : projectCat.attributes.slug
+         title: projectCat === null ? 'no-category' : projectCat.title,
+         slug: projectCat === null ? 'no-category' : projectCat.slug
       }
    };
 }

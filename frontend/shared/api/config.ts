@@ -19,8 +19,11 @@ export const apiPaths = {
    projectsCategory: '/project-categories',
    projectBySlug: '/projects/slug/',
 }
-export const apiPaths2 = (id?: number) => {
+export const apiPaths2 = ({ id, slug }: { id?: number, slug?: string }) => {
    return {
+      projectsCategories: '/project-categories',
+      projectCategoryBySlug: `/project-categories/slug/${slug}`,
       projectById: `/projects/${id}?populate=*`,
+      projectBySlug: `/projects/slug/${slug}?populate=*`,
    }
 }

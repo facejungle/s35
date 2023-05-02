@@ -1,5 +1,5 @@
 import style from '@shared/styles/projects.module.css';
-import { getProjectsPage } from '@shared/api/projects/index';
+import { getProjectsPage } from '@shared/api/projects';
 
 export const dynamicParams = false;
 

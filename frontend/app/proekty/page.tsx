@@ -1,4 +1,4 @@
-import { getProjects, getProjectsPage } from "@shared/api/projects/index"
+import { getProjects, getProjectsPage } from "@shared/api/projects"
 import { getSeo } from "@components/index";
 import { Metadata } from "next/types";
 import { notFound } from 'next/navigation';
