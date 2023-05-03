@@ -1,80 +1,34 @@
 version: '3.3'
 services:
-  # FRONTEND # FRONTEND
-  nginx_frontend:
+  nginx:
     image: nginx:latest
     restart: unless-stopped
-    container_name: ${PROJECT_SLUG}_nginx_frontend
-    network_mode: host
+    container_name: ${PROJECT_SLUG}_nginx
     volumes:
+      - ./backend/public:/app/backend/public
       - ./frontend/public:/app/frontend/public
-      - ./conf/nginx/:/etc/nginx:ro
-      - ./logs/nginx/:/var/log/nginx
+      - ./nginx/:/etc/nginx:ro
+      - ./nginx/logs/:/var/log/nginx
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     depends_on:
       - frontend
+      - backend
+    networks:
+      - nginx
+    ports:
+      - 80:80
+      - 443:443
 
   frontend:
-    container_name: ${PROJECT_SLUG}_frontend
-    build:
-      context: .
-      dockerfile: ./docker/frontend/${ENVIRONMENT}/Dockerfile
-      args:
-        - NODE_ENV=${ENVIRONMENT}
-      network: host
-    restart: unless-stopped
-    network_mode: host
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-      - /app/.next
-      - ./logs/frontend:/root/.npm/_logs
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-    env_file:
-      - ./.env
-    depends_on:
-      - backend
-  # FRONTEND # FRONTEND
+    extends:
+      file: ./frontend/docker-compose.yml
+      service: frontend
 
-  # BACKEND # BACKEND
   backend:
-    container_name: ${PROJECT_SLUG}_backend
-    build:
-      context: .
-      dockerfile: ./docker/backend/${ENVIRONMENT}/Dockerfile
-      args:
-        - NODE_ENV=${ENVIRONMENT}
-
-    restart: unless-stopped
-    env_file: .env
-    environment:
-      DATABASE_CLIENT: ${DATABASE_CLIENT}
-      DATABASE_HOST: postgres15
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PORT: ${DATABASE_PORT}
-      JWT_SECRET: ${JWT_SECRET}
-      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      NODE_ENV: ${ENVIRONMENT}
-    volumes:
-      - ./backend/config:/opt/backend/config
-      - ./backend/src:/opt/backend/src
-      - ./backend/package.json:/opt/package.json
-      - ./backend/yarn.lock:/opt/yarn.lock
-      - ./.env:/opt/backend/.env
-      - ./backend/public/uploads:/opt/backend/public/uploads
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-    networks:
-      - database
-    ports:
-      - 1337:1337
-    depends_on:
-      - postgres15
-  # BACKEND # BACKEND
+    extends:
+      file: ./backend/docker-compose.yml
+      service: backend
 
   postgres15:
     image: postgres:15.2-alpine
@@ -82,11 +36,6 @@ services:
     platform: linux/amd64
     restart: unless-stopped
     env_file: .env
-    environment:
-      POSTGRES_USER: ${DATABASE_USERNAME}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: ${DATABASE_NAME}
-      PGDATA: "/var/lib/postgresql/data/pgdata"
     volumes:
       - ./db:/var/lib/postgresql/data/
       - /etc/localtime:/etc/localtime:ro
@@ -95,6 +44,12 @@ services:
       - database
 
 networks:
+  nginx:
+    name: ${PROJECT_SLUG}_nginx
+    driver: bridge
+  app_bridge:
+    name: ${PROJECT_SLUG}_app_bridge
+    driver: bridge
   # DB NETWORK
   database:
     name: ${PROJECT_SLUG}_database

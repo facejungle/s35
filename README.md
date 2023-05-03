@@ -1,4 +1,6 @@
 # s35
+Docker, strapi, next.js 13.
+
 
 Build and up with ./start.sh:
 ```
@@ -13,7 +15,7 @@ Docker compose:
 5. Attach to container
 6. Build and up
 
-Yarn / npm
+Yarn / npm:
 8. Build backend
 9. Build Frontend
 

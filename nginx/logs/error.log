@@ -1,0 +1,8 @@
+2023/05/03 15:49:56 [emerg] 1#1: invalid host in upstream "backend:1337/strapi" in /etc/nginx/upstream.conf:2
+2023/05/03 15:49:57 [emerg] 1#1: invalid host in upstream "backend:1337/strapi" in /etc/nginx/upstream.conf:2
+2023/05/03 15:49:58 [emerg] 1#1: invalid host in upstream "backend:1337/strapi" in /etc/nginx/upstream.conf:2
+2023/05/03 15:49:58 [emerg] 1#1: invalid host in upstream "backend:1337/strapi" in /etc/nginx/upstream.conf:2
+2023/05/03 15:50:00 [emerg] 1#1: invalid host in upstream "backend:1337/strapi" in /etc/nginx/upstream.conf:2
+2023/05/03 15:50:02 [emerg] 1#1: invalid host in upstream "backend:1337/strapi" in /etc/nginx/upstream.conf:2
+2023/05/03 15:50:05 [emerg] 1#1: invalid host in upstream "backend:1337/strapi" in /etc/nginx/upstream.conf:2
+2023/05/03 15:50:12 [emerg] 1#1: invalid host in upstream "backend:1337/strapi" in /etc/nginx/upstream.conf:2

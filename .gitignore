@@ -5,3 +5,4 @@
 /db/
 .env
 /logs/
+_app.sh

@@ -5,6 +5,8 @@ import { Metadata } from "next/types";
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import placeholderPic from '@public/images/480x300.png';
+import { Suspense } from 'react';
+import Loading from '../loading';
 
 export const dynamicParams = false;
 
@@ -15,16 +17,19 @@ export default async function Projects(): Promise<React.ReactElement> {
    }
    return projects.data.map((project: any) => {
       return (
-         <div className={style.card}>
-            <Image
-               src={placeholderPic}
-               alt="Picture of the author"
-               width={480}
-               height={300}
-            />
-            <h2>{project.attributes.title}</h2>
-            <p>{project.attributes.description}</p>
-         </div>
+         <Suspense fallback={<Loading />}>
+            <div className={style.card}>
+               <Image
+                  src={placeholderPic}
+                  alt="Picture of the author"
+                  width={480}
+                  height={300}
+               />
+               <h2>{project.attributes.title}</h2>
+               <p>{project.attributes.description}</p>
+            </div>
+         </Suspense>
+
       );
    });
 }

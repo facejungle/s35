@@ -1,0 +1,24 @@
+version: '3.3'
+services:
+  frontend:
+    container_name: ${PROJECT_SLUG}_frontend
+    build:
+      context: .
+      dockerfile: ../docker/frontend/${ENVIRONMENT}/Dockerfile
+      target: runner
+      args:
+        - NODE_ENV=${ENVIRONMENT}
+      network: host
+    restart: unless-stopped
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/.next
+      - ./logs/frontend:/root/.npm/_logs
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    env_file:
+      - ../.env
+    networks:
+      - app_bridge
+      - nginx
