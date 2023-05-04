@@ -12,7 +12,7 @@
 FROM node:18-alpine as builder
 WORKDIR /app
 
-COPY ./frontend/package.json ./yarn.lock ./
+COPY ./frontend/package.json ./frontend/yarn.lock ./
 RUN yarn install
 COPY ./frontend .
 COPY .env .env.local

@@ -4,7 +4,8 @@ export $(grep -v '^#' .env | xargs)
 # colors
 green='\033[0;32m'
 blue='\033[0;34m'
-red='\033[0;31m' 
+red='\033[0;31m'
+cyan='\033[0;36m'
 clear='\033[0m'
 
 
@@ -15,16 +16,12 @@ clear='\033[0m'
 function attach_to_container ()
 {
   while
-  echo ""
-  echo "Attach to container:"
-  echo ""
-  echo -e "${green}[1]${clear} Frontend"
-  echo -e "${green}[2]${clear} Backend"
-  echo -e "${green}[3]${clear} Nginx"
-  echo -e "${green}[4]${clear} Postges"
-  echo ""
-  echo -e "${green}[Any key]${clear} No attach"
-
+  printf "\n\n\n${red}[${PROJECT_SLUG}]${clear} Attach to container:\n\n"
+  printf "${cyan}[1]${clear} Frontend:\n"
+  printf "${cyan}[2]${clear} Backend:\n"
+  printf "${cyan}[3]${clear} Nginx:\n"
+  printf "${cyan}[3]${clear} Postges:\n"
+  printf "\n${red}[any key]${clear} Back:\n"
   read -n 1 -s CONTAINER
   do
     if [[ $CONTAINER -eq 1 ]];then # START
@@ -48,21 +45,14 @@ function attach_to_container ()
     fi
   done
 }
-function first_start ()
-{
-  echo -e "${green}[Ctrl + C]${clear} exit"
-}
 function docker_start ()
 {
   while 
-    echo ""
-    echo -e "${green}[${PROJECT_SLUG}]${clear} Select container:"
-    echo ""
-    echo -e "${green}[1]${clear} All containers"
-    echo -e "${green}[2]${clear} Backend + database"
-    echo -e "${green}[3]${clear} Frontend"
-    echo ""
-    echo -e "${green}[0]${clear} Back"
+    printf "\n\n\n${red}[${PROJECT_SLUG}]${clear} Select container:\n\n"
+    printf "${cyan}[1]${clear} All containers:\n"
+    printf "${cyan}[2]${clear} Backend + database:\n"
+    printf "${cyan}[3]${clear} Frontend:\n"
+    printf "\n${red}[any key]${clear} Back\n"
     read -n 1 -s START_CONTAINER
   do
       if [[ $START_CONTAINER -eq 1 ]];then
@@ -81,7 +71,7 @@ function docker_start ()
         docker container attach $PROJECT_SLUG"_frontend"
         break
       fi
-      if [[ $START_CONTAINER -eq 0 ]];then
+      if [[ $START_CONTAINER ]];then
         break
       fi
   done
@@ -89,14 +79,11 @@ function docker_start ()
 function docker_stop ()
 {
   while 
-    echo ""
-    echo -e "${green}[${PROJECT_SLUG}]${clear} Select container:"
-    echo ""
-    echo -e "${green}[1]${clear} All containers"
-    echo -e "${green}[2]${clear} Backend"
-    echo -e "${green}[3]${clear} Frontend"
-    echo ""
-    echo -e "${green}[0]${clear} Back"
+    printf "\n\n\n${red}[${PROJECT_SLUG}]${clear} Select container:\n\n"
+    printf "${cyan}[1]${clear} All containers:\n"
+    printf "${cyan}[2]${clear} Backend:\n"
+    printf "${cyan}[3]${clear} Frontend:\n"
+    printf "\n${red}[any key]${clear} Back\n"
     read -n 1 -s START_CONTAINER
   do
       if [[ $START_CONTAINER -eq 1 ]];then
@@ -115,7 +102,7 @@ function docker_stop ()
         docker container attach $PROJECT_SLUG"_frontend"
         break
       fi
-      if [[ $START_CONTAINER -eq 0 ]];then
+      if [[ $START_CONTAINER ]];then
         break
       fi
   done
@@ -123,14 +110,11 @@ function docker_stop ()
 function docker_down ()
 {
   while 
-    echo ""
-    echo -e "${green}[${PROJECT_SLUG}]${clear} Select container:"
-    echo ""
-    echo -e "${green}[1]${clear} All containers"
-    echo -e "${green}[2]${clear} Backend"
-    echo -e "${green}[3]${clear} Frontend"
-    echo ""
-    echo -e "${green}[0]${clear} Back"
+    printf "\n\n\n${red}[${PROJECT_SLUG}]${clear} Select container:\n\n"
+    printf "${cyan}[1]${clear} All containers:\n"
+    printf "${cyan}[2]${clear} Backend:\n"
+    printf "${cyan}[3]${clear} Frontend:\n"
+    printf "\n${red}[any key]${clear} Back\n"
     read -n 1 -s START_CONTAINER
   do
       if [[ $START_CONTAINER -eq 1 ]];then
@@ -149,7 +133,7 @@ function docker_down ()
         docker container attach $PROJECT_SLUG"_frontend"
         break
       fi
-      if [[ $START_CONTAINER -eq 0 ]];then
+      if [[ $START_CONTAINER ]];then
         break
       fi
   done
@@ -157,18 +141,15 @@ function docker_down ()
 function docker_build ()
 {
   while 
-    echo ""
-    echo -e "${green}[${PROJECT_SLUG}]${clear} Select container:"
-    echo ""
-    echo -e "${green}[1]${clear} All containers"
-    echo -e "${green}[2]${clear} Backend"
-    echo -e "${green}[3]${clear} Frontend"
-    echo ""
-    echo -e "${green}[0]${clear} Back"
+    printf "\n\n\n${red}[${PROJECT_SLUG}]${clear} Select container:\n\n"
+    printf "${cyan}[1]${clear} All containers:\n"
+    printf "${cyan}[2]${clear} Backend:\n"
+    printf "${cyan}[3]${clear} Frontend:\n"
+    printf "\n${red}[any key]${clear} Back\n"
     read -n 1 -s START_CONTAINER
   do
       if [[ $START_CONTAINER -eq 1 ]];then
-        docker compose -f "docker-compose.yml" build backend -d
+        docker compose -f "docker-compose.yml" build backend
         docker compose -f "docker-compose.yml" up backend -d
         docker compose -f "docker-compose.yml" up nginx_back -d
         docker compose -f "docker-compose.yml" build frontend
@@ -177,7 +158,7 @@ function docker_build ()
         break
       fi
       if [[ $START_CONTAINER -eq 2 ]];then
-        docker compose -f "docker-compose.yml" build backend -d
+        docker compose -f "docker-compose.yml" build backend
         docker compose -f "docker-compose.yml" up backend -d
         docker compose -f "docker-compose.yml" up nginx_back -d
         break
@@ -188,7 +169,7 @@ function docker_build ()
         docker compose -f "docker-compose.yml" up nginx_front -d
         break
       fi
-      if [[ $START_CONTAINER -eq 0 ]];then
+      if [[ $START_CONTAINER ]];then
         break
       fi
   done
@@ -196,18 +177,15 @@ function docker_build ()
 function docker_build_no_cache ()
 {
   while 
-    echo ""
-    echo -e "${green}[${PROJECT_SLUG}]${clear} Select container:"
-    echo ""
-    echo -e "${green}[1]${clear} All containers"
-    echo -e "${green}[2]${clear} Backend"
-    echo -e "${green}[3]${clear} Frontend"
-    echo ""
-    echo -e "${green}[0]${clear} Back"
+    printf "\n\n\n${red}[${PROJECT_SLUG}]${clear} Select container:\n\n"
+    printf "${cyan}[1]${clear} All containers:\n"
+    printf "${cyan}[2]${clear} Backend:\n"
+    printf "${cyan}[3]${clear} Frontend:\n"
+    printf "\n${red}[any key]${clear} Back\n"
     read -n 1 -s START_CONTAINER
   do
       if [[ $START_CONTAINER -eq 1 ]];then
-        docker compose -f "docker-compose.yml" build --no-cache backend -d
+        docker compose -f "docker-compose.yml" build --no-cache backend
         docker compose -f "docker-compose.yml" up backend -d
         docker compose -f "docker-compose.yml" up nginx_back -d
         docker compose -f "docker-compose.yml" build --no-cache frontend
@@ -216,7 +194,7 @@ function docker_build_no_cache ()
         break
       fi
       if [[ $START_CONTAINER -eq 2 ]];then
-        docker compose -f "docker-compose.yml" build --no-cache backend -d
+        docker compose -f "docker-compose.yml" build --no-cache backend
         docker compose -f "docker-compose.yml" up backend -d
         docker compose -f "docker-compose.yml" up nginx_back -d
         break
@@ -227,86 +205,103 @@ function docker_build_no_cache ()
         docker compose -f "docker-compose.yml" up nginx_front -d
         break
       fi
-      if [[ $START_CONTAINER -eq 0 ]];then
+      if [[ $START_CONTAINER ]];then
         break
       fi
   done
 }
 while 
-echo ""
-echo -e "${green}[${PROJECT_SLUG}]${clear} Choise action:"
-echo ""
-echo -e "${green}[Docker compose]${clear}"
-echo -e "${green}[1]${clear} Start / up"
-echo -e "${green}[2]${clear} Stop"
-echo -e "${green}[3]${clear} Down (remove)"
-echo -e "${green}[4]${clear} Restart"
-echo -e "${green}[5]${clear} Attach to container"
-echo -e "${green}[6]${clear} Build and up"
-echo -e "${green}[7]${clear} Build [--no-cache] and up"
-echo ""
-echo -e "${blue}[yarn / npm]${clear}"
-echo -e "${blue}[8]${clear} Strapi  backend  ..."
-echo -e "${blue}[9]${clear} Next.js frontend ..."
-echo ""
-echo -e "${blue}[0]${clear} First run..."
-echo ""
-echo -e "${blue}[Ctrl+C]${clear} exit"
+printf "\n\n\n${red}[${PROJECT_SLUG}]${clear} Choise action:\n"
+printf "\n${green}[Docker compose]${clear}                 ${blue}[yarn / npm]${clear}\n"
+printf "${green}[1]${clear} Start / Stop                 ${blue}[4]${clear} Strapi\n"
+printf "${green}[2]${clear} Attach                       ${blue}[5]${clear} Next.js\n"
+printf "${green}[3]${clear} Build\n"
+printf "\n${cyan}[Q]${clear} First run\n"
+printf "\n${red}[any key]${clear} exit\n"
 read -n 1 -s ACTION
 do
   if [[ $ACTION -eq 1 ]];then # START
-    docker_start
-    continiue
+    while
+    printf "\n\n\n${red}[${PROJECT_SLUG}]${clear} Choise action:\n\n"
+    printf "${cyan}[1]${clear} Start   > [docker compose up]\n"
+    printf "${cyan}[2]${clear} Stop    > [docker compose stop]\n"
+    printf "${cyan}[3]${clear} Down    > [docker compose down]\n"
+    printf "${cyan}[4]${clear} Restart\n"
+    printf "\n${red}[any key]${clear} Back\n"
+    read -n 1 -s ACTION_START
+    do
+    if [[ $ACTION_START -eq 1 ]];then # START
+      docker_start
+      continue
+    fi
+    if [[ $ACTION_START -eq 2 ]];then # STOP
+      docker_stop
+      continue
+    fi
+    if [[ $ACTION_START -eq 3 ]];then # DOWN
+      docker_down
+      continue
+    fi
+    if [[ $ACTION_START -eq 4 ]];then # RESTART
+      docker_start
+      docker_stop
+      continue
+    fi
+    if [[ $ACTION_START ]];then
+      break
+    fi
+    done
+    continue
   fi
 
-  if [[ $ACTION -eq 2 ]];then # STOP
-    docker_stop
-    continiue
-  fi
-
-  if [[ $ACTION -eq 3 ]];then # DOWN
-    docker_down
-    continiue
-  fi
-
-  if [[ $ACTION -eq 4 ]];then # RESTART
-    docker_stop
-    docker_start
-    continiue
-  fi
-
-  if [[ $ACTION -eq 5 ]];then # ATTACH
+  if [[ $ACTION -eq 2 ]];then # ATTACH
     attach_to_container
-    break
+    continue
   fi
 
-  if [[ $ACTION -eq 6 ]];then # BUILD
-    docker_build
-    continiue
+  if [[ $ACTION -eq 3 ]];then # BUILD
+    while
+    printf "\n\n\n${red}[${PROJECT_SLUG}]${clear} Choise action:\n\n"
+    printf "${cyan}[1]${clear} Build and up [docker compose build]\n"
+    printf "${cyan}[2]${clear} Build and up [docker compose build --no-cache]\n"
+    printf "\n${red}[any key]${clear} Back\n"
+    read -n 1 -s ACTION_BUILD
+    do
+      if [[ $ACTION_BUILD -eq 1 ]];then
+        docker_build
+      fi
+      if [[ $ACTION_BUILD -eq 2 ]];then
+        docker_build_no_cache
+      fi
+      if [[ $ACTION_BUILD ]];then
+        break
+      fi
+    done
+    continue
   fi
 
-  if [[ $ACTION -eq 7 ]];then # BUILD
-    docker_build_no_cache
-    continiue
-  fi
-
-  if [[ $ACTION -eq 8 ]];then
+  if [[ $ACTION -eq 4 ]];then
     cd ./backend
     yarn build
     cd ..
-    continiue
+    continue
   fi
 
-  if [[ $ACTION -eq 9 ]];then
+  if [[ $ACTION -eq 5 ]];then
     cd ./frontend
     yarn build
     cd ..
-    continiue
+    continue
   fi
-  if [[ $ACTION -eq 0 ]];then
-    first_start
+
+  if [[ $ACTION = q ]];then
+    printf "\n${green}[in developing]${clear}\n"
+    continue
+  fi
+
+  if [[ $ACTION ]];then
     break
   fi
 done
 
-printf "\n ${green}[All Done]${clear}\n"
+printf "\n${green}[All Done]${clear}\n"

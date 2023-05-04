@@ -31,7 +31,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY ./frontend .
 
 ENV NEXT_TELEMETRY_DISABLED 1
-ENV API_URL ${BUILD_API_URL}
+ENV API_URL ${API_EXT_URL}
 RUN yarn build
 ENV API_URL ${API_URL}
 
