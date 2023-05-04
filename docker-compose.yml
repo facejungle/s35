@@ -73,7 +73,6 @@ networks:
   app_bridge:
     name: ${PROJECT_SLUG}_app_bridge
     driver: bridge
-  # DB NETWORK
   database:
     name: ${PROJECT_SLUG}_database
     driver: bridge

@@ -1,15 +1,14 @@
 FROM node:18-alpine as build
-# Installing libvips-dev for sharp Compatibility
 RUN apk update && apk add build-base gcc autoconf automake zlib-dev libpng-dev vips-dev > /dev/null 2>&1
 ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
+ENV NODE_ENV=production
 WORKDIR /opt/
 COPY ./backend/package.json ./backend/yarn.lock ./
 ENV PATH /opt/node_modules/.bin:$PATH
 RUN yarn config set network-timeout 600000 -g && yarn install --production
 WORKDIR /opt/backend
 COPY ./backend/ .
-COPY .env .env
+# COPY .env .env
 RUN yarn build
 FROM node:18-alpine
 RUN apk add --no-cache vips-dev
@@ -17,7 +16,7 @@ RUN apk add --no-cache vips-dev
 FROM node:18-alpine
 RUN apk add --no-cache vips-dev
 ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
+ENV NODE_ENV=production
 WORKDIR /opt/backend
 COPY --from=build /opt/node_modules ./node_modules
 ENV PATH /opt/node_modules/.bin:$PATH
