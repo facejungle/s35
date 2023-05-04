@@ -19,10 +19,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     networks:
-      - app_bridge
       - nginx
       - database
     depends_on:
       - postgres15
-    ports:
-      - 1337:1337

@@ -7,10 +7,11 @@ import '@shared/styles/globals.css'
 import { montserrat } from "@shared/styles/fonts";
 import CheckDevice from '@components/checkDevice';
 
-import SiteHeader from '@/widgets/Header/Header';
-import SiteFooter from '@/widgets/Footer/Footer';
+import SiteHeader from '@widgets/Header/Header';
+import SiteFooter from '@widgets/Footer/Footer';
 
 export const dynamicParams = false;
+export const revalidate = 60;
 
 export default async function RootLayout({ children }: { children: React.ReactElement }) {
    return (

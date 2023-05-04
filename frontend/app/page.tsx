@@ -1,11 +1,11 @@
 import { getSeo } from "@components/index";
-import { getFrontPage } from "@/shared/api/pages";
+import { getFrontPage } from "@shared/api/pages";
 import { Metadata } from "next/types";
 import Image from 'next/image';
 import placeholderPic from '@public/images/600x400.png';
 import ContentBlocks from '@components/Content/Content';
-import style from '@/shared/styles/pages/front.module.css';
-import Sidebar from "@/widgets/Sidebar/Sidebar";
+import style from '@shared/styles/pages/front.module.css';
+import Sidebar from "@widgets/Sidebar/Sidebar";
 import { Suspense } from "react";
 import Loading from "./loading";
 

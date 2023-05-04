@@ -6,3 +6,202 @@
 2023/05/03 15:50:02 [emerg] 1#1: invalid host in upstream "backend:1337/strapi" in /etc/nginx/upstream.conf:2
 2023/05/03 15:50:05 [emerg] 1#1: invalid host in upstream "backend:1337/strapi" in /etc/nginx/upstream.conf:2
 2023/05/03 15:50:12 [emerg] 1#1: invalid host in upstream "backend:1337/strapi" in /etc/nginx/upstream.conf:2
+2023/05/03 18:42:41 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:42:41 [notice] 1#1: using the "epoll" event method
+2023/05/03 18:42:41 [notice] 1#1: nginx/1.23.4
+2023/05/03 18:42:41 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/05/03 18:42:41 [notice] 1#1: OS: Linux 5.15.0-72-generic
+2023/05/03 18:42:41 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/05/03 18:42:41 [notice] 1#1: start worker processes
+2023/05/03 18:42:41 [notice] 1#1: start worker process 29
+2023/05/03 18:42:41 [notice] 1#1: start worker process 30
+2023/05/03 18:42:41 [notice] 1#1: start worker process 31
+2023/05/03 18:42:41 [notice] 1#1: start worker process 32
+2023/05/03 18:42:41 [notice] 1#1: start worker process 33
+2023/05/03 18:42:41 [notice] 1#1: start worker process 34
+2023/05/03 18:42:41 [notice] 1#1: start worker process 35
+2023/05/03 18:42:41 [notice] 1#1: start worker process 36
+2023/05/03 18:42:41 [notice] 1#1: start worker process 37
+2023/05/03 18:42:41 [notice] 1#1: start worker process 38
+2023/05/03 18:42:41 [notice] 1#1: start worker process 39
+2023/05/03 18:42:41 [notice] 1#1: start worker process 40
+2023/05/03 18:42:42 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:42:42 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:42:43 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:42:45 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:42:47 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:42:51 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:42:57 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:43:11 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:43:37 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:43:41 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/05/03 18:43:41 [notice] 34#34: gracefully shutting down
+2023/05/03 18:43:41 [notice] 33#33: gracefully shutting down
+2023/05/03 18:43:41 [notice] 29#29: gracefully shutting down
+2023/05/03 18:43:41 [notice] 30#30: gracefully shutting down
+2023/05/03 18:43:41 [notice] 32#32: gracefully shutting down
+2023/05/03 18:43:41 [notice] 34#34: exiting
+2023/05/03 18:43:41 [notice] 31#31: gracefully shutting down
+2023/05/03 18:43:41 [notice] 33#33: exiting
+2023/05/03 18:43:41 [notice] 36#36: gracefully shutting down
+2023/05/03 18:43:41 [notice] 29#29: exiting
+2023/05/03 18:43:41 [notice] 35#35: gracefully shutting down
+2023/05/03 18:43:41 [notice] 30#30: exiting
+2023/05/03 18:43:41 [notice] 37#37: gracefully shutting down
+2023/05/03 18:43:41 [notice] 38#38: gracefully shutting down
+2023/05/03 18:43:41 [notice] 32#32: exiting
+2023/05/03 18:43:41 [notice] 37#37: exiting
+2023/05/03 18:43:41 [notice] 34#34: exit
+2023/05/03 18:43:41 [notice] 31#31: exiting
+2023/05/03 18:43:41 [notice] 36#36: exiting
+2023/05/03 18:43:41 [notice] 33#33: exit
+2023/05/03 18:43:41 [notice] 35#35: exiting
+2023/05/03 18:43:41 [notice] 29#29: exit
+2023/05/03 18:43:41 [notice] 38#38: exiting
+2023/05/03 18:43:41 [notice] 30#30: exit
+2023/05/03 18:43:41 [notice] 36#36: exit
+2023/05/03 18:43:41 [notice] 37#37: exit
+2023/05/03 18:43:41 [notice] 32#32: exit
+2023/05/03 18:43:41 [notice] 31#31: exit
+2023/05/03 18:43:41 [notice] 35#35: exit
+2023/05/03 18:43:41 [notice] 38#38: exit
+2023/05/03 18:43:41 [notice] 39#39: gracefully shutting down
+2023/05/03 18:43:41 [notice] 40#40: gracefully shutting down
+2023/05/03 18:43:41 [notice] 39#39: exiting
+2023/05/03 18:43:41 [notice] 40#40: exiting
+2023/05/03 18:43:41 [notice] 39#39: exit
+2023/05/03 18:43:41 [notice] 40#40: exit
+2023/05/03 18:43:41 [notice] 1#1: signal 17 (SIGCHLD) received from 37
+2023/05/03 18:43:41 [notice] 1#1: worker process 31 exited with code 0
+2023/05/03 18:43:41 [notice] 1#1: worker process 37 exited with code 0
+2023/05/03 18:43:41 [notice] 1#1: signal 29 (SIGIO) received
+2023/05/03 18:43:41 [notice] 1#1: signal 17 (SIGCHLD) received from 31
+2023/05/03 18:43:41 [notice] 1#1: signal 17 (SIGCHLD) received from 40
+2023/05/03 18:43:41 [notice] 1#1: worker process 40 exited with code 0
+2023/05/03 18:43:41 [notice] 1#1: signal 29 (SIGIO) received
+2023/05/03 18:43:41 [notice] 1#1: signal 17 (SIGCHLD) received from 29
+2023/05/03 18:43:41 [notice] 1#1: worker process 29 exited with code 0
+2023/05/03 18:43:41 [notice] 1#1: signal 29 (SIGIO) received
+2023/05/03 18:43:41 [notice] 1#1: signal 17 (SIGCHLD) received from 33
+2023/05/03 18:43:41 [notice] 1#1: worker process 32 exited with code 0
+2023/05/03 18:43:41 [notice] 1#1: worker process 30 exited with code 0
+2023/05/03 18:43:41 [notice] 1#1: worker process 33 exited with code 0
+2023/05/03 18:43:41 [notice] 1#1: worker process 35 exited with code 0
+2023/05/03 18:43:41 [notice] 1#1: worker process 36 exited with code 0
+2023/05/03 18:43:41 [notice] 1#1: worker process 38 exited with code 0
+2023/05/03 18:43:41 [notice] 1#1: worker process 39 exited with code 0
+2023/05/03 18:43:41 [notice] 1#1: signal 29 (SIGIO) received
+2023/05/03 18:43:41 [notice] 1#1: signal 17 (SIGCHLD) received from 36
+2023/05/03 18:43:41 [notice] 1#1: signal 17 (SIGCHLD) received from 34
+2023/05/03 18:43:41 [notice] 1#1: worker process 34 exited with code 0
+2023/05/03 18:43:41 [notice] 1#1: exit
+2023/05/03 18:43:46 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:43:47 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:43:47 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:43:48 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:43:50 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:43:52 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:43:56 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:44:06 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:44:07 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:44:08 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:44:09 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:44:10 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:44:13 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:44:16 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:44:23 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:44:36 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:47:39 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:47:40 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:47:41 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:47:42 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:47:44 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:47:46 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:47:50 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 18:54:22 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:54:23 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:54:23 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:54:24 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:54:25 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:54:27 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:54:31 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:54:38 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:54:51 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:55:10 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:55:10 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:55:11 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:55:12 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:55:13 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:55:15 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:55:19 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:55:26 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:55:39 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 18:56:05 [emerg] 1#1: host not found in upstream "strapi" in /etc/nginx/default.conf:32
+2023/05/03 19:25:56 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 19:25:57 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 19:25:58 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 19:25:59 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 19:26:00 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 19:26:02 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 19:26:06 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 19:27:18 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 19:27:20 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 19:27:21 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 19:27:22 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 19:27:24 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 19:27:26 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/03 19:27:30 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:39:45 [emerg] 1#1: unknown directive "ocation" in /etc/nginx/default.conf:6
+2023/05/04 14:39:46 [emerg] 1#1: unknown directive "ocation" in /etc/nginx/default.conf:6
+2023/05/04 14:39:46 [emerg] 1#1: unknown directive "ocation" in /etc/nginx/default.conf:6
+2023/05/04 14:39:47 [emerg] 1#1: unknown directive "ocation" in /etc/nginx/default.conf:6
+2023/05/04 14:39:49 [emerg] 1#1: unknown directive "ocation" in /etc/nginx/default.conf:6
+2023/05/04 14:39:51 [emerg] 1#1: unknown directive "ocation" in /etc/nginx/default.conf:6
+2023/05/04 14:39:54 [emerg] 1#1: unknown directive "ocation" in /etc/nginx/default.conf:6
+2023/05/04 14:40:01 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:7
+2023/05/04 14:40:14 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:7
+2023/05/04 14:40:40 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:7
+2023/05/04 14:41:34 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:41:34 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:41:35 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:41:36 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:41:37 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:41:39 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:41:43 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:41:50 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:42:03 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:42:29 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:43:21 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:44:21 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:45:22 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:46:22 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:47:23 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 14:48:24 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:13
+2023/05/04 15:07:40 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:13:22 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:13:23 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:13:23 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:13:24 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:13:25 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:13:27 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:13:31 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:13:38 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:13:51 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:14:17 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:15:09 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:16:09 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:17:10 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:18:10 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:19:11 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:20:11 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:21:12 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:22:12 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:23:13 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:24:13 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:25:14 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 15:26:14 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 16:18:22 [emerg] 1#1: host not found in upstream "backend" in /etc/nginx/default.conf:8
+2023/05/04 16:18:22 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 16:43:18 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8
+2023/05/04 16:43:18 [emerg] 1#1: host not found in upstream "backend" in /etc/nginx/default.conf:8
+2023/05/04 16:43:19 [emerg] 1#1: host not found in upstream "frontend" in /etc/nginx/default.conf:8

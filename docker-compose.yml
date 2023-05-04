@@ -1,34 +1,43 @@
 version: '3.3'
 services:
-  nginx:
-    image: nginx:latest
-    restart: unless-stopped
-    container_name: ${PROJECT_SLUG}_nginx
+  nginx_front:
+    container_name: ${PROJECT_SLUG}_nginx_front
+    extends:
+      file: ./nginx/docker-compose.yml
+      service: nginx
     volumes:
-      - ./backend/public:/app/backend/public
       - ./frontend/public:/app/frontend/public
-      - ./nginx/:/etc/nginx:ro
-      - ./nginx/logs/:/var/log/nginx
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-    depends_on:
-      - frontend
-      - backend
-    networks:
-      - nginx
+      - ./nginx/frontend/:/etc/nginx:ro
     ports:
       - 80:80
       - 443:443
 
   frontend:
     extends:
-      file: ./frontend/docker-compose.yml
+      file: ./docker-compose-front.yml
       service: frontend
+    networks:
+      - app_bridge
+
+  nginx_back:
+    container_name: ${PROJECT_SLUG}_nginx_back
+    extends:
+      file: ./nginx/docker-compose.yml
+      service: nginx
+    volumes:
+      - ./backend/public:/app/backend/public
+      - ./nginx/backend/:/etc/nginx:ro
+    ports:
+      - 1337:8080
 
   backend:
     extends:
-      file: ./backend/docker-compose.yml
+      file: ./docker-compose-back.yml
       service: backend
+    depends_on:
+      - postgres15
+    networks:
+      - app_bridge
 
   postgres15:
     image: postgres:15.2-alpine
@@ -44,11 +53,11 @@ services:
       - database
 
 networks:
-  nginx:
-    name: ${PROJECT_SLUG}_nginx
-    driver: bridge
   app_bridge:
     name: ${PROJECT_SLUG}_app_bridge
+    driver: bridge
+  nginx:
+    name: ${PROJECT_SLUG}_nginx
     driver: bridge
   # DB NETWORK
   database:

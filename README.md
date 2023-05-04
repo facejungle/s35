@@ -4,7 +4,7 @@ Docker, strapi, next.js 13.
 
 Build and up with ./start.sh:
 ```
-sudo ./start.sh
+./start.sh
 ```
 
 Docker compose:
@@ -21,6 +21,6 @@ Yarn / npm:
 
 Build and up with docker:
 ```
-sudo docker compose build
+docker compose build
 docker compose up -d
 ```

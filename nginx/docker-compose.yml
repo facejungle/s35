@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  nginx:
+    image: nginx:latest
+    restart: unless-stopped
+    container_name: ${PROJECT_SLUG}_nginx
+    env_file:
+      - ../.env
+    volumes:
+      # - ./backend/public:/app/backend/public
+      # - ./frontend/public:/app/frontend/public
+      # - ./nginx/:/etc/nginx:ro
+      - ./logs/:/var/log/nginx
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    networks:
+      - nginx
+    # ports:
+    #   - 80:80
+    #   - 443:443
+    #   # - 1337:8080

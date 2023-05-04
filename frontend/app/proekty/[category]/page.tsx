@@ -1,4 +1,4 @@
-import { getCategories, getCategoryBySlug } from "@/shared/api/projects";
+import { getCategories, getCategoryBySlug } from "@shared/api/projects";
 import { notFound } from "next/navigation";
 
 export default async function ProjectPage({ params }: { params: { category: string; } }): Promise<React.ReactElement> {

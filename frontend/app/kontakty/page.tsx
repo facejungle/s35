@@ -1,5 +1,5 @@
-import Sidebar from "@/widgets/Sidebar/Sidebar";
-import { getContactsPage } from "@/shared/api/pages";
+import Sidebar from "@widgets/Sidebar/Sidebar";
+import { getContactsPage } from "@shared/api/pages";
 import style from '@shared/styles/pages/contacts.module.css';
 
 

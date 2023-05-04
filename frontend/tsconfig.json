@@ -29,13 +29,13 @@
         "./*"
       ],
       "@components/*": [
-        "./components/*"
+        "./src/components/*"
       ],
       "@shared/*": [
-        "./shared/*"
+        "./src/shared/*"
       ],
       "@widgets/*": [
-        "./widgets/*"
+        "./src/widgets/*"
       ],
       "@public/*": [
         "./public/*"

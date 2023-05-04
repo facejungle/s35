@@ -1,4 +1,4 @@
-import { apiPaths, apiURL } from "@/shared/api/config";
+import { apiPaths, apiURL } from "@shared/api/config";
 
 type siteLogoPromise = {
    url: string;

@@ -9,36 +9,24 @@
 # EXPOSE 3005
 # CMD [ "yarn", "dev"]
 
-FROM node:18-alpine AS base
-
-FROM base AS deps
-RUN apk add --no-cache libc6-compat
-
+FROM node:18-alpine as builder
 WORKDIR /app
 
-COPY ./package.json ./yarn.lock ./
-RUN  yarn install --${NODE_ENV}
+COPY ./frontend/package.json ./yarn.lock ./
+RUN yarn install
+COPY ./frontend .
+COPY .env .env.local
 
-FROM base AS builder
+FROM node:18-alpine as runner
 WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-RUN yarn build
+COPY --from=builder /app/.env.local .env.local
+COPY --from=builder /app/package.json .
+COPY --from=builder /app/yarn.lock .
+COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/node_modules/ ./node_modules/
 
-# 3. Production image, copy all the files and run next
-FROM base AS runner
-WORKDIR /app
-
-ENV NODE_ENV=${NODE_ENV}
-
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
-
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
-EXPOSE 3005
-ENV PORT 3005
-
+COPY --from=builder /app/public/ ./public/
+COPY --from=builder /app/app/ ./app/
+COPY --from=builder /app/src/ ./src/
+EXPOSE 3000
 CMD ["yarn", "dev"]

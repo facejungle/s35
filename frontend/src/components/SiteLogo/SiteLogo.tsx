@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import placeholderPic from '@public/images/90x45.png';
 import { getSiteLogo } from '.';
-import { strapiURL } from '@/shared/api/config';
+import { strapiURL } from '@shared/api/config';
 
 const SiteLogo = async (): Promise<React.ReactElement> => {
    const logo = await getSiteLogo();

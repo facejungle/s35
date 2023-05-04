@@ -1,4 +1,4 @@
-import { getHeaderMenu } from "@/shared/api/menus";
+import { getHeaderMenu } from "@shared/api/menus";
 import Link from 'next/link';
 
 
