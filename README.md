@@ -16,6 +16,7 @@ Docker compose:
 6. Build and up
 
 Yarn / npm:
+
 8. Build backend
 9. Build Frontend
 
