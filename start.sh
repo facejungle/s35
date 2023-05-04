@@ -45,6 +45,8 @@ function attach_to_container ()
     fi
   done
 }
+
+
 function docker_start ()
 {
   while 
@@ -61,13 +63,11 @@ function docker_start ()
       fi
       if [[ $START_CONTAINER -eq 2 ]];then
         docker compose -f "docker-compose.yml" up backend -d
-        docker compose -f "docker-compose.yml" up nginx_back -d
         docker container attach "${PROJECT_SLUG}_backend"
         break
       fi
       if [[ $START_CONTAINER -eq 3 ]];then
         docker compose -f "docker-compose.yml" up frontend -d
-        docker compose -f "docker-compose.yml" up nginx_front -d
         docker container attach $PROJECT_SLUG"_frontend"
         break
       fi
@@ -76,6 +76,8 @@ function docker_start ()
       fi
   done
 }
+
+
 function docker_stop ()
 {
   while 
@@ -91,14 +93,12 @@ function docker_stop ()
         break
       fi
       if [[ $START_CONTAINER -eq 2 ]];then
-        docker compose -f "docker-compose.yml" stop backend -d
-        docker compose -f "docker-compose.yml" stop nginx_back -d
+        docker compose -f "docker-compose.yml" stop backend
         docker container attach "${PROJECT_SLUG}_backend"
         break
       fi
       if [[ $START_CONTAINER -eq 3 ]];then
-        docker compose -f "docker-compose.yml" stop frontend -d
-        docker compose -f "docker-compose.yml" stop nginx_front -d
+        docker compose -f "docker-compose.yml" stop frontend
         docker container attach $PROJECT_SLUG"_frontend"
         break
       fi
@@ -107,6 +107,8 @@ function docker_stop ()
       fi
   done
 }
+
+
 function docker_down ()
 {
   while 
@@ -123,13 +125,11 @@ function docker_down ()
       fi
       if [[ $START_CONTAINER -eq 2 ]];then
         docker compose -f "docker-compose.yml" down backend -d
-        docker compose -f "docker-compose.yml" down nginx_back -d
         docker container attach "${PROJECT_SLUG}_backend"
         break
       fi
       if [[ $START_CONTAINER -eq 3 ]];then
         docker compose -f "docker-compose.yml" down frontend -d
-        docker compose -f "docker-compose.yml" down nginx_front -d
         docker container attach $PROJECT_SLUG"_frontend"
         break
       fi
@@ -138,6 +138,8 @@ function docker_down ()
       fi
   done
 }
+
+
 function docker_build ()
 {
   while 
@@ -151,22 +153,18 @@ function docker_build ()
       if [[ $START_CONTAINER -eq 1 ]];then
         docker compose -f "docker-compose.yml" build backend
         docker compose -f "docker-compose.yml" up backend -d
-        docker compose -f "docker-compose.yml" up nginx_back -d
         docker compose -f "docker-compose.yml" build frontend
         docker compose -f "docker-compose.yml" up frontend -d
-        docker compose -f "docker-compose.yml" up nginx_front -d
         break
       fi
       if [[ $START_CONTAINER -eq 2 ]];then
         docker compose -f "docker-compose.yml" build backend
         docker compose -f "docker-compose.yml" up backend -d
-        docker compose -f "docker-compose.yml" up nginx_back -d
         break
       fi
       if [[ $START_CONTAINER -eq 3 ]];then
         docker compose -f "docker-compose.yml" build frontend
         docker compose -f "docker-compose.yml" up frontend -d
-        docker compose -f "docker-compose.yml" up nginx_front -d
         break
       fi
       if [[ $START_CONTAINER ]];then
@@ -174,6 +172,8 @@ function docker_build ()
       fi
   done
 }
+
+
 function docker_build_no_cache ()
 {
   while 
@@ -187,22 +187,18 @@ function docker_build_no_cache ()
       if [[ $START_CONTAINER -eq 1 ]];then
         docker compose -f "docker-compose.yml" build --no-cache backend
         docker compose -f "docker-compose.yml" up backend -d
-        docker compose -f "docker-compose.yml" up nginx_back -d
         docker compose -f "docker-compose.yml" build --no-cache frontend
         docker compose -f "docker-compose.yml" up frontend -d
-        docker compose -f "docker-compose.yml" up nginx_front -d
         break
       fi
       if [[ $START_CONTAINER -eq 2 ]];then
         docker compose -f "docker-compose.yml" build --no-cache backend
         docker compose -f "docker-compose.yml" up backend -d
-        docker compose -f "docker-compose.yml" up nginx_back -d
         break
       fi
       if [[ $START_CONTAINER -eq 3 ]];then
         docker compose -f "docker-compose.yml" build --no-cache frontend
         docker compose -f "docker-compose.yml" up frontend -d
-        docker compose -f "docker-compose.yml" up nginx_front -d
         break
       fi
       if [[ $START_CONTAINER ]];then
@@ -210,6 +206,8 @@ function docker_build_no_cache ()
       fi
   done
 }
+
+
 while 
 printf "\n\n\n${red}[${PROJECT_SLUG}]${clear} Choise action:\n"
 printf "\n${green}[Docker compose]${clear}                 ${blue}[yarn / npm]${clear}\n"

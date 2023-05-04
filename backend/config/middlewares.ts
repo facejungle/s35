@@ -1,12 +1,13 @@
 export default [
   'strapi::errors',
   'strapi::security',
+  // 'strapi::cors',
   {
     name: 'strapi::cors',
     config: {
       enabled: true,
       headers: '*',
-      origin: ['http://localhost/strapi', 'http://backend:1337/strapi']
+      origin: [process.env.API_EXT_URL, process.env.API_URL]
     }
   },
   'strapi::poweredBy',

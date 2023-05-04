@@ -4,9 +4,14 @@ node_modules
 npm-debug.log
 README.md
 .next
+.vscode
 .git
 .jest_cache
 .docker-compose
 .vscode
 .terraform
 .husky
+.gitignore
+package-lock.json
+package.json
+yarn.lock

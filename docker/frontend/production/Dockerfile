@@ -28,7 +28,7 @@ RUN  yarn install --production
 FROM node:18-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY ./frontend .
+COPY .env ./frontend ./
 
 ENV NEXT_TELEMETRY_DISABLED 1
 ENV API_URL ${API_EXT_URL}
@@ -47,6 +47,12 @@ RUN adduser --system --uid 1001 nextjs
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.env ./.env.local
+COPY --from=builder /app/tsconfig.json ./tsconfig.json
+COPY --from=builder /app/next-env.d.ts ./next-env.d.ts
+COPY --from=builder /app/next.config.js ./next.config.js
 
 USER nextjs
 

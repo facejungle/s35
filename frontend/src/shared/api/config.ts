@@ -1,12 +1,10 @@
 export function apiURL(path: string) {
-   console.log(`>>>>${process.env.API_URL}`)
    return `${process.env.API_URL || 'http://localhost:1337'}/api${path}`;
 }
 
 export function strapiURL(path: string) {
    return `${process.env.API_URL || 'http://localhost:1337'}${path}`;
 }
-
 
 export const apiPaths = {
    settingsPath: '/site-setting/?populate=*',
@@ -20,6 +18,7 @@ export const apiPaths = {
    projectsCategory: '/project-categories',
    projectBySlug: '/projects/slug/',
 }
+
 export const apiPaths2 = ({ id, slug }: { id?: number, slug?: string }) => {
    return {
       // Menu

@@ -1,43 +1,60 @@
 version: '3.3'
 services:
-  nginx_front:
-    container_name: ${PROJECT_SLUG}_nginx_front
-    extends:
-      file: ./nginx/docker-compose.yml
-      service: nginx
-    volumes:
-      - ./frontend/public:/app/frontend/public
-      - ./nginx/frontend/:/etc/nginx:ro
-    ports:
-      - 80:80
-      - 443:443
-
   frontend:
-    extends:
-      file: ./docker-compose-front.yml
-      service: frontend
+    container_name: ${PROJECT_SLUG}_frontend
+    build:
+      context: .
+      dockerfile: ./docker/frontend/${ENVIRONMENT}/Dockerfile
+      target: runner
+      args:
+        - NODE_ENV=${ENVIRONMENT}
+      network: host
+    restart: unless-stopped
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+      - ./frontend/tsconfig.json:/app/tsconfig.json
+      - ./frontend/next.config.js:/app/next.config.js
+      - ./frontend/next-env.d.ts:/app/next-env.d.ts
+      - /app/node_modules
+      - /app/.next
+      - ./logs/frontend:/root/.npm/_logs
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    env_file:
+      - .env
     networks:
       - app_bridge
-
-  nginx_back:
-    container_name: ${PROJECT_SLUG}_nginx_back
-    extends:
-      file: ./nginx/docker-compose.yml
-      service: nginx
-    volumes:
-      - ./backend/public:/app/backend/public
-      - ./nginx/backend/:/etc/nginx:ro
     ports:
-      - 1337:8080
+      - 80:3000
+    depends_on:
+      - backend
 
   backend:
-    extends:
-      file: ./docker-compose-back.yml
-      service: backend
-    depends_on:
-      - postgres15
+    container_name: ${PROJECT_SLUG}_backend
+    build:
+      context: .
+      dockerfile: ./docker/backend/${ENVIRONMENT}/Dockerfile
+      args:
+        - NODE_ENV=${ENVIRONMENT}
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./backend/config:/opt/backend/config
+      - ./backend/src:/opt/backend/src
+      - ./backend/package.json:/opt/package.json
+      - ./backend/yarn.lock:/opt/yarn.lock
+      - ./backend/public/uploads:/opt/backend/public/uploads
+      - ./logs/backend:/root/.npm/_logs
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
     networks:
       - app_bridge
+      - database
+    depends_on:
+      - postgres15
+    ports:
+      - 1337:1337
 
   postgres15:
     image: postgres:15.2-alpine
@@ -55,9 +72,6 @@ services:
 networks:
   app_bridge:
     name: ${PROJECT_SLUG}_app_bridge
-    driver: bridge
-  nginx:
-    name: ${PROJECT_SLUG}_nginx
     driver: bridge
   # DB NETWORK
   database:

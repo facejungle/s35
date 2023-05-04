@@ -17,8 +17,8 @@ export default async function Projects(): Promise<React.ReactElement> {
    }
    return projects.data.map((project: any) => {
       return (
-         <Suspense fallback={<Loading />}>
-            <div className={style.card}>
+         <div className={style.card}>
+            <Suspense fallback={<Loading />}>
                <Image
                   src={placeholderPic}
                   alt="Picture of the author"
@@ -27,9 +27,8 @@ export default async function Projects(): Promise<React.ReactElement> {
                />
                <h2>{project.attributes.title}</h2>
                <p>{project.attributes.description}</p>
-            </div>
-         </Suspense>
-
+            </Suspense>
+         </div >
       );
    });
 }

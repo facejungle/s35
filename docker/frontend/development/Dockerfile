@@ -1,32 +1,63 @@
-# FROM node:18-alpine
-# ENV PORT 3005
-# # RUN mkdir -p /app
-# WORKDIR /app
-# COPY ./package.json ./yarn.lock /app/
-# COPY ./.env /app/
-# RUN yarn config set network-timeout 600000 -g && yarn install
-# COPY ./ /app
-# EXPOSE 3005
-# CMD [ "yarn", "dev"]
-
-FROM node:18-alpine as builder
+FROM node:18-alpine AS deps
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 COPY ./frontend/package.json ./frontend/yarn.lock ./
-RUN yarn install
-COPY ./frontend .
-COPY .env .env.local
+RUN  yarn install --development
 
-FROM node:18-alpine as runner
+FROM node:18-alpine AS builder
 WORKDIR /app
-COPY --from=builder /app/.env.local .env.local
-COPY --from=builder /app/package.json .
-COPY --from=builder /app/yarn.lock .
-COPY --from=builder /app/next.config.js ./
-COPY --from=builder /app/node_modules/ ./node_modules/
+COPY --from=deps /app/node_modules ./node_modules
+COPY .env ./frontend ./
 
-COPY --from=builder /app/public/ ./public/
-COPY --from=builder /app/app/ ./app/
-COPY --from=builder /app/src/ ./src/
+ENV API_URL ${API_EXT_URL}
+RUN yarn build
+ENV API_URL ${API_URL}
+
+FROM node:18-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV development
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.env ./.env.local
+COPY --from=builder /app/tsconfig.json ./tsconfig.json
+COPY --from=builder /app/next-env.d.ts ./next-env.d.ts
+COPY --from=builder /app/next.config.js ./next.config.js
+USER nextjs
+
 EXPOSE 3000
+
+ENV PORT 3000
+
 CMD ["yarn", "dev"]
+
+# FROM node:18-alpine as builder
+# WORKDIR /app
+
+# COPY ./frontend/package.json ./frontend/yarn.lock ./
+
+# RUN yarn install
+# COPY ./frontend .
+# COPY .env .env.local
+
+# FROM node:18-alpine as runner
+# WORKDIR /app
+# COPY --from=builder /app/.env.local .env.local
+# COPY --from=builder /app/package.json .
+# COPY --from=builder /app/yarn.lock .
+# COPY --from=builder /app/next.config.js ./
+# COPY --from=builder /app/node_modules/ ./node_modules/
+
+# COPY --from=builder /app/public/ ./public/
+# COPY --from=builder /app/app/ ./app/
+# COPY --from=builder /app/src/ ./src/
+# EXPOSE 3000
+# CMD ["yarn", "dev"]
