@@ -11,6 +11,9 @@ import Loading from "./loading";
 
 export default async function Home(): Promise<React.ReactElement> {
    const page = await getFrontPage();
+   if (!page) {
+      return <></>
+   }
    const content = page.data.attributes.content;
 
    return (
@@ -55,7 +58,7 @@ export default async function Home(): Promise<React.ReactElement> {
 
 export async function generateMetadata(): Promise<Metadata> {
    const seo = await getFrontPage();
-   if (seo.data === null) {
+   if (seo === null) {
       return {
          title: 'Не найдено',
          keywords: '404',
