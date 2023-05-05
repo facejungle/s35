@@ -13,11 +13,6 @@ services:
     volumes:
       - ./frontend/src:/app/src
       - ./frontend/public:/app/public
-      - ./frontend/tsconfig.json:/app/tsconfig.json
-      - ./frontend/next.config.js:/app/next.config.js
-      - ./frontend/next-env.d.ts:/app/next-env.d.ts
-      - /app/node_modules
-      - /app/.next
       - ./logs/frontend:/root/.npm/_logs
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
@@ -26,7 +21,7 @@ services:
     networks:
       - app_bridge
     ports:
-      - 80:3000
+      - 3000:3000
     depends_on:
       - backend
 
@@ -42,9 +37,7 @@ services:
     volumes:
       - ./backend/config:/opt/backend/config
       - ./backend/src:/opt/backend/src
-      - ./backend/package.json:/opt/package.json
-      - ./backend/yarn.lock:/opt/yarn.lock
-      - ./backend/public/uploads:/opt/backend/public/uploads
+      - ./backend/public/:/opt/backend/public/
       - ./logs/backend:/root/.npm/_logs
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
