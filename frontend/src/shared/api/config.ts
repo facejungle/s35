@@ -1,4 +1,5 @@
 export function apiURL(path: string) {
+   console.log(process.env.API_URL)
    return `${process.env.API_URL || 'http://localhost:1337'}/api${path}`;
 }
 
