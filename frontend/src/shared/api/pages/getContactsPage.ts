@@ -1,10 +1,19 @@
-import { apiPaths2, apiURL } from "@shared/api/config";
+import { contentType } from "@/components/Content/Content";
+import { fetcher } from "@shared/api/config";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
-export async function getContactsPage() {
-   const data = await fetch(apiURL(apiPaths2({}).pageContacts));
-   if (!data.ok) {
-      console.log('Failed to fetch > Contacts Page data | getContactsPage()');
-      return null;
-   }
-   return data.json();
+
+interface contactsPagePromise extends Metadata, contentType {
+   data: any;
+   slug?: string;
+   image?: {};
+   content?: [contentType];
+};
+
+export async function getContactsPage(): Promise<contactsPagePromise> {
+   const page = await fetcher('api', 'pageContacts');
+   if (!page) return notFound();
+
+   return page;
 }

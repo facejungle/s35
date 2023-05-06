@@ -1,18 +1,14 @@
 import { Metadata } from "next/types";
-
 import '@shared/styles/reset.css'
 import '@shared/styles/globals.css'
 import { montserrat } from "@shared/styles/fonts";
 import CheckDevice from '@components/checkDevice';
-
 import SiteHeader from '@widgets/Header/Header';
 import SiteFooter from '@widgets/Footer/Footer';
-import { Suspense } from 'react';
-import Loading from './loading';
 import { getSiteSettingsData } from "@/components";
-
 export const dynamicParams = false;
 export const revalidate = 60;
+
 
 export default async function RootLayout({ children }: { children: React.ReactElement }) {
    return (
@@ -20,17 +16,13 @@ export default async function RootLayout({ children }: { children: React.ReactEl
          <body>
             <CheckDevice>
                <div className="site-wrapper flex-column">
-
                   {await SiteHeader()}
                   <div className="main-wrapper">
                      <main className="flex-row container">
-                        <Suspense fallback={<Loading />}>
-                           {children}
-                        </Suspense>
+                        {children}
                      </main>
                   </div>
                   <SiteFooter />
-
                </div>
             </CheckDevice>
          </body>

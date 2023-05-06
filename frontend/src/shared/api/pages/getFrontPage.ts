@@ -1,10 +1,22 @@
-import { apiPaths, apiURL } from "@shared/api/config";
+import { fetcher } from "@shared/api/config";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { contentType } from "@/components/Content/Content";
 
-export async function getFrontPage() {
-   const data = await fetch(apiURL(apiPaths.pageFront));
-   if (!data.ok) {
-      console.log('Failed to fetch > front page data | getFrontPageData()');
-      return null;
+
+interface frontPagePromise extends Metadata, contentType {
+   slug?: string;
+   image?: {};
+   content?: [contentType];
+};
+
+export async function getFrontPage(): Promise<frontPagePromise> {
+   const page = await fetcher('api', 'pageFront');
+   if (!page) return notFound();
+   return {
+      title: page.data.attributes.title,
+      slug: page.data.attributes.slug,
+      description: page.data.attributes.description,
+      content: page.data.attributes.content,
    }
-   return data.json();
 }

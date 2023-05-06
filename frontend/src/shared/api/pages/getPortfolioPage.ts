@@ -1,10 +1,17 @@
-import { apiPaths2, apiURL } from "@shared/api/config";
+import { fetcher } from "@shared/api/config";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
-export async function getPortfolioPage() {
-   const data = await fetch(apiURL(apiPaths2({}).pagePortfolio));
-   if (!data.ok) {
-      console.log('Failed to fetch > Portfolio Page data | getPortfolioPage()');
-      return null;
-   }
-   return data.json();
+
+interface portfolioPagePromise extends Metadata {
+   data: any;
+   slug?: string;
+   image?: {};
+};
+
+export async function getPortfolioPage(): Promise<portfolioPagePromise> {
+   const page = await fetcher('api', 'pagePortfolio');
+   if (!page) return notFound();
+
+   return page;
 }

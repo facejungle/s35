@@ -12,7 +12,7 @@ const SiteHeader = async (): Promise<React.ReactElement> => {
             <div className={`${style.header_line} flex-row`}>
                <div className={`${style.logo_contacts_wrapper} flex-row`}>
                   <div className={style.logo_wrapper}>
-                     {await SiteLogo()}
+                     <SiteLogo />
                   </div>
                   <div className={style.contacts_wrapper}>
                      {await HeaderContacts()}

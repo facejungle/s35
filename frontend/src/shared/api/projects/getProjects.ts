@@ -1,10 +1,10 @@
-import { apiURL, apiPaths } from "@shared/api/config";
+import { fetcher } from "@shared/api/config";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export async function getProjects() {
-   const projects = await fetch(apiURL(apiPaths.projectsPath)).then((res) => res.json());
-   if (projects.data && Array.isArray(projects.data) && projects.data[0]) {
-      return projects;
-   } else {
-      return null;
-   }
+   const projects = await fetcher('api', 'projects');
+   if (!projects) return notFound();
+
+   return projects;
 }

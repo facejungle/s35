@@ -8,19 +8,10 @@ export default async function PagePortfolio(): Promise<React.ReactElement> {
    return (
       <>
          <article className={style.contacts}>
-
+            {page.data.attributes.title}
          </article>
          <Sidebar />
       </>
    );
 }
 
-export async function generateStaticParams() {
-   const portfolioPage = await getPortfolioPage();
-   if (portfolioPage !== null) {
-      return [{
-         portfolio: portfolioPage.data.attributes.slug === null ? 'portfolio' : portfolioPage.data.attributes.slug,
-      }]
-   }
-   return [{ portfolio: 'portfolio' }];
-}

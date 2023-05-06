@@ -1,50 +1,32 @@
 article.front_page {
    flex: 1 1 100%;
    padding: var(--padding25);
+   gap: var(--padding25)
 }
 
 .hero {
-   gap: var(--padding100);
-   padding-top: var(--padding25);
+   min-height: 30vh;
    position: relative;
    align-items: center;
-   overflow: visible;
-   min-height: 100px;
+   justify-content: center;
+   overflow: hidden;
 }
 
 .hero>img {
    position: absolute;
    object-position: center top;
    object-fit: none;
-   overflow: visible;
-}
-
-@media only screen and (min-width: 480px) and (max-width: 1366px) {
-   .hero>img {
-      object-position: center;
-      object-fit: none;
-      overflow: visible;
-   }
-}
-
-@media only screen and (min-width: 1366px) {
-   .hero>img {
-      object-position: center;
-      object-fit: none;
-      overflow: visible;
-   }
 }
 
 .hero>h1 {
-   margin: var(--padding100) 0;
    padding: 10px;
    background-color: var(--color_white_trans3);
    border-radius: var(--radius);
    z-index: 1;
 }
 
+
 h2.title {
-   margin-top: var(--padding100);
    padding: 10px;
    background-color: var(--color_white_trans3);
    border-radius: var(--radius);

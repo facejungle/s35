@@ -1,4 +1,4 @@
-import { apiURL, apiPaths2 } from "@shared/api/config";
+import { fetcher } from "@shared/api/config";
 import { notFound } from "next/navigation";
 
 type projectType = {
@@ -30,18 +30,8 @@ type projectType = {
    }];
 }
 export async function getProjectBySlug(projectSlug: string): Promise<projectType> {
-   const data = await fetch(apiURL(apiPaths2({ slug: projectSlug }).projectBySlug));
-
-   if (!data.ok) {
-      console.log('Failed to fetch > project | getProject()');
-      return notFound();
-   }
-
-   const project = await data.json();
-   if (project.data === null) {
-      console.log('project not found | getProject()');
-      return notFound();
-   }
+   const project = await fetcher('api', 'projectBySlug', projectSlug);
+   if (!project) return notFound();
 
    const projectCat = project.category
    return {

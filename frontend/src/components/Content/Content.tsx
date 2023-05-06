@@ -1,23 +1,15 @@
 import styles from './Content.module.css';
 import ContentTitle from './blocks/Title';
 
-type componentTitleType = {
-   __component: 'content.title' | 'content.text';
-   id: number,
-   text: string,
-   size: number,
-   hashtag?: string
-};
-
-type componentType = {
-   __component: 'content.title' | 'content.text';
-   id: number,
+export interface contentType {
+   __component?: string;
+   id?: number;
    text?: string,
    size?: number,
    hashtag?: string
 };
 
-export default function ContentBlocks(contentData: any): React.ReactElement {
+export default function ContentBlocks(contentData: [contentType] | []): React.ReactElement {
    if (!contentData[0]) {
       console.log(`>>> content data - not found (/content.tsx)`)
       return (
@@ -29,7 +21,7 @@ export default function ContentBlocks(contentData: any): React.ReactElement {
    return (
       <>
          {
-            contentData.map((block: componentTitleType) => {
+            contentData.map((block) => {
 
                if (block.__component === 'content.title') {
                   return (

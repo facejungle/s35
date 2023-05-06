@@ -1,10 +1,17 @@
-import { apiPaths2, apiURL } from "@shared/api/config";
+import { fetcher } from "@shared/api/config";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
-export async function getPricesPage() {
-   const data = await fetch(apiURL(apiPaths2({}).pagePrices));
-   if (!data.ok) {
-      console.log('Failed to fetch > Prices Page data | getPricesPage()');
-      return null;
-   }
-   return data.json();
+
+interface pricesPagePromise extends Metadata {
+   data: any;
+   slug?: string;
+   image?: {};
+};
+
+export async function getPricesPage(): Promise<pricesPagePromise> {
+   const page = await fetcher('api', 'pagePrices');
+   if (!page) return notFound();
+
+   return page;
 }

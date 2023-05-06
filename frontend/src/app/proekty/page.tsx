@@ -1,21 +1,18 @@
 import style from '@shared/styles/projects/card.module.css';
-import { getProjects, getProjectsPage } from "@shared/api/projects"
+import { getProjects } from "@shared/api/projects"
+import { getProjectsPage } from "@shared/api/pages"
 import { getSeo } from "@components/index";
 import { Metadata } from "next/types";
-import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import placeholderPic from '@public/images/480x300.png';
-import { Suspense } from 'react';
+import { Suspense, use } from 'react';
 import Loading from '../loading';
 
 export const dynamicParams = false;
 
-export default async function Projects(): Promise<React.ReactElement> {
-   const projects = await getProjects();
-   if (projects.data === null) {
-      return notFound()
-   }
-   return projects.data.map((project: any) => {
+export default function Projects(): React.ReactElement {
+   const page = use(getProjects());
+   return page.data.map((project: any) => {
       return (
          <div className={style.card}>
             <Suspense fallback={<Loading />}>

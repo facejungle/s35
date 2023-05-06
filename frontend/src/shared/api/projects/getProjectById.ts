@@ -1,4 +1,4 @@
-import { apiURL, apiPaths2 } from "@shared/api/config";
+import { fetcher } from "@shared/api/config";
 import { notFound } from "next/navigation";
 
 type projectType = {
@@ -30,17 +30,8 @@ type projectType = {
    }];
 }
 export async function getProjectById(projectId: number): Promise<projectType> {
-   const data = await fetch(apiURL(apiPaths2({ id: projectId }).projectById));
-   if (!data.ok) {
-      console.log('Failed to fetch > project | getProject()');
-      return notFound();
-   }
-
-   const project = await data.json();
-   if (project.data === null) {
-      console.log('project not found | getProject()');
-      return notFound();
-   }
+   const project = await fetcher('api', 'projectById', undefined, projectId);
+   if (!project) return notFound();
 
    const projectCat = project.data.attributes.category.data
    return {

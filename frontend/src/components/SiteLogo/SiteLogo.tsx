@@ -1,12 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import placeholderPic from '@public/images/90x45.png';
-import { getSiteLogo } from '.';
-import { strapiURL } from '@shared/api/config';
 
-const SiteLogo = async (): Promise<React.ReactElement> => {
-   const logo = await getSiteLogo();
-   const logoUrl = strapiURL(logo.url);
+const SiteLogo = (): React.ReactElement => {
    return (
       <>
          <Link key={'logo'} href='/'>
