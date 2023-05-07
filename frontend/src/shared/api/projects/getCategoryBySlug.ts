@@ -1,8 +1,9 @@
-import { apiURL, apiPaths2, fetcher } from "@shared/api/config";
+import { fetcher } from "@shared/api/config";
 import { notFound } from "next/navigation";
+import { CategoryDataType, CategoryType } from ".";
 
-export async function getCategoryBySlug(categorySlug: string) {
-   const category = await fetcher('api', 'projectCategoryBySlug', categorySlug);
+export async function getCategoryBySlug(categorySlug: string): Promise<CategoryType> {
+   const category: CategoryDataType = await fetcher({ host: 'api', path: 'projectCategoryBySlug', slugOrID: categorySlug });
    if (!category) return notFound();
    return {
       title: category.title,
@@ -10,5 +11,4 @@ export async function getCategoryBySlug(categorySlug: string) {
       description: category.description,
       image: {}
    };
-
 }

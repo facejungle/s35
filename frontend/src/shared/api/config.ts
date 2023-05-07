@@ -1,4 +1,4 @@
-type apiUrlType = 'api' | 'apiExt' | 'strapi' | 'strapiExt';
+type urlHostType = 'api' | 'apiExt' | 'strapi' | 'strapiExt';
 
 type apiPathType =
    'siteSettings' | 'contacts' | 'headerMenu' |
@@ -7,42 +7,50 @@ type apiPathType =
    // Projects
    'projects' | 'projectsSettings' | 'projectsCategories' | 'projectCategoryBySlug' | 'projectById' | 'projectBySlug';
 
-export const urlHost = (url: apiUrlType) => {
-   if (url === 'api') return `${process.env.API_URL || 'http://localhost:1337'}/api`;
-   if (url === 'apiExt') return `${process.env.API_EXT_URL || 'http://localhost:1337'}/api`;
-   if (url === 'strapi') return `${process.env.API_URL || 'http://localhost:1337'}`;
-   if (url === 'strapiExt') return `${process.env.API_EXT_URL || 'http://localhost:1337'}`;
+interface urlType {
+   host: urlHostType;
+   path: apiPathType;
+   slugOrID?: string | number;
+   filter?: string;
 }
-export const urlPath = (path: apiPathType, slug?: string, id?: number) => {
+export const urlHost = (host: urlHostType) => {
+   if (host === 'api') return `${process.env.API_URL || 'http://localhost:1337'}/api`;
+   if (host === 'apiExt') return `${process.env.API_EXT_URL || 'http://localhost:1337'}/api`;
+   if (host === 'strapi') return `${process.env.API_URL || 'http://localhost:1337'}`;
+   if (host === 'strapiExt') return `${process.env.API_EXT_URL || 'http://localhost:1337'}`;
+}
+export const urlPath = (path: apiPathType, slugOrID?: string | number, filter?: string) => {
+   const filterPath = filter ? `&filters${filter}` : '';
    if (path) {
-      if (path === 'siteSettings') return '/site-setting/?populate=*';
-      if (path === 'contacts') return '/contact/?populate=*';
-      if (path === 'headerMenu') return '/page-contact/?populate=*';
+      if (path === 'siteSettings') return '/site-setting/?populate=*' + filterPath;
+      if (path === 'contacts') return '/contact/?populate=*' + filterPath;
+      if (path === 'headerMenu') return '/header-menu?populate[0]=links&populate[1]=links.link.parent' + filterPath;
       // STATIC PAGES
-      if (path === 'pageFront') return '/page-front/?populate=*';
-      if (path === 'pageContacts') return '/page-contact/?populate=*';
-      if (path === 'pagePrices') return '/page-price/?populate=*';
-      if (path === 'pagePortfolio') return '/page-portfolio/?populate=*';
-      if (path === 'pageProjects') return '/page-project/?populate=*';
+      if (path === 'pageFront') return '/page-front/?populate=*' + filterPath;
+      if (path === 'pageContacts') return '/page-contact/?populate=*' + filterPath;
+      if (path === 'pagePrices') return '/page-price/?populate=*' + filterPath;
+      if (path === 'pagePortfolio') return '/page-portfolio/?populate=*' + filterPath;
+      if (path === 'pageProjects') return '/page-project/?populate=*' + filterPath;
       // PROJECTS
-      if (path === 'projects') return '/projects/?populate=category';
-      if (path === 'projectsSettings') return '/project-setting';
-      if (path === 'projectsCategories') return '/project-categories';
-      if (path === 'projectCategoryBySlug') return `/project-categories/slug/${slug}`;
-      if (path === 'projectById') return `/projects/${id}?populate=*`;
-      if (path === 'projectBySlug') return `/projects/slug/${slug}?populate=*`;
+      if (path === 'projects') return '/projects/?populate=category' + filterPath;
+      if (path === 'projectsSettings') return '/project-setting' + filterPath;
+      if (path === 'projectsCategories') return '/project-categories' + filterPath;
+      if (path === 'projectCategoryBySlug') return `/project-categories/slug/${slugOrID}`;
+      if (path === 'projectById') return `/projects/${slugOrID}?populate=*` + filterPath;
+      if (path === 'projectBySlug') return `/projects/slug/${slugOrID}?populate=*` + filterPath;
    }
    return '';
 }
 /**
 * Function for fetch data
-* @param url Host, e.g. 'http://localhost'
-* @param path Path, e.g. '/site-setting/'
+* @param url Variable from .env or host, e.g. http://localhost
+* @param path Variable or path, e.g. '/site-setting/'
 */
-export async function fetcher(url: apiUrlType, path: apiPathType, slug?: string, id?: number): Promise<any> {
-   const data = await fetch(urlHost(url) + urlPath(path, slug, id));
+export async function fetcher(link: urlType): Promise<any> {
+   console.log(link)
+   const data = await fetch(urlHost(link.host) + urlPath(link.path, link.slugOrID, link.filter));
    if (!data.ok) {
-      console.log(`fetch fail > ${url + path}`);
+      console.log(`fetch fail > ${link.host + link.path}`);
       return null;
    }
    return await data.json();

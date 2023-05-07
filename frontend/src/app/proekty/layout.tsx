@@ -1,4 +1,4 @@
-import Sidebar from '@widgets/Sidebar/Sidebar';
+import Sidebar from '@components/Sidebar/Sidebar';
 import style from '@shared/styles/projects/layout.module.css';
 
 export const dynamicParams = true;
@@ -9,6 +9,7 @@ export default async function ProjectsLayout({ children, }: { children: React.Re
          <div className={`${style.projects_wrapper} flex-row`}>
             {children}
          </div>
+         <Sidebar widgets={'default'} />
       </>
    )
 }

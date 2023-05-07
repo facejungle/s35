@@ -6,6 +6,8 @@ import CheckDevice from '@components/checkDevice';
 import SiteHeader from '@widgets/Header/Header';
 import SiteFooter from '@widgets/Footer/Footer';
 import { getSiteSettingsData } from "@/components";
+import { Suspense } from "react";
+import Loading from "./loading";
 export const dynamicParams = false;
 export const revalidate = 60;
 
@@ -19,7 +21,9 @@ export default async function RootLayout({ children }: { children: React.ReactEl
                   {await SiteHeader()}
                   <div className="main-wrapper">
                      <main className="flex-row container">
-                        {children}
+                        <Suspense fallback={<Loading />}>
+                           {children}
+                        </Suspense>
                      </main>
                   </div>
                   <SiteFooter />

@@ -10,7 +10,7 @@ interface portfolioPagePromise extends Metadata {
 };
 
 export async function getPortfolioPage(): Promise<portfolioPagePromise> {
-   const page = await fetcher('api', 'pagePortfolio');
+   const page = await fetcher({ host: 'api', path: 'pagePortfolio' });
    if (!page) return notFound();
 
    return page;

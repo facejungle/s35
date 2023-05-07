@@ -10,7 +10,7 @@ interface pricesPagePromise extends Metadata {
 };
 
 export async function getPricesPage(): Promise<pricesPagePromise> {
-   const page = await fetcher('api', 'pagePrices');
+   const page = await fetcher({ host: 'api', path: 'pagePrices' });
    if (!page) return notFound();
 
    return page;

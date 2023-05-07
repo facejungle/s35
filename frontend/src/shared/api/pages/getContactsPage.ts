@@ -12,7 +12,7 @@ interface contactsPagePromise extends Metadata, contentType {
 };
 
 export async function getContactsPage(): Promise<contactsPagePromise> {
-   const page = await fetcher('api', 'pageContacts');
+   const page = await fetcher({ host: 'api', path: 'pageContacts' });
    if (!page) return notFound();
 
    return page;

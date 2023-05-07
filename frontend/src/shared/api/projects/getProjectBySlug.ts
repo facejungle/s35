@@ -30,7 +30,7 @@ type projectType = {
    }];
 }
 export async function getProjectBySlug(projectSlug: string): Promise<projectType> {
-   const project = await fetcher('api', 'projectBySlug', projectSlug);
+   const project = await fetcher({ host: 'api', path: 'projectBySlug', slugOrID: projectSlug });
    if (!project) return notFound();
 
    const projectCat = project.category

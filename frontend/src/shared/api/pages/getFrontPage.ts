@@ -11,7 +11,7 @@ interface frontPagePromise extends Metadata, contentType {
 };
 
 export async function getFrontPage(): Promise<frontPagePromise> {
-   const page = await fetcher('api', 'pageFront');
+   const page = await fetcher({ host: 'api', path: 'pageFront' });
    if (!page) return notFound();
    return {
       title: page.data.attributes.title,
