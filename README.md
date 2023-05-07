@@ -1,4 +1,5 @@
 # s35
+![Preview](./preview.png?raw=true "Preview")
 Docker, strapi, next.js 13.
 
 
