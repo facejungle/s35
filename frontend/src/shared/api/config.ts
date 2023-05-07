@@ -47,7 +47,6 @@ export const urlPath = (path: apiPathType, slugOrID?: string | number, filter?: 
 * @param path Variable or path, e.g. '/site-setting/'
 */
 export async function fetcher(link: urlType): Promise<any> {
-   console.log(link)
    const data = await fetch(urlHost(link.host) + urlPath(link.path, link.slugOrID, link.filter));
    if (!data.ok) {
       console.log(`fetch fail > ${link.host + link.path}`);

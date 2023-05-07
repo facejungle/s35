@@ -1,8 +1,9 @@
 .tmp/
 .cache/
 .git/
-
+.vscode/
 /db/
 .env
 /logs/
 _app.sh
+.gitignore
