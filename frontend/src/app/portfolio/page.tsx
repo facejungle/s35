@@ -1,6 +1,6 @@
-import Sidebar from "@widgets/Sidebar/Sidebar";
-import { getPortfolioPage } from "@shared/api/pages";
-import style from '@shared/styles/pages/portfolio.module.css';
+import { Sidebar } from "@widgets/index";
+import { getPortfolioPage } from "@components/StaticPages";
+import style from '@components/StaticPages/ui/style/portfolio.module.css';
 
 export default async function PagePortfolio(): Promise<React.ReactElement> {
    const page = await getPortfolioPage();

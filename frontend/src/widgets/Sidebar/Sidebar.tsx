@@ -1,6 +1,6 @@
 import style from './Sidebar.module.css';
 
-export default function Sidebar({ widget }: { widget?: React.ReactElement }) {
+export function Sidebar({ widget }: { widget?: React.ReactElement }) {
    if (!widget) {
       return (
          <>

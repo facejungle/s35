@@ -1,11 +1,10 @@
-import Sidebar from "@widgets/Sidebar/Sidebar";
-import { getContactsPage } from "@shared/api/pages";
-import style from '@shared/styles/pages/contacts.module.css';
+import { Sidebar } from "@widgets/index";
+import { getContactsPage } from "@components/StaticPages";
+import style from '@components/StaticPages/ui/style/contacts.module.css';
 
 
 export default async function PageContacts(): Promise<React.ReactElement> {
    const page = await getContactsPage();
-
    return (
       <>
          <article className={style.contacts}>

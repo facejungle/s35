@@ -1,5 +1,5 @@
-import Sidebar from '@components/Sidebar/Sidebar';
-import style from '@shared/styles/projects/layout.module.css';
+import { Sidebar } from '@components/Sidebar';
+import style from '@components/Projects/ui/style/layout.module.css';
 
 export const dynamicParams = true;
 

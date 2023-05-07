@@ -3,8 +3,8 @@ import '@shared/styles/reset.css'
 import '@shared/styles/globals.css'
 import { montserrat } from "@shared/styles/fonts";
 import CheckDevice from '@components/checkDevice';
-import SiteHeader from '@widgets/Header/Header';
-import SiteFooter from '@widgets/Footer/Footer';
+import { SiteHeader } from '@widgets/index';
+import { SiteFooter } from '@/widgets/index';
 import { getSiteSettingsData } from "@/components";
 import { Suspense } from "react";
 import Loading from "./loading";

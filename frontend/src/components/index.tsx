@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import { apiURL, apiPaths } from '@shared/api/config';
+import { fetcher } from '@shared/api/config';
 
 export async function getContactData() {
-   const contactData = await fetch(apiURL(apiPaths.contactsPath)).then((res) => res.json());
+   const contactData = await fetcher({ host: 'api', path: 'contacts' });
    if (contactData.data) {
       return contactData;
    } else {
@@ -11,17 +11,9 @@ export async function getContactData() {
 }
 
 export async function getSiteSettingsData() {
-   const data = await fetch(apiURL(apiPaths.settingsPath));
-   if (!data.ok) {
-      console.log('Failed to fetch > site settings data | getSiteSettingsData()');
-      return null;
-   }
-   const siteSettingsData = await data.json();
-   if (siteSettingsData.data && siteSettingsData.data !== null) {
-      return siteSettingsData;
-   } else {
-      return null;
-   }
+   const data = await fetcher({ host: 'api', path: 'siteSettings' });
+
+   return data;
 }
 
 export function getSeo(seo: Metadata) {

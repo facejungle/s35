@@ -1,6 +1,6 @@
-import style from '@shared/styles/projects/card.module.css';
-import { getProjects } from "@shared/api/projects"
-import { getProjectsPage } from "@shared/api/pages"
+import style from '@components/Projects/ui/style/card.module.css';
+import { getProjects } from "@components/Projects"
+import { getProjectsPage } from "@components/StaticPages"
 import { getSeo } from "@components/index";
 import { Metadata } from "next/types";
 import Image from 'next/image';

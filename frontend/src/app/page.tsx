@@ -1,11 +1,13 @@
-import { getFrontPage } from "@shared/api/pages";
 import { Metadata } from "next/types";
 import Image from 'next/image';
-import placeholderPic from '@public/images/600x400.png';
-import ContentBlocks from '@components/Content/Content';
-import style from '@shared/styles/pages/front.module.css';
-import Sidebar from "@components/Sidebar/Sidebar";
 import { use } from "react";
+
+import { Content } from '@components/Content';
+import { getFrontPage } from "@components/StaticPages";
+import { Sidebar } from "@components/Sidebar";
+import placeholderPic from '@public/images/600x400.png';
+import style from '@components/StaticPages/ui/style/front.module.css';
+
 
 export default function Home(): React.ReactElement {
    const page = use(getFrontPage());
@@ -41,7 +43,7 @@ export default function Home(): React.ReactElement {
                   <h3>Проекты</h3>
                </div>
             </div>
-            {ContentBlocks(page.content || [])}
+            {Content(page.content || [])}
          </article>
          <Sidebar widgets='default' />
       </>
