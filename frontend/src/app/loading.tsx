@@ -1,7 +1,9 @@
 export default function Loading() {
    return (
       <>
-         <span className="loader"></span>
+         <div className="loader_wrapper flex-column">
+            <span className="loader"></span>
+         </div>
       </>
    )
 }
