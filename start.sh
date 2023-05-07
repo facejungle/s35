@@ -163,6 +163,7 @@ function docker_build ()
         break
       fi
       if [[ $START_CONTAINER -eq 3 ]];then
+        docker compose -f "docker-compose.yml" up backend -d
         docker compose -f "docker-compose.yml" build frontend
         docker compose -f "docker-compose.yml" up frontend -d
         break
@@ -197,6 +198,7 @@ function docker_build_no_cache ()
         break
       fi
       if [[ $START_CONTAINER -eq 3 ]];then
+        docker compose -f "docker-compose.yml" up backend -d
         docker compose -f "docker-compose.yml" build --no-cache frontend
         docker compose -f "docker-compose.yml" up frontend -d
         break
