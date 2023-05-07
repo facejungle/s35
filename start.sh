@@ -8,10 +8,8 @@ red='\033[0;31m'
 cyan='\033[0;36m'
 clear='\033[0m'
 
-
 # yarn strapi content-types:list
 # yarn strapi ts:generate-types --verbose
-
 
 function attach_to_container ()
 {
