@@ -1,0 +1,1 @@
+export { ImageStrapi } from './ui/ImageStrapi';

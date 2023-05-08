@@ -10,6 +10,8 @@ export async function getProjectById(projectId: number): Promise<projectType> {
    const projectCat = project.data.attributes.category.data
    return {
       title: project.data.attributes.title,
+      link: '',
+      slug: '',
       description: project.data.attributes.description,
       totalArea: project.data.attributes.totalArea,
       livingArea: project.data.attributes.livingArea,
@@ -21,7 +23,8 @@ export async function getProjectById(projectId: number): Promise<projectType> {
       },
       category: {
          title: projectCat === null ? 'no-category' : projectCat.attributes.title,
-         slug: projectCat === null ? 'no-category' : projectCat.attributes.slug
+         slug: projectCat === null ? 'no-category' : projectCat.attributes.slug,
+         link: ''
       }
    };
 }

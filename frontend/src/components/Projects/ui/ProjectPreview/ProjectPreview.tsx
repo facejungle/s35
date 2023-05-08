@@ -1,26 +1,28 @@
-import style from './ProjectPreview.module.css'
-import Loading from "@/app/loading";
 import Link from "next/link";
 import Image from 'next/image';
 import { Suspense } from "react";
-import { projectPreviewType } from "../../model/type";
+import Loading from "@/app/loading";
+import { projectType } from "../../model/type";
+import style from './ProjectPreview.module.css'
+import placeholderPic from '@public/images/480x360.png';
 
-export function ProjectPreview(project: projectPreviewType): React.ReactNode {
+export function ProjectPreview(project: projectType): React.ReactNode {
    return (
       <>
-         <div className={style.card}>
-            <Suspense fallback={<Loading />}>
-               <Link key={''} href={''}>
+         <Suspense fallback={<Loading />}>
+            <div className={style.project_card}>
+               <Link key={project.slug} href={project.link}>
                   <Image
-                     src={project.image}
+                     src={project.image || placeholderPic}
                      alt="Picture of the author"
                      width={480}
-                     height={300}
+                     height={360}
+                     className={style.preview_image}
                   />
-                  <h2>{project.title}</h2>
+                  <h2 className={style.project_title}>{project.title}</h2>
                </Link>
-            </Suspense>
-         </div >
+            </div>
+         </Suspense>
       </>
    );
 }

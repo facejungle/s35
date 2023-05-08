@@ -1,39 +1,18 @@
-import style from '@components/Projects/ui/style/card.module.css';
-import { getProjects } from "@components/Projects"
-import { getProjectsPage } from "@components/StaticPages"
-import { getSeo } from "@components/index";
 import { Metadata } from "next/types";
-import Image from 'next/image';
-import placeholderPic from '@public/images/480x300.png';
-import { Suspense, use } from 'react';
-import Loading from '../loading';
-import Link from 'next/link';
-import { ProjectPreview } from '@components/Projects';
+import { use } from 'react';
+import style from '@components/Projects/ui/style/card.module.css';
+import { getProjectsPage } from "@components/StaticPages"
+import { ProjectPreview, getProjects } from '@components/Projects';
+import { getSeo } from "@components/index";
 
 export const dynamicParams = false;
 
-export default function Projects({ searchParams }): React.ReactElement {
-   const page = use(getProjects());
-   return page.data.map((project: any) => {
-      const projectCategory = project.attributes.category.data;
-      const projectSlug = project.attributes.slug;
-      const projectLink = projectCategory !== null ? `/proekty/${projectCategory.attributes.slug}/${projectSlug}` : `/proekty/no-category/${projectSlug}`;
+export default function Projects(): React.ReactNode {
+   const projects = use(getProjects());
+   return projects.map(project => {
       return (
-
-         <div className={style.card}>
-            {ProjectPreview(project.attributes)}
-            <Suspense fallback={<Loading />}>
-               <Link key={projectSlug} href={projectLink}>
-                  <Image
-                     src={placeholderPic}
-                     alt="Picture of the author"
-                     width={480}
-                     height={300}
-                  />
-                  <h2>{project.attributes.title}</h2>
-               </Link>
-               <p>{project.attributes.description}</p>
-            </Suspense>
+         <div key={project.slug} className={style.card}>
+            {ProjectPreview(project)}
          </div >
       );
    });

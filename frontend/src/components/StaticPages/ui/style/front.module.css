@@ -1,8 +1,4 @@
-article.front_page {
-   flex: 1 1 100%;
-   padding: var(--padding25);
-   gap: var(--padding25)
-}
+article.front_page {}
 
 .hero {
    min-height: 30vh;

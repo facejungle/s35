@@ -6,9 +6,9 @@ export const dynamicParams = true;
 export default async function ProjectsLayout({ children, }: { children: React.ReactElement }): Promise<React.ReactElement> {
    return (
       <>
-         <div className={`${style.projects_wrapper} flex-row`}>
+         <article className={`${style.projects} flex-row`}>
             {children}
-         </div>
+         </article>
          <Sidebar widgets={'default'} />
       </>
    )

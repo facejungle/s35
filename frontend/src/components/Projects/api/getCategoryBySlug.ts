@@ -8,7 +8,8 @@ export async function getCategoryBySlug(categorySlug: string): Promise<CategoryT
    return {
       title: category.title,
       slug: category.slug,
+      link: '',
       description: category.description,
-      image: {}
+      image: ''
    };
 }

@@ -1,5 +1,4 @@
-import { getProjectBySlug, getProjects } from "@shared/api/projects";
-import { Metadata } from "next/types";
+import { getProjectBySlug, getProjects } from "@components/Projects";
 import { notFound } from 'next/navigation';
 import { use } from "react";
 
@@ -38,9 +37,9 @@ export default function ProjectPage({ params }: Props): React.ReactElement {
 
 export async function generateStaticParams() {
    const projects = await getProjects();
-   return projects.data.map((project: projectUrlType) => {
+   return projects.map(project => {
       return [{
-         slug: project.attributes.slug,
+         slug: project.slug,
       }]
    });
 }

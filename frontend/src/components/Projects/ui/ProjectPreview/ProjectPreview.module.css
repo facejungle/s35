@@ -1,3 +1,19 @@
-.card {
-   flex: 1 1 33%;
+.project_card {
+   position: relative;
+}
+
+.preview_image {
+   border-radius: var(--radius);
+   object-fit: cover;
+}
+
+.project_title {
+   position: absolute;
+   width: 100%;
+   bottom: 0;
+   left: 0;
+   padding: 10px var(--padding25);
+   border-radius: var(--radius);
+   backdrop-filter: blur(var(--blur));
+   background: var(--color_white_trans2);
 }

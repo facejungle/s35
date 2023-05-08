@@ -9,6 +9,8 @@ export async function getProjectBySlug(projectSlug: string): Promise<projectType
    const projectCat = project.category
    return {
       title: project.title,
+      link: '',
+      slug: '',
       description: project.description,
       totalArea: project.totalArea,
       livingArea: project.livingArea,
@@ -20,7 +22,8 @@ export async function getProjectBySlug(projectSlug: string): Promise<projectType
       },
       category: {
          title: projectCat === null ? 'no-category' : projectCat.title,
-         slug: projectCat === null ? 'no-category' : projectCat.slug
+         slug: projectCat === null ? 'no-category' : projectCat.slug,
+         link: '',
       }
    };
 }

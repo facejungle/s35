@@ -1,7 +1,7 @@
 import { fetcher } from "@shared/api/config";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { contentType } from "@/components/Content/Content";
+import { contentType } from "@components/Content/model/type";
 
 
 interface frontPagePromise extends Metadata, contentType {

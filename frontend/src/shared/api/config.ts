@@ -1,4 +1,4 @@
-type urlHostType = 'api' | 'apiExt' | 'strapi' | 'strapiExt';
+type urlHostType = 'api' | 'apiExt' | 'apiProxy' | 'strapi' | 'strapiExt';
 
 type apiPathType =
    'siteSettings' | 'contacts' | 'headerMenu' |
@@ -16,8 +16,10 @@ interface urlType {
 export const urlHost = (host: urlHostType) => {
    if (host === 'api') return `${process.env.API_URL || 'http://localhost:1337'}/api`;
    if (host === 'apiExt') return `${process.env.API_EXT_URL || 'http://localhost:1337'}/api`;
+   if (host === 'apiProxy') return `${process.env.PROXY_URL || 'http://localhost:1337'}/api`;
    if (host === 'strapi') return `${process.env.API_URL || 'http://localhost:1337'}`;
    if (host === 'strapiExt') return `${process.env.API_EXT_URL || 'http://localhost:1337'}`;
+   throw new SyntaxError('urlHost: host unknown');
 }
 export const urlPath = (path: apiPathType, slugOrID?: string | number, filter?: string) => {
    const filterPath = filter ? `&filters${filter}` : '';
@@ -32,14 +34,15 @@ export const urlPath = (path: apiPathType, slugOrID?: string | number, filter?: 
       if (path === 'pagePortfolio') return '/page-portfolio/?populate=*' + filterPath;
       if (path === 'pageProjects') return '/page-project/?populate=*' + filterPath;
       // PROJECTS
-      if (path === 'projects') return '/projects/?populate=category' + filterPath;
+      if (path === 'projects') return '/projects/?populate=category,image' + filterPath;
       if (path === 'projectsSettings') return '/project-setting' + filterPath;
       if (path === 'projectsCategories') return '/project-categories' + filterPath;
       if (path === 'projectCategoryBySlug') return `/project-categories/slug/${slugOrID}`;
       if (path === 'projectById') return `/projects/${slugOrID}?populate=*` + filterPath;
       if (path === 'projectBySlug') return `/projects/slug/${slugOrID}?populate=*` + filterPath;
+      throw new SyntaxError('urlPath: path unknown');
    }
-   return '';
+   throw new SyntaxError('urlPath: path undefined');
 }
 /**
 * Function for fetch data
@@ -47,10 +50,10 @@ export const urlPath = (path: apiPathType, slugOrID?: string | number, filter?: 
 * @param path Variable or path, e.g. '/site-setting/'
 */
 export async function fetcher(link: urlType): Promise<any> {
-   const data = await fetch(urlHost(link.host) + urlPath(link.path, link.slugOrID, link.filter));
-   if (!data.ok) {
-      console.log(`fetch fail > ${link.host + link.path}`);
-      return null;
+   try {
+      const data = await fetch(urlHost(link.host) + urlPath(link.path, link.slugOrID, link.filter));
+      return await data.json();
+   } catch (err) {
+      console.log(`[${process.env.PROJECT_SLUG}][fetch fail] > ${link.host}/${link.path} > ` + err);
    }
-   return await data.json();
 }

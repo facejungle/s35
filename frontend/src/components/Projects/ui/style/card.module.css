@@ -1,3 +1,15 @@
 .card {
-   flex: 1 1 33%;
+   flex: 1 1 31%;
+}
+
+@media only screen and (min-width: 480px) and (max-width: 1480px) {
+   .card {
+      flex: 0 1 48%;
+   }
+}
+
+@media only screen and (max-width: 480px) {
+   .card {
+      flex: 1 1 100%;
+   }
 }

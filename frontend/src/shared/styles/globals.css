@@ -20,6 +20,7 @@
   /* Borders */
   --border: 1px solid var(--color_black_trans0);
   --radius: 5px;
+  --blur: 15px;
 
   --ellipse: 50% 20% / 10% 40%;
 
@@ -35,42 +36,65 @@
     --padding50: 25px;
     --padding100: 50px;
     --container_px: 480px;
-    --total_container_width: calc(100vw - (var(--padding50)));
+
+    --container: calc(100vw - var(--padding50));
   }
 }
 
-@media only screen and (min-width: 480px) and (max-width: 1366px) {
+@media only screen and (min-width: 480px) {
   :root {
     --nominal_screen: 1366;
-    --container_px: 1100px;
+    --container_px: 1200px;
     --target_container_px: 455px;
     --target_screen: 480;
     --target_screen_px: 480px;
 
-    --total_container_width: clamp(var(--target_container_px), 90%, var(--container_px));
-
     --coefficient: calc((100vw - var(--target_screen_px)) / (var(--nominal_screen) - var(--target_screen)));
+    --container: calc((var(--coefficient) * 720) + var(--target_container_px));
+
     --padding25: calc((var(--coefficient) * 6) + 12.5px);
     --padding50: calc((var(--coefficient) * 12.5) + 25px);
     --padding100: calc((var(--coefficient) * 25) + 50px);
   }
 }
 
-@media only screen and (min-width: 1366px) and (max-width: 1920px) {
+@media only screen and (min-width: 1366px) {
   :root {
     --nominal_screen: 1920;
     --container_px: 1520px;
-    --target_container_px: 1100px;
+    --target_container_px: 1200px;
     --target_screen: 1366;
     --target_screen_px: 1366px;
 
-    --total_container_width: clamp(var(--target_container_px), 80%, var(--container_px));
-
     --coefficient: calc((100vw - var(--target_screen_px)) / (var(--nominal_screen) - var(--target_screen)));
+    --container: calc((var(--coefficient) * 320) + var(--target_container_px));
+
     --padding25: calc((var(--coefficient) * 6.5) + 18.5px);
     --padding50: calc((var(--coefficient) * 12.5) + 37.5px);
     --padding100: calc((var(--coefficient) * 25) + 75px);
   }
+}
+
+@media only screen and (min-width: 1920px) {
+  :root {
+    --nominal_screen: 3840;
+    --container_px: 80vw;
+    --target_container_px: 1520px;
+    --target_screen: 1920;
+    --target_screen_px: 1920px;
+
+    --coefficient: calc((100vw - var(--target_screen_px)) / (var(--nominal_screen) - var(--target_screen)));
+    --container: calc((var(--coefficient) * 1920) + var(--target_container_px));
+
+    --padding25: calc((var(--coefficient) * 6.5) + 18.5px);
+    --padding50: calc((var(--coefficient) * 12.5) + 37.5px);
+    --padding100: calc((var(--coefficient) * 25) + 75px);
+  }
+}
+
+.container {
+  width: var(--container);
+  margin: 0 auto;
 }
 
 ::-webkit-scrollbar {
@@ -128,6 +152,8 @@ main {
 
 main>article {
   flex: 1 1 100%;
+  padding: var(--padding25);
+  gap: var(--padding25)
 }
 
 h1 {
@@ -152,29 +178,7 @@ h4 {
 
 
 
-@media (min-width: 575.98px) {
-  .container {
-    padding: 0 calc(50% - 270px);
-  }
-}
 
-@media (min-width: 767.98px) {
-  .container {
-    padding: 0 calc(50% - 360px);
-  }
-}
-
-@media (min-width: 991.98px) {
-  .container {
-    padding: 0 calc(50% - 480px);
-  }
-}
-
-@media (min-width: 1199.98px) {
-  .container {
-    padding: 0 calc(50% - 590px);
-  }
-}
 
 .loader_wrapper {
   height: 100%;

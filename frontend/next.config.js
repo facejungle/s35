@@ -5,7 +5,32 @@ const nextConfig = {
     // outputStandalone: true,
   },
   images: {
-    domains: ['localhost', '127.0.0.1'], formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'api.localhost',
+        port: '80',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'http',
+        hostname: '127.0.0.1',
+        port: '1337',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '1337',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'backend',
+        port: '1337',
+        pathname: '/uploads/**',
+      },
+    ],
   },
 }
 

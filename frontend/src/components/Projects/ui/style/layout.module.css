@@ -1,6 +1,5 @@
-.projects_wrapper {
-   flex: 1 1 auto;
+article.projects {
    justify-content: space-between;
-   padding: var(--padding25);
-   gap: var(--padding25);
+   align-items: flex-start;
+   flex-wrap: wrap;
 }
