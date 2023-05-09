@@ -4,6 +4,12 @@ const nextConfig = {
     appDir: true,
     // outputStandalone: true,
   },
+  env: {
+    PROJECTS_FOLDER: 'proekty',
+    PROJECTS_NO_CATEGORY_SLUG: 'bez-kategorii',
+    PROJECTS_NO_CATEGORY_TITLE: 'Без категории',
+    PROJECTS_NO_CATEGORY_DESCRIPTION: 'Без категории',
+  },
   images: {
     remotePatterns: [
       {
