@@ -1,5 +1,5 @@
-import { ImageStrapiDataType, ImageStrapiType } from "../model/type";
+import { ImageStrapiData } from "../model/type";
 
-export function ImageStrapi(imageData: ImageStrapiDataType): Promise<ImageStrapiType> {
+export function ImageStrapi(imageData: ImageStrapiData) {
    return;
 }
