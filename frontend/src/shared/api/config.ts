@@ -5,12 +5,12 @@ type apiPathType =
    //Pages
    'pageFront' | 'pageContacts' | 'pagePrices' | 'pagePortfolio' | 'pageProjects' |
    // Projects
-   'projects' | 'projectsSettings' | 'projectsCategories' | 'projectCategoryBySlug' | 'projectById' | 'projectBySlug';
+   'projects' | 'projectsSettings' | 'projectsCategories' | 'projectCategoryBySlug' | 'projectBySlug';
 
 interface urlType {
    host: urlHostType;
    path: apiPathType;
-   slugOrID?: string | number;
+   slug?: string | number;
    filter?: string;
 }
 export const urlHost = (host: urlHostType) => {
@@ -21,7 +21,7 @@ export const urlHost = (host: urlHostType) => {
    if (host === 'strapiExt') return `${process.env.API_EXT_URL || 'http://localhost:1337'}`;
    throw new SyntaxError('urlHost: host unknown');
 }
-export const urlPath = (path: apiPathType, slugOrID?: string | number, filter?: string) => {
+export const urlPath = (path: apiPathType, slug?: string | number, filter?: string) => {
    const filterPath = filter ? `&filters${filter}` : '';
    if (path) {
       if (path === 'siteSettings') return '/site-setting/?populate=*' + filterPath;
@@ -34,12 +34,11 @@ export const urlPath = (path: apiPathType, slugOrID?: string | number, filter?: 
       if (path === 'pagePortfolio') return '/page-portfolio/?populate=*' + filterPath;
       if (path === 'pageProjects') return '/page-project/?populate=*' + filterPath;
       // PROJECTS
-      if (path === 'projects') return '/projects/?populate=category,image' + filterPath;
-      if (path === 'projectsSettings') return '/project-setting' + filterPath;
-      if (path === 'projectsCategories') return '/project-categories' + filterPath;
-      if (path === 'projectCategoryBySlug') return `/project-categories/slug/${slugOrID}`;
-      if (path === 'projectById') return `/projects/${slugOrID}?populate=*` + filterPath;
-      if (path === 'projectBySlug') return `/projects/slug/${slugOrID}?populate=*` + filterPath;
+      if (path === 'projects') return '/v2/projects/?populate=category,image' + filterPath;
+      if (path === 'projectsSettings') return '/v2/project-setting' + filterPath;
+      if (path === 'projectsCategories') return '/v2/project-categories' + filterPath;
+      if (path === 'projectCategoryBySlug') return `/v2/project-categories/${slug}`;
+      if (path === 'projectBySlug') return `/v2/projects/${slug}?populate=*` + filterPath;
       throw new SyntaxError('urlPath: path unknown');
    }
    throw new SyntaxError('urlPath: path undefined');
@@ -51,9 +50,12 @@ export const urlPath = (path: apiPathType, slugOrID?: string | number, filter?: 
 */
 export async function fetcher(link: urlType): Promise<any> {
    try {
-      const data = await fetch(urlHost(link.host) + urlPath(link.path, link.slugOrID, link.filter));
+      const data = await fetch(urlHost(link.host) + urlPath(link.path, link.slug, link.filter));
+      if (!data.ok) {
+         return undefined;
+      }
       return await data.json();
    } catch (err) {
-      console.log(`[${process.env.PROJECT_SLUG}][fetch fail] > ${link.host}/${link.path} > ` + err);
+      throw new Error(`[${process.env.PROJECT_SLUG}][fetch fail] > ${link.host}/${link.path} > ` + err);
    }
 }

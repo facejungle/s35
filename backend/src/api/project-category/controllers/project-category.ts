@@ -27,5 +27,13 @@ export default factories.createCoreController('api::project-category.project-cat
       const entry = await strapi.entityService.findOne(contentType.uid, category.id, sanitizedQueryParams);
 
       return await contentAPI.output(entry, contentType, ctx.state.auth);
+   },
+   async findMany(ctx) {
+      const contentType = strapi.contentType('api::project-category.project-category');
+
+      const sanitizedQueryParams = await contentAPI.query(ctx.query, contentType, ctx.state.auth);
+      const entities = await strapi.entityService.findMany(contentType.uid, sanitizedQueryParams);
+
+      return await contentAPI.output(entities, contentType, ctx.state.auth);
    }
 }));
