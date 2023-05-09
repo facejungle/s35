@@ -2,11 +2,11 @@ import Link from "next/link";
 import Image from 'next/image';
 import { Suspense } from "react";
 import Loading from "@/app/loading";
-import { projectType } from "../../model/type";
+import { ProjectType } from "../../model/type";
 import style from './ProjectPreview.module.css'
 import placeholderPic from '@public/images/480x360.png';
 
-export function ProjectPreview(project: projectType): React.ReactNode {
+export function ProjectPreview(project: ProjectType): React.ReactNode {
    return (
       <>
          <Suspense fallback={<Loading />}>

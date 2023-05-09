@@ -1,5 +1,6 @@
-import { ImageStrapiDataType } from "@components/ImageStrapi/model/type";
+import { ImageStrapiData } from "@components/ImageStrapi/model/type";
 import { StaticImageData } from "next/image";
+
 
 export interface projectPreviewType {
    title: string;
@@ -11,42 +12,31 @@ export interface projectPreviewType {
       link: string;
    };
 }
-export interface ProjectCategoryType {
-   title: string;
-   slug: string;
-   link: string;
-   description?: string;
-   image?: string | StaticImageData;
-};
-
-
 
 /**
- * Project Categories / Strapi api data
+ * Projects / Strapi api v2 data
  */
-export interface ProjectCategoryAttributes {
-   id: number;
+interface Category<I, I0> {
    title: string;
    description: string;
    slug: string;
-   image: ImageStrapiDataType;
+   image?: I | I0;
 }
-export interface ProjectCategoriesDataType {
-   data: [{
-      id: number;
-      attributes: ProjectCategoryAttributes
-   }];
-}
-export interface ProjectCategoryDataType {
-   data: {
-      id: number;
-      attributes: ProjectCategoryAttributes
-   };
-}
+export interface CategoryType extends Category<StaticImageData, string> {
+   link: string;
+};
+export type CategoryDataType = Category<ImageStrapiData, null>;
+
+
 /**
- * Projects / Strapi api data
+ * Projects / Strapi api v2 data
  */
-export interface ProjectAttributes {
+export interface ProjectType extends Project<CategoryType, StaticImageData, string> {
+   link: string;
+};
+export type ProjectDataType = Project<CategoryDataType, ImageStrapiData, null>;
+
+interface Project<C, I, I0> {
    title: string;
    slug: string;
    description: string;
@@ -58,27 +48,18 @@ export interface ProjectAttributes {
       height: number;
       gable: number;
    };
-   category: ProjectCategoryDataType;
-   image?: ImageStrapiDataType;
-   gallery?: [{}];
+   category: C;
+   image: I | I0;
+   gallery?: [I | I0];
    floors?: [{
       name: string;
       height: number;
       area: number;
-      image: ImageStrapiDataType;
+      image: I | I0;
       rooms: [{
          name: string;
          area: number;
       }];
    }];
 }
-export interface ProjectDataType {
-   data: {
-      attributes: ProjectAttributes;
-   }
-}
-export interface ProjectsDataType {
-   data: [{
-      attributes: ProjectAttributes;
-   }]
-}
+

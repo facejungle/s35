@@ -1,26 +1,3 @@
-export interface ImageStrapiDataType {
-   data: {
-      id: number;
-      attributes: {
-         url: string;
-         width: number;
-         height: number;
-         name: string;
-         alternativeText: string;
-         caption?: string;
-         formats: {
-            logo?: ImageFormatsType;
-            thumbnail?: ImageFormatsType;
-            preview?: ImageFormatsType;
-            large?: ImageFormatsType;
-            xlarge?: ImageFormatsType;
-         }
-         hash: string;
-         ext: string;
-         mime: string;
-      }
-   }
-}
 export interface ImageFormatsType {
    url: string;
    width: string;
@@ -30,7 +7,7 @@ export interface ImageFormatsType {
    ext: string;
    mime: string;
 }
-export interface ImageStrapiType {
+export interface ImageStrapiData {
    id: number;
    url: string;
    width: string;
@@ -38,5 +15,11 @@ export interface ImageStrapiType {
    name: string;
    alternativeText: string;
    caption?: string;
-   formats: ImageFormatsType;
+   formats: {
+      logo?: ImageFormatsType;
+      thumbnail?: ImageFormatsType;
+      preview?: ImageFormatsType;
+      large?: ImageFormatsType;
+      xlarge?: ImageFormatsType;
+   };
 }
