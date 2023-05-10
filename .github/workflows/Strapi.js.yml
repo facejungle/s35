@@ -11,9 +11,11 @@ on:
 
 jobs:
   build:
+    env:
+      working-directory: ./backend
     defaults:
       run:
-        working-directory: ./backend
+        working-directory: ${{ env.working-directory }}
     runs-on: ubuntu-latest
 
     strategy:
