@@ -15,6 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build Strapi backend the Docker image
-      run: docker build . --file /docker/backend/production/Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file ./docker/backend/production/Dockerfile --tag my-image-name:$(date +%s)
 #     - name: Build Next.js frontend the Docker image
 #       run: docker build . --file ../docker/frontend/production/Dockerfile --tag my-image-name:$(date +%s)
