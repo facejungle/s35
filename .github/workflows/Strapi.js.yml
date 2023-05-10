@@ -8,13 +8,13 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+defaults:
+      run:
+        working-directory: backend
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: backend
+    
     strategy:
       matrix:
         node-version: [18.x, 20.x]
