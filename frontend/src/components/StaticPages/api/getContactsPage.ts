@@ -1,14 +1,14 @@
-import { contentType } from "@components/Content/model/type";
+import { ContentDataType } from "@components/Content/model/type";
 import { fetcher } from "@shared/api/config";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 
-interface contactsPagePromise extends Metadata, contentType {
+interface contactsPagePromise extends Metadata, ContentDataType {
    data: any;
    slug?: string;
    image?: {};
-   content?: [contentType];
+   content?: [ContentDataType];
 };
 
 export async function getContactsPage(): Promise<contactsPagePromise> {

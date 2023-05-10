@@ -3,12 +3,12 @@ export default {
       {
          method: 'GET',
          path: '/v2/projects/:slug',
-         handler: 'project.findOneBySlug',
+         handler: 'project.v2findOne',
       },
       {
          method: 'GET',
          path: '/v2/projects',
-         handler: 'project.findMany',
+         handler: 'project.v2find',
       },
    ]
 }

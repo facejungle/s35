@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_content_portfolios",
+  "info": {
+    "displayName": "Ассоциация - портфолио",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "portfolio": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::portfolio.portfolio"
+    }
+  }
+}

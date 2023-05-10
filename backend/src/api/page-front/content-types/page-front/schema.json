@@ -16,9 +16,6 @@
       "type": "string",
       "required": true
     },
-    "slug": {
-      "type": "uid"
-    },
     "description": {
       "type": "text",
       "required": true
@@ -37,11 +34,11 @@
         "content.gallery",
         "content.image",
         "content.location",
+        "content.portfolio",
         "content.project",
         "content.rich-text",
         "content.text",
-        "content.title",
-        "content.work"
+        "content.title"
       ]
     }
   }

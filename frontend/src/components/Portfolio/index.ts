@@ -1,0 +1,1 @@
+export { getPortfolioCategoryLink, getPortfolioCategoriesLinks, getPortfolioLink, getPortfolioLinks, portfolioNoCategory } from './helpers/getLink';

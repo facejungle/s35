@@ -1,0 +1,38 @@
+{
+  "kind": "singleType",
+  "collectionName": "menus",
+  "info": {
+    "singularName": "menu",
+    "pluralName": "menus",
+    "displayName": "Menu",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "HeaderMenu": {
+      "type": "dynamiczone",
+      "components": [
+        "link.page-static",
+        "link.page",
+        "link.portfolio-category",
+        "link.portfolio",
+        "link.project-category",
+        "link.project"
+      ]
+    },
+    "MainMenu": {
+      "type": "dynamiczone",
+      "components": [
+        "link.page-static",
+        "link.page",
+        "link.portfolio-category",
+        "link.portfolio",
+        "link.project-category",
+        "link.project"
+      ]
+    }
+  }
+}

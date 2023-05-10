@@ -1,31 +1,16 @@
 import styles from './Content.module.css';
-import ContentTitle from './segment/Title';
-import { contentType } from '../model/type';
+import { ContentTitle } from './segment/Title';
+import { ContentImage } from './segment/Image';
+import { ContentDataType } from '../model/type';
 
-export function Content(contentData: [contentType] | []): React.ReactElement {
-   if (!contentData[0]) {
-      console.log(`>>> content data - not found (/content.tsx)`)
-      return (
-         <>
-            <p>Really? Content not found...</p>
-         </>
-      );
-   }
+export function Content(contentData: ContentDataType): React.ReactElement {
    return (
       <>
          {
-            contentData.map((block) => {
-
-               if (block.__component === 'content.title') {
-                  return (
-                     <ContentTitle key={block.id + '_title'} text={block.text} size={block.size} />
-                  );
-               }
-               if (block.__component === 'content.text') {
-                  return (
-                     <p key={block.id + '_text'}>{block.text}</p>
-                  );
-               }
+            contentData.map((segment) => {
+               if (segment.__component === 'content.title') return <ContentTitle title={segment} />;
+               if (segment.__component === 'content.text') return <p key={segment.id + '_text'}>{segment.text}</p>;
+               if (segment.__component === 'content.image') return <ContentImage image={segment} />;
             })
          }
       </>

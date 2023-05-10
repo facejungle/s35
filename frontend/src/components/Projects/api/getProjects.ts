@@ -1,18 +1,17 @@
 import { fetcher } from "@shared/api/config";
 import { notFound } from "next/navigation";
-import { ProjectType, ProjectDataType } from '../model/type';
-import placeholderPic from '@public/images/480x360.png';
+import { TProject, ProjectDataType } from '../model/type';
 import { urlHost } from "@shared/api/config";
-import { getCategoryLink, getProjectLink, noCategory } from "./getLink";
+import { getCategoryLink, getProjectLink, noCategory } from "..";
 
-export async function getProjects(): Promise<ProjectType[]> {
+export async function getProjects(): Promise<TProject[]> {
    try {
-      const projects: ProjectDataType[] = await fetcher({ host: 'api', path: 'projects' });
+      const projects: [ProjectDataType] = await fetcher({ host: 'api', path: 'projects' });
       if (!projects) return notFound();
-
       return projects.map(project => {
          const projectCategory = project.category;
          const projectImage = project.image?.formats.thumbnail?.url;
+         const categoryImage = projectCategory?.image?.formats.thumbnail?.url;
          return {
             title: project.title,
             slug: project.slug,
@@ -26,8 +25,9 @@ export async function getProjects(): Promise<ProjectType[]> {
                slug: projectCategory ? projectCategory.slug : noCategory.slug,
                link: getCategoryLink(project.category),
                description: projectCategory ? projectCategory.description : noCategory.description,
+               image: projectImage ? urlHost('strapi') + categoryImage : null
             },
-            image: projectImage ? urlHost('strapi') + projectImage : placeholderPic
+            image: projectImage ? urlHost('strapi') + projectImage : null
          };
       });
    }

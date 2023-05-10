@@ -3,13 +3,11 @@
  */
 
 import { factories } from '@strapi/strapi'
-
-// export default factories.createCoreController('api::project-category.project-category');
 const { sanitize } = require('@strapi/utils')
 const { contentAPI } = sanitize;
 
 export default factories.createCoreController('api::project-category.project-category', ({ strapi }) => ({
-   async findOneBySlug(ctx) {
+   async v2findOne(ctx) {
       const contentType = strapi.contentType('api::project-category.project-category');
 
       // Finding a category by slug and getting the project ID.
@@ -19,16 +17,12 @@ export default factories.createCoreController('api::project-category.project-cat
          where: { slug }
       });
 
-      if (category === null) {
-         return
-      }
-
       const sanitizedQueryParams = await contentAPI.query(ctx.query, contentType, ctx.state.auth);
       const entry = await strapi.entityService.findOne(contentType.uid, category.id, sanitizedQueryParams);
 
       return await contentAPI.output(entry, contentType, ctx.state.auth);
    },
-   async findMany(ctx) {
+   async v2find(ctx) {
       const contentType = strapi.contentType('api::project-category.project-category');
 
       const sanitizedQueryParams = await contentAPI.query(ctx.query, contentType, ctx.state.auth);

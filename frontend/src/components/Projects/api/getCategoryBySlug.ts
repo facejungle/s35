@@ -1,14 +1,13 @@
 import { fetcher, urlHost } from "@shared/api/config";
 import { notFound } from "next/navigation";
-import { CategoryDataType, CategoryType } from "../model/type";
-import { getCategoryLink } from "./getLink";
-import placeholderPic from '@public/images/480x360.png';
+import { ProjectCategoryDataType, TProjectCategory } from "../model/type";
+import { getCategoryLink } from "..";
 
 
 
-export async function getCategoryBySlug(categorySlug: string): Promise<CategoryType> {
+export async function getCategoryBySlug(categorySlug: string): Promise<TProjectCategory> {
    try {
-      const category: CategoryDataType = await fetcher({ host: 'api', path: 'projectCategoryBySlug', slug: categorySlug });
+      const category: ProjectCategoryDataType = await fetcher({ host: 'api', path: 'projectCategoryBySlug', slug: categorySlug });
       if (!category) return notFound();
       const categoryImage = category?.image?.formats.thumbnail?.url;
       return {
@@ -16,7 +15,7 @@ export async function getCategoryBySlug(categorySlug: string): Promise<CategoryT
          slug: category.slug,
          link: getCategoryLink(category),
          description: category.description,
-         image: urlHost('strapi') + categoryImage || placeholderPic
+         image: categoryImage ? urlHost('strapi') + categoryImage : null
       };
    }
    catch (err) {

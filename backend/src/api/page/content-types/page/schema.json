@@ -46,8 +46,7 @@
         "content.project",
         "content.rich-text",
         "content.text",
-        "content.title",
-        "content.work"
+        "content.title"
       ]
     }
   }

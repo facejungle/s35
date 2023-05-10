@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_link_portfolios",
+  "info": {
+    "displayName": "Портфолио",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::portfolio.portfolio"
+    }
+  }
+}

@@ -15,11 +15,6 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::project.project"
-    },
-    "archive": {
-      "type": "boolean",
-      "default": false,
-      "required": false
     }
   }
 }

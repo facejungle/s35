@@ -6,7 +6,7 @@ export async function HeaderMenu(): Promise<React.ReactElement> {
    const menuLinks = await getHeaderMenu();
    if (menuLinks) {
       return menuLinks.map((element: any) => {
-         return <Link key={element.linkText} href={element.linkUrl}>{element.linkText}</Link>
+         return <Link key={element.text} href={element.link}>{element.text}</Link>
       })
    }
    return <></>

@@ -18,8 +18,8 @@
         "portfolio",
         "contacts",
         "prices",
-        "prices - house",
-        "prices - service",
+        "prices - building",
+        "prices - services",
         "prices - delivery"
       ],
       "required": true

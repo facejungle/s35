@@ -1,0 +1,1 @@
+export type PlaceholderType = 'logo' | 'thumbnail' | 'preview' | 'large' | 'xlarge'

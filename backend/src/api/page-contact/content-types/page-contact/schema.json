@@ -16,10 +16,6 @@
       "type": "string",
       "required": true
     },
-    "slug": {
-      "type": "uid",
-      "required": true
-    },
     "description": {
       "type": "text",
       "required": true
@@ -31,11 +27,6 @@
       "allowedTypes": [
         "images"
       ]
-    },
-    "page": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::page.page"
     }
   }
 }

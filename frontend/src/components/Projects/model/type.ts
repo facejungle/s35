@@ -13,30 +13,14 @@ export interface projectPreviewType {
    };
 }
 
-/**
- * Projects / Strapi api v2 data
- */
-interface Category<I, I0> {
+
+interface baseCategory<I> {
    title: string;
-   description: string;
    slug: string;
-   image?: I | I0;
+   description: string;
+   image: I | null;
 }
-export interface CategoryType extends Category<StaticImageData, string> {
-   link: string;
-};
-export type CategoryDataType = Category<ImageStrapiData, null>;
-
-
-/**
- * Projects / Strapi api v2 data
- */
-export interface ProjectType extends Project<CategoryType, StaticImageData, string> {
-   link: string;
-};
-export type ProjectDataType = Project<CategoryDataType, ImageStrapiData, null>;
-
-interface Project<C, I, I0> {
+interface baseProject<I, C> {
    title: string;
    slug: string;
    description: string;
@@ -48,14 +32,14 @@ interface Project<C, I, I0> {
       height: number;
       gable: number;
    };
+   image: I | null;
    category: C;
-   image: I | I0;
-   gallery?: [I | I0];
+   gallery?: [I | null];
    floors?: [{
       name: string;
       height: number;
       area: number;
-      image: I | I0;
+      image: I | null;
       rooms: [{
          name: string;
          area: number;
@@ -63,3 +47,27 @@ interface Project<C, I, I0> {
    }];
 }
 
+
+
+
+export interface TProject<I = StaticImageData> extends baseProject<I | string, TProjectCategory> {
+   link: string;
+}
+export type ProjectType = TProject | [TProject];
+
+
+export interface TProjectCategory<I = StaticImageData> extends baseCategory<I | string> {
+   link: string;
+}
+export type ProjectCategoryType = TProjectCategory | [TProjectCategory];
+
+
+
+export interface ProjectDataType<I = ImageStrapiData> extends baseProject<I, ProjectCategoryDataType> {
+   id: number;
+}
+
+
+export interface ProjectCategoryDataType<I = ImageStrapiData> extends baseCategory<I> {
+   id: number;
+}

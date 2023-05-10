@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_link_project_categories",
+  "info": {
+    "displayName": "Проект - category",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project-category.project-category"
+    }
+  }
+}

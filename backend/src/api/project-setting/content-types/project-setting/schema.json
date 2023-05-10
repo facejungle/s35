@@ -12,25 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string",
+    "noCategory": {
+      "type": "component",
+      "repeatable": false,
+      "component": "project.category",
       "required": true
-    },
-    "slug": {
-      "type": "uid",
-      "required": true
-    },
-    "description": {
-      "type": "text",
-      "required": true
-    },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
     }
   }
 }

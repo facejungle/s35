@@ -11,7 +11,9 @@
       "required": true
     },
     "hashtag": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": false
     },
     "size": {
       "type": "integer",

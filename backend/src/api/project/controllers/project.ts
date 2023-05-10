@@ -8,7 +8,7 @@ const { sanitize } = require('@strapi/utils')
 const { contentAPI } = sanitize;
 
 export default factories.createCoreController('api::project.project', ({ strapi }) => ({
-   async findOneBySlug(ctx) {
+   async v2findOne(ctx) {
       const contentType = strapi.contentType('api::project.project');
 
       // Finding a project by slug and getting the project ID.
@@ -23,7 +23,7 @@ export default factories.createCoreController('api::project.project', ({ strapi 
 
       return await contentAPI.output(entry, contentType, ctx.state.auth);
    },
-   async findMany(ctx) {
+   async v2find(ctx) {
       const contentType = strapi.contentType('api::project.project');
 
       const sanitizedQueryParams = await contentAPI.query(ctx.query, contentType, ctx.state.auth);
