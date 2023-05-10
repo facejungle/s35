@@ -25,6 +25,6 @@ jobs:
     - name: npm install & test
       working-directory: ./backend
       run: |
-        npm install
-        npm run start
+        npm install --production
+        npm run build
         npm run test
