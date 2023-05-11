@@ -1,0 +1,16 @@
+.MediaGallery {
+   height: 450px;
+}
+
+.thumbnails {
+   overflow: scroll;
+
+}
+
+.thumbnails::-webkit-scrollbar {
+   display: none;
+}
+
+.thumbnails::-webkit-scrollbar-thumb {
+   display: none;
+}

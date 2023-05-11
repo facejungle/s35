@@ -1,20 +1,17 @@
-import { fetcher, urlHost } from "@shared/api/config";
+import { fetcher, urlHost } from "@shared/index";
 import { notFound } from "next/navigation";
 import { ProjectDataType, TProject } from "../model/type";
 import { getCategoryLink, getProjectLink, noCategory } from "..";
 
-export async function getProjectBySlug(projectSlug: string): Promise<TProject> {
+export async function getProjectBySlug(projectSlug: string): Promise<TProject | undefined> {
    try {
       const project: ProjectDataType = await fetcher({ host: 'api', path: 'projectBySlug', slug: projectSlug });
-      const projectCategory = project.category;
-      const projectImage = project.image?.formats.thumbnail?.url;
-      const categoryImage = projectCategory?.image?.formats.thumbnail?.url;
       return {
          title: project.title,
          link: getProjectLink(project),
          slug: project.slug,
          description: project.description,
-         image: projectImage ? urlHost('strapi') + projectImage : null,
+         image: project.image,
          totalArea: project.totalArea,
          livingArea: project.livingArea,
          profile: {
@@ -24,16 +21,17 @@ export async function getProjectBySlug(projectSlug: string): Promise<TProject> {
             gable: project.profile.height
          },
          category: {
-            title: projectCategory ? projectCategory.title : noCategory.title,
-            slug: projectCategory ? projectCategory.slug : noCategory.slug,
+            title: project.category ? project.category.title : noCategory.title,
+            slug: project.category ? project.category.slug : noCategory.slug,
             link: getCategoryLink(project.category),
-            description: projectCategory ? projectCategory.description : noCategory.description,
-            image: categoryImage ? urlHost('strapi') + categoryImage : null
+            description: project.category ? project.category.description : noCategory.description,
+            image: project.category?.image
          },
+         gallery: project.gallery,
       };
    }
    catch (err) {
-      console.log(`[${process.env.PROJECT_SLUG}][getProjectById()] > ` + err);
-      return notFound();
+      console.log(`[${process.env.PROJECT_SLUG}][getProjectBySlug()] > ` + err);
+      return undefined;
    }
 }

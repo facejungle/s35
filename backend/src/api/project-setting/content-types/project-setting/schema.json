@@ -12,10 +12,24 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "noCategory": {
-      "type": "component",
-      "repeatable": false,
-      "component": "project.category",
+    "lengthText": {
+      "type": "string",
+      "required": true,
+      "default": "Length:"
+    },
+    "widthText": {
+      "type": "string",
+      "default": "Width:",
+      "required": true
+    },
+    "heightText": {
+      "type": "string",
+      "default": "Height:",
+      "required": true
+    },
+    "gableText": {
+      "type": "string",
+      "default": "Gable:",
       "required": true
     }
   }

@@ -3,7 +3,7 @@ import { ContentImageType } from '../../model/type';
 import Image from 'next/image';
 import { Suspense } from 'react';
 import Loading from '@/app/loading';
-import { ImagePlaceholder } from '@/shared/helpers';
+import { ImagePlaceholder } from '@shared/index';
 
 
 export function ContentImage({ image }: { image: ContentImageType }): React.ReactElement {

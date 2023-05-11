@@ -8,7 +8,6 @@ ENV PATH /opt/node_modules/.bin:$PATH
 RUN yarn config set network-timeout 600000 -g && yarn install --development
 WORKDIR /opt/backend
 COPY ./backend/ .
-# COPY .env .env
 RUN yarn build
 FROM node:18-alpine
 RUN apk add --no-cache vips-dev

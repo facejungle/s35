@@ -1,12 +1,12 @@
 import { Sidebar } from '@components/Sidebar';
-import style from '@components/Projects/ui/style/layout.module.css';
+import style from '@components/Projects/ui/style/ProjectPage.module.css';
 
 export const dynamicParams = true;
 
 export default async function ProjectsLayout({ children, }: { children: React.ReactElement }): Promise<React.ReactElement> {
    return (
       <>
-         <article className={`${style.projects} flex-row`}>
+         <article className={`${style.project} flex-column`}>
             {children}
          </article>
          <Sidebar widgets={'default'} />

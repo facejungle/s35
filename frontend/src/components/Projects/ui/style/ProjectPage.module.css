@@ -1,0 +1,19 @@
+article.project {
+   justify-content: space-between;
+   align-items: flex-start;
+   flex-wrap: wrap;
+}
+
+.project_header {
+   width: 100%;
+   gap: var(--padding25);
+}
+
+.project_gallery {
+   flex: 0 1 50%;
+}
+
+.project_profile {
+   flex: 0 1 50%;
+   gap: var(--padding25);
+}

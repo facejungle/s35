@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import Loading from "@/app/loading";
 import { TProject } from "../../model/type";
 import style from './ProjectPreview.module.css'
-import { ImagePlaceholder } from "@/shared/helpers";
+import { ImageStrapi } from "@shared/index";
 
 export function ProjectPreview(project: TProject): React.ReactNode {
    return (
@@ -11,7 +11,7 @@ export function ProjectPreview(project: TProject): React.ReactNode {
          <Suspense fallback={<Loading />}>
             <div className={style.project_card}>
                <Link key={project.slug} href={project.link}>
-                  <ImagePlaceholder size="thumbnail" />
+                  <ImageStrapi image={project.image} size="original" />
                   <h2 className={style.project_title}>{project.title}</h2>
                </Link>
             </div>
@@ -19,3 +19,5 @@ export function ProjectPreview(project: TProject): React.ReactNode {
       </>
    );
 }
+
+export default ProjectPreview

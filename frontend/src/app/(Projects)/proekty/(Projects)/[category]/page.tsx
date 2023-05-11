@@ -14,7 +14,7 @@ export default async function ProjectPage({ params }: { params: { category: stri
 
 export async function generateStaticParams() {
    const categories = await getCategories();
-   if (categories !== null) {
+   if (categories) {
       return categories.map(category => {
          return {
             category: category.slug === null ? 'no-category' : category.slug,

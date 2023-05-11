@@ -1,5 +1,5 @@
 import { ContentDataType } from "@components/Content/model/type";
-import { fetcher } from "@shared/api/config";
+import { fetcher } from "@shared/index";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 

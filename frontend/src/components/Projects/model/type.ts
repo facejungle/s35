@@ -1,6 +1,13 @@
-import { ImageStrapiData } from "@components/ImageStrapi/model/type";
+import { ImageStrapiData } from "@/shared/helpers/ImageStrapi/model/type";
 import { StaticImageData } from "next/image";
 
+
+export interface ProjectSettingsData {
+   lengthText: string;
+   widthText: string;
+   heightText: string;
+   gableText: string;
+}
 
 export interface projectPreviewType {
    title: string;
@@ -26,20 +33,15 @@ interface baseProject<I, C> {
    description: string;
    totalArea: number;
    livingArea: number;
-   profile: {
-      length: number;
-      width: number;
-      height: number;
-      gable: number;
-   };
-   image: I | null;
+   profile: TProjectProfile;
+   image: I;
    category: C;
-   gallery?: [I | null];
+   gallery?: [I];
    floors?: [{
       name: string;
       height: number;
       area: number;
-      image: I | null;
+      image: I;
       rooms: [{
          name: string;
          area: number;
@@ -48,26 +50,31 @@ interface baseProject<I, C> {
 }
 
 
+export interface TProjectProfile {
+   length: number;
+   width: number;
+   height: number;
+   gable: number;
+}
 
-
-export interface TProject<I = StaticImageData> extends baseProject<I | string, TProjectCategory> {
+export interface TProject<I = ImageStrapiData> extends baseProject<I | null, TProjectCategory> {
    link: string;
 }
 export type ProjectType = TProject | [TProject];
 
 
-export interface TProjectCategory<I = StaticImageData> extends baseCategory<I | string> {
+export interface TProjectCategory<I = ImageStrapiData> extends baseCategory<I | null> {
    link: string;
 }
 export type ProjectCategoryType = TProjectCategory | [TProjectCategory];
 
 
 
-export interface ProjectDataType<I = ImageStrapiData> extends baseProject<I, ProjectCategoryDataType> {
+export interface ProjectDataType<I = ImageStrapiData> extends baseProject<I | null, ProjectCategoryDataType> {
    id: number;
 }
 
 
-export interface ProjectCategoryDataType<I = ImageStrapiData> extends baseCategory<I> {
+export interface ProjectCategoryDataType<I = ImageStrapiData> extends baseCategory<I | null> {
    id: number;
 }

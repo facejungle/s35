@@ -1,4 +1,4 @@
-import { fetcher } from "@shared/api/config";
+import { fetcher } from "@shared/index";
 import { checkLinkType } from "../helpers/checkLinkType";
 
 export async function getHeaderMenu() {

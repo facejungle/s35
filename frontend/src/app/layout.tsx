@@ -6,19 +6,19 @@ import CheckDevice from '@components/checkDevice';
 import { SiteHeader } from '@widgets/index';
 import { SiteFooter } from '@/widgets/index';
 import { getSiteSettingsData } from "@/components";
-import { Suspense } from "react";
+import { Suspense, use } from "react";
 import Loading from "./loading";
 export const dynamicParams = false;
 export const revalidate = 60;
 
 
-export default async function RootLayout({ children }: { children: React.ReactElement }) {
+export default function RootLayout({ children }: { children: React.ReactElement }) {
    return (
       <html lang="ru" className={montserrat.className}>
          <body>
             <CheckDevice>
                <div className="site-wrapper flex-column">
-                  {await SiteHeader()}
+                  {use(SiteHeader())}
                   <div className="main-wrapper">
                      <main className="flex-row container">
                         <Suspense fallback={<Loading />}>

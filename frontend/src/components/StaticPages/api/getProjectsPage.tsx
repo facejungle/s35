@@ -1,4 +1,4 @@
-import { fetcher } from '@shared/api/config';
+import { fetcher } from '@shared/index';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -12,7 +12,7 @@ interface projectsPagePromise extends Metadata {
 
 export async function getProjectsPage(): Promise<projectsPagePromise> {
    const page = await fetcher({ host: 'api', path: 'pageProjects' });
-   if (!page) {
+   if (!page || page === null || undefined) {
       return notFound();
    }
    return page

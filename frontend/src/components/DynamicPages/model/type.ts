@@ -1,5 +1,5 @@
 import { ContentDataType } from "@/components/Content/model/type";
-import { ImageStrapiData } from "@/components/ImageStrapi/model/type"
+import { ImageStrapiData } from "@/shared/helpers/ImageStrapi/model/type"
 import { StaticImageData } from "next/image";
 
 interface base<I> {

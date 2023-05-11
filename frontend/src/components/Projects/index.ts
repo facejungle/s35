@@ -7,3 +7,5 @@ export { getCategoryBySlug } from "./api/getCategoryBySlug";
 export { getCategoryLink, getCategoriesLinks, getProjectLink, getProjectsLinks, noCategory } from "./helpers/getLink";
 // UI
 export { ProjectPreview } from "./ui/ProjectPreview/ProjectPreview";
+export { ProjectProfile } from "./ui/ProjectProfile/ProjectProfile";
+export { ProjectGeneral } from "./ui/ProjectGeneral/ProjectGeneral";

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { fetcher } from '@shared/api/config';
+import { fetcher } from '@shared/index';
 
 export async function getContactData() {
    const contactData = await fetcher({ host: 'api', path: 'contacts' });
@@ -12,7 +12,13 @@ export async function getContactData() {
 
 export async function getSiteSettingsData() {
    const data = await fetcher({ host: 'api', path: 'siteSettings' });
-
+   if (!data) {
+      return {
+         title: 'SEO - Проблема с данными',
+         keywords: 'SEO - Проблема с данными',
+         description: '404',
+      };
+   }
    return data;
 }
 

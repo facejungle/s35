@@ -1,5 +1,5 @@
 import { siteLogoPromise } from "../model/type";
-import { fetcher } from "@/shared/api/config";
+import { fetcher } from "@/shared/index";
 export async function getSiteLogo(): Promise<siteLogoPromise> {
    const data = await fetcher({ host: 'api', path: 'siteSettings' });
    if (!data.ok) {

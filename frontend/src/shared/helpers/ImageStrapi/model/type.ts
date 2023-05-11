@@ -1,7 +1,7 @@
 export interface ImageFormatsType {
    url: string;
-   width: string;
-   height: string;
+   width: number;
+   height: number;
    name: string;
    hash: string;
    ext: string;
@@ -10,8 +10,8 @@ export interface ImageFormatsType {
 export interface ImageStrapiData {
    id: number;
    url: string;
-   width: string;
-   height: string;
+   width: number;
+   height: number;
    name: string;
    alternativeText: string;
    caption?: string;
@@ -22,4 +22,7 @@ export interface ImageStrapiData {
       large?: ImageFormatsType;
       xlarge?: ImageFormatsType;
    };
+}
+interface ImageBase {
+   url: string
 }

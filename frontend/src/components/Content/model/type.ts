@@ -1,4 +1,4 @@
-import { ImageStrapiData } from "@/components/ImageStrapi/model/type";
+import { ImageStrapiData } from "@/shared/helpers/ImageStrapi/model/type";
 import { PortfolioDataType } from "@/components/Portfolio/model/type";
 import { ProjectDataType } from "@/components/Projects/model/type";
 

@@ -61,7 +61,7 @@
 @media only screen and (min-width: 1366px) {
   :root {
     --nominal_screen: 1920;
-    --container_px: 1520px;
+    --container_px: 1420px;
     --target_container_px: 1200px;
     --target_screen: 1366;
     --target_screen_px: 1366px;
@@ -79,16 +79,16 @@
   :root {
     --nominal_screen: 3840;
     --container_px: 80vw;
-    --target_container_px: 1520px;
+    --target_container_px: 1420px;
     --target_screen: 1920;
     --target_screen_px: 1920px;
 
     --coefficient: calc((100vw - var(--target_screen_px)) / (var(--nominal_screen) - var(--target_screen)));
     --container: calc((var(--coefficient) * 1920) + var(--target_container_px));
 
-    --padding25: calc((var(--coefficient) * 6.5) + 18.5px);
-    --padding50: calc((var(--coefficient) * 12.5) + 37.5px);
-    --padding100: calc((var(--coefficient) * 25) + 75px);
+    --padding25: calc((var(--coefficient) * 6.5) + 25px);
+    --padding50: calc((var(--coefficient) * 12.5) + 50px);
+    --padding100: calc((var(--coefficient) * 25) + 100px);
   }
 }
 

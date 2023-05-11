@@ -4,11 +4,13 @@ import style from '@components/Projects/ui/style/card.module.css';
 import { getProjectsPage } from "@components/StaticPages"
 import { ProjectPreview, getProjects } from '@components/Projects';
 import { getSeo } from "@components/index";
+import { notFound } from "next/navigation";
 
 export const dynamicParams = false;
 
 export default function Projects(): React.ReactNode {
    const projects = use(getProjects());
+   if (!projects) return notFound();
    return projects.map(project => {
       return (
          <div key={project.slug} className={style.card}>
@@ -18,14 +20,14 @@ export default function Projects(): React.ReactNode {
    });
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-   const seo = await getProjectsPage();
-   if (seo === null) {
-      return {
-         title: 'Проекты не найдены.',
-         keywords: '404',
-         description: 'Проектов не найдено',
-      }
-   }
-   return getSeo(seo.data.attributes);
-}
+// export async function generateMetadata(): Promise<Metadata> {
+//    const seo = await getProjectsPage();
+//    if (seo === null) {
+//       return {
+//          title: 'Проекты не найдены.',
+//          keywords: '404',
+//          description: 'Проектов не найдено',
+//       }
+//    }
+//    return getSeo(seo.data.attributes);
+// }

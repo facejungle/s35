@@ -5,7 +5,7 @@ import { Content } from '@components/Content';
 import { getFrontPage } from "@components/StaticPages";
 import { Sidebar } from "@components/Sidebar";
 import style from '@components/StaticPages/ui/style/front.module.css';
-import { ImagePlaceholder } from "@/shared/helpers";
+import { ImagePlaceholder } from "@/shared/index";
 
 
 export default function Home(): React.ReactElement {

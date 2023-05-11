@@ -1,8 +1,12 @@
 .project_card {
+   height: 300px;
+   width: auto;
    position: relative;
 }
 
-.preview_image {
+.project_card>a>img {
+   height: 100%;
+   width: 100%;
    border-radius: var(--radius);
    object-fit: cover;
 }

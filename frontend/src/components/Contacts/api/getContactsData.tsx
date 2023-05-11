@@ -1,5 +1,5 @@
 import { contactType, contactPromiseType } from '../model/types';
-import { fetcher } from '@shared/api/config';
+import { fetcher } from '@shared/index';
 
 export async function getContactsData(): Promise<contactPromiseType> {
    let defaultPhone: contactType = {
