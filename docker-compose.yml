@@ -55,7 +55,7 @@ services:
     container_name: ${PROJECT_SLUG}_postgres
     platform: linux/amd64
     restart: unless-stopped
-    env_file: .env
+    env_file: ./backend/.env
     volumes:
       - ./db:/var/lib/postgresql/data/
       - /etc/localtime:/etc/localtime:ro
