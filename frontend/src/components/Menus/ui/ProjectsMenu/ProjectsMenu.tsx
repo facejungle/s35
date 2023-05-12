@@ -4,6 +4,7 @@ import { use } from "react";
 
 export function ProjectsMenu(): React.ReactElement {
    const categories = use(getCategories());
+   if (!categories) return <></>;
    return (
       <>
          {

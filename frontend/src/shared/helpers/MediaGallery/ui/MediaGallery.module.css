@@ -2,6 +2,8 @@
    height: 450px;
 }
 
+.preview {}
+
 .thumbnails {
    overflow: scroll;
 

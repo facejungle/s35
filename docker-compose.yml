@@ -18,7 +18,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     env_file:
-      - .env
+      - ./frontend/.env.local
     networks:
       - app_bridge
     ports:
@@ -34,7 +34,7 @@ services:
       args:
         - NODE_ENV=${ENVIRONMENT}
     restart: unless-stopped
-    env_file: .env
+    env_file: ./backend/.env
     volumes:
       - ./backend/config:/opt/backend/config
       - ./backend/src:/opt/backend/src

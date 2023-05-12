@@ -24,7 +24,7 @@ export async function getContactsData(): Promise<contactPromiseType> {
    }];
 
    const contactData = await fetcher({ host: 'api', path: 'contacts' });
-   if (contactData.data) {
+   if (contactData) {
       phones = contactData.data.attributes.phone;
       emails = contactData.data.attributes.email;
       if (phones && Array.isArray(phones) && phones[0] !== null) {

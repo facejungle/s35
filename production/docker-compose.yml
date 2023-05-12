@@ -9,7 +9,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     env_file:
-      - .env
+      - .env.frontend
     networks:
       - app_bridge
     ports:
@@ -21,7 +21,7 @@ services:
     container_name: ${PROJECT_SLUG}_backend
     image: facej/s35-backend:latest
     restart: unless-stopped
-    env_file: .env
+    env_file: .env.backend
     volumes:
       - ./logs/backend:/root/.npm/_logs
       - /etc/localtime:/etc/localtime:ro

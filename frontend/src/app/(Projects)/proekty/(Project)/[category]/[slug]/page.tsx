@@ -22,7 +22,6 @@ export default function ProjectPage({ params }: Props): React.ReactElement {
       <>
          <div className={`${style.project_header} flex-column`}>
             <ProjectGeneral project={project} />
-            <ProjectProfile profile={project.profile} projectSettings={projectSettings} />
          </div>
       </>
    );
