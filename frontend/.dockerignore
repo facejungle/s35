@@ -12,6 +12,7 @@ README.md
 .terraform
 .husky
 .gitignore
+.env.local
 package-lock.json
 package.json
 yarn.lock
