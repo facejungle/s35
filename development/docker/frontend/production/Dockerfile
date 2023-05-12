@@ -2,14 +2,15 @@ FROM node:18-alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-COPY ./frontend/package.json ./frontend/yarn.lock ./
-RUN  yarn install --development
+COPY ./development/frontend/package.json ./development/frontend/yarn.lock ./
+RUN  yarn install --production
 
 FROM node:18-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY ./frontend ./
+COPY ./development/frontend ./
 
+ENV NEXT_TELEMETRY_DISABLED 1
 ENV API_URL ${API_EXT_URL}
 RUN yarn build
 ENV API_URL ${API_URL}
@@ -17,7 +18,8 @@ ENV API_URL ${API_URL}
 FROM node:18-alpine AS runner
 WORKDIR /app
 
-ENV NODE_ENV development
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -30,10 +32,11 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/tsconfig.json ./tsconfig.json
 COPY --from=builder /app/next-env.d.ts ./next-env.d.ts
 COPY --from=builder /app/next.config.js ./next.config.js
+
 USER nextjs
 
 EXPOSE 3000
 
 ENV PORT 3000
 
-CMD ["yarn", "dev"]
+CMD ["yarn", "start"]

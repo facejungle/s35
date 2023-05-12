@@ -41,7 +41,7 @@ services:
     restart: unless-stopped
     env_file: .env.backend
     volumes:
-      - ./db:/var/lib/postgresql/data/
+      - ~/.DB_Data/:/var/lib/postgresql/data/
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     networks:
