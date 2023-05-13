@@ -16,7 +16,7 @@ import style from "./ImageStrapi.module.css";
 export function ImageStrapi({ image, size, host }: { image: ImageStrapiData | null, size: imageSizesType, host?: urlHostType }) {
    const blurData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkMAYAADkANVKH3ScAAAAASUVORK5CYII="
    if (image) {
-      const url = urlHost(host ? host : 'strapi');
+      const url = urlHost('strapi');
       if (size === 'original') {
          return <Image className={style.strapi_image} src={url + image.url} width={image.width} height={image.height} placeholder="blur" blurDataURL={blurData} alt="" />;
       }

@@ -1,0 +1,13 @@
+{
+   "projects": {
+      "profile": {
+         "length": "Длина",
+         "width": "Ширина",
+         "height": "Высота",
+         "gable": "Фронтон"
+      }
+   },
+   "products": {
+      "cart": "Добавить в корзину"
+   }
+}

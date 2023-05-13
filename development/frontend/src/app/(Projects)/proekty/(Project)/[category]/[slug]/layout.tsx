@@ -1,5 +1,5 @@
 import { Sidebar } from '@components/Sidebar';
-import style from '@components/Projects/ui/style/ProjectPage.module.css';
+import style from '@components/Projects/style/ProjectPage.module.scss';
 
 export const dynamicParams = true;
 

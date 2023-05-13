@@ -1,6 +1,7 @@
 import { ImageStrapiData } from "@/shared/helpers/ImageStrapi/model/type";
 import { PortfolioDataType } from "@/components/Portfolio/model/type";
 import { ProjectDataType } from "@/components/Projects/model/type";
+import type { MDXContent } from 'mdx/types';
 
 enum Components {
    TITLE = 'content.title',
@@ -27,7 +28,7 @@ export interface ContentTextType extends base<Components.TEXT> {
    text: string;
 }
 export interface ContentRichTextType extends base<Components.RICHTEXT> {
-   text: string;
+   text: MDXContent;
 }
 export interface ContentImageType extends base<Components.IMAGE> {
    image: ImageStrapiData;

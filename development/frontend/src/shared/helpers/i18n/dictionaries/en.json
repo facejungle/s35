@@ -1,0 +1,13 @@
+{
+   "projects": {
+      "profile": {
+         "length": "Length",
+         "width": "Width",
+         "height": "Height",
+         "gable": "Gable"
+      }
+   },
+   "products": {
+      "cart": "Add to Cart"
+   }
+}

@@ -18,10 +18,10 @@ import style from './ImagePlaceholder.module.css';
  */
 export function ImagePlaceholder({ size }: { size: imageSizesType }) {
   const blurData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkMAYAADkANVKH3ScAAAAASUVORK5CYII="
-  if (size === 'logo') return <Image className={style.placeholder_image} src={placeholderLogo} width={240} height={120} placeholder="blur" blurDataURL={blurData} quality={95} alt="" />
-  if (size === 'thumbnail') return <Image src={placeholderThumbnail} width={500} height={300} placeholder="blur" blurDataURL={blurData} quality={95} alt="" />
-  if (size === 'preview') return <Image src={placeholderPreview} width={750} height={500} placeholder="blur" blurDataURL={blurData} quality={95} alt="" />
-  if (size === 'large') return <Image src={placeholderLarge} width={1000} height={750} placeholder="blur" blurDataURL={blurData} quality={95} alt="" />
-  if (size === 'xlarge') return <Image src={placeholderXLarge} width={1920} height={1080} placeholder="blur" blurDataURL={blurData} quality={95} alt="" />
+  if (size === 'logo') return <Image className={style.placeholder_image} src={placeholderLogo} width={240} height={120} placeholder="blur" blurDataURL={blurData} quality={100} alt="" />
+  if (size === 'thumbnail') return <Image src={placeholderThumbnail} width={500} height={300} placeholder="blur" blurDataURL={blurData} quality={100} alt="" />
+  if (size === 'preview') return <Image src={placeholderPreview} width={750} height={500} placeholder="blur" blurDataURL={blurData} quality={100} alt="" />
+  if (size === 'large') return <Image src={placeholderLarge} width={1000} height={750} placeholder="blur" blurDataURL={blurData} quality={100} alt="" />
+  if (size === 'xlarge') return <Image src={placeholderXLarge} width={1920} height={1080} placeholder="blur" blurDataURL={blurData} quality={100} alt="" />
   return <Image src={placeholderThumbnail} width={500} height={300} alt="" />
 }

@@ -1,34 +1,32 @@
 import { Metadata } from "next/types";
 import '@shared/styles/reset.css'
 import '@shared/styles/globals.css'
-import { montserrat } from "@shared/styles/fonts";
-import CheckDevice from '@components/checkDevice';
+import { InterFont } from "@shared/styles/fonts";
+import { AdaptiveDevice } from '@shared/index';
 import { SiteHeader } from '@widgets/index';
 import { SiteFooter } from '@/widgets/index';
-import { getSiteSettingsData } from "@/components";
-import { Suspense, use } from "react";
-import Loading from "./loading";
+import { use } from "react";
 export const dynamicParams = false;
 export const revalidate = 60;
 
 
-export default function RootLayout({ children }: { children: React.ReactElement }) {
+export default function RootLayout({ children, }: { children: React.ReactElement }) {
    return (
-      <html lang="ru" className={montserrat.className}>
+      <html lang="ru" className={InterFont.className}>
          <body>
+            <AdaptiveDevice>
+               <div className="site-wrapper flex-column">
+                  {use(SiteHeader())}
+                  <div className="main-wrapper">
+                     <main className="flex-row container">
 
-            <div className="site-wrapper flex-column">
-               {use(SiteHeader())}
-               <div className="main-wrapper">
-                  <main className="flex-row container">
+                        {children}
 
-                     {children}
-
-                  </main>
+                     </main>
+                  </div>
+                  <SiteFooter />
                </div>
-               <SiteFooter />
-            </div>
-
+            </AdaptiveDevice>
          </body>
       </html>
    )

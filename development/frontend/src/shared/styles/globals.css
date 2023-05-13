@@ -1,8 +1,8 @@
 :root {
   --color_primary: #228b43;
-  --color_second: #e1e4d4;
+  --color_second: #e4da7f;
   --color_white: #FCFCFC;
-  --color_black: #333;
+  --color_black: #414141;
   --color_gray0: #f0f0f0;
   --color_gray: #CCC;
 
@@ -28,6 +28,7 @@
   color: (var(--color_black));
   font-size: 16px;
   font-weight: 400;
+  font-family: var(--font_inter), sans-serif;
 }
 
 @media only screen and (max-width: 480px) {
@@ -176,8 +177,25 @@ h4 {
   font-weight: 600;
 }
 
+p.tooltip {
+  cursor: help;
+  text-decoration: underline dotted;
+  position: relative
+}
 
-
+p.tooltip:target::after,
+p.tooltip:hover::after {
+  background: var(--color_gray0);
+  border-radius: var(--radius);
+  top: 150%;
+  content: "⚠️ " attr(data-tooltip);
+  display: block;
+  left: -50%;
+  padding: 10px;
+  position: absolute;
+  min-width: 280px;
+  z-index: 1;
+}
 
 
 .loader_wrapper {

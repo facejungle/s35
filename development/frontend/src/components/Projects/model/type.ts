@@ -7,6 +7,7 @@ export interface ProjectSettingsData {
    widthText: string;
    heightText: string;
    gableText: string;
+   totalAreaText: string;
 }
 
 export interface projectPreviewType {

@@ -1,6 +1,6 @@
 
 
-export default function PagePrices() {
+export default function PagePrices({ searchParams }: { searchParams: { lang: string } }) {
    return (
       <>
          pagePrices

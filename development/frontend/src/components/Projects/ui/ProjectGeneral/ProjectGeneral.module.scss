@@ -1,0 +1,27 @@
+.project_general {
+   align-self: flex-start;
+
+   .project_profile {
+      align-self: center;
+
+      .profile_child {
+         border-bottom: var(--border);
+         padding: 10px;
+
+         &:first-child {
+            border-top: var(--border);
+         }
+
+         .profile_child__inner {
+            .number {
+               font-size: 1.5em;
+               font-weight: 600;
+            }
+
+            .desc {
+               font-size: 14px;
+            }
+         }
+      }
+   }
+}

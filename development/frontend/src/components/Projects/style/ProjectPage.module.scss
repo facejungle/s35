@@ -1,0 +1,10 @@
+article.project {
+   justify-content: space-between;
+   align-items: flex-start;
+   flex-wrap: wrap;
+
+   .project_header {
+      width: 100%;
+      gap: var(--padding25);
+   }
+}

@@ -4,6 +4,10 @@ const nextConfig = {
     appDir: true,
     // outputStandalone: true,
   },
+  i18n: {
+    locales: ['en', 'ru'],
+    defaultLocale: 'ru',
+  },
   env: {
     CONTACTS_URI: 'kontakty',
     DYNAMIC_PAGES_URI: 'page',
@@ -26,33 +30,42 @@ const nextConfig = {
     BLOG_URI: 'blog',
   },
   images: {
+    deviceSizes: [480, 750, 828, 1080, 1200, 1920, 2048],
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: 'api.localhost',
-        port: '80',
-        pathname: '/uploads/**',
-      },
-      {
-        protocol: 'http',
-        hostname: '127.0.0.1',
+        hostname: '77.232.136.160',
         port: '1337',
         pathname: '/uploads/**',
       },
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '1337',
-        pathname: '/uploads/**',
-      },
-      {
-        protocol: 'http',
-        hostname: 'backend',
-        port: '1337',
-        pathname: '/uploads/**',
-      },
+      // {
+      //   protocol: 'http',
+      //   hostname: 'api.localhost',
+      //   port: '80',
+      //   pathname: '/uploads/**',
+      // },
+      // {
+      //   protocol: 'http',
+      //   hostname: '127.0.0.1',
+      //   port: '1337',
+      //   pathname: '/uploads/**',
+      // },
+      // {
+      //   protocol: 'http',
+      //   hostname: 'localhost',
+      //   port: '1337',
+      //   pathname: '/uploads/**',
+      // },
+      // {
+      //   protocol: 'http',
+      //   hostname: 'backend',
+      //   port: '1337',
+      //   pathname: '/uploads/**',
+      // },
     ],
   },
+  poweredByHeader: false,
 }
 
 module.exports = nextConfig

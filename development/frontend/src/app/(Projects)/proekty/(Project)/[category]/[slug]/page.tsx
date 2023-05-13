@@ -1,9 +1,7 @@
 import { notFound } from 'next/navigation';
 import { use } from "react";
-import { ImageStrapi } from "@/shared";
 import { ProjectGeneral, getProjectBySlug, getProjects } from "@components/Projects";
-import style from '@components/Projects/ui/style/ProjectPage.module.css';
-import { ProjectProfile } from '@/components/Projects';
+import style from '@components/Projects/style/ProjectPage.module.scss';
 import getProjectSettings from '@/components/Projects/api/getProjectSettings';
 
 
@@ -21,7 +19,8 @@ export default function ProjectPage({ params }: Props): React.ReactElement {
    return (
       <>
          <div className={`${style.project_header} flex-column`}>
-            <ProjectGeneral project={project} />
+            <h1>{project.title}</h1>
+            <ProjectGeneral project={project} settings={projectSettings} />
          </div>
       </>
    );

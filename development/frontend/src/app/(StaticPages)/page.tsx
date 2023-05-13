@@ -1,15 +1,22 @@
 import { Metadata } from "next/types";
-import { use } from "react";
 
 import { Content } from '@components/Content';
 import { getFrontPage } from "@components/StaticPages";
 import { Sidebar } from "@components/Sidebar";
 import style from '@components/StaticPages/ui/style/front.module.css';
 import { ImagePlaceholder } from "@/shared/index";
+import { Locale } from "@i18n/i18n";
+import { getDictionary } from "@i18n/getDictionary";
 
 
-export default function Home(): React.ReactElement {
-   const page = use(getFrontPage());
+export default async function Home({
+   searchParams: { lang },
+}: {
+   searchParams: { lang: Locale }
+}): Promise<React.ReactElement> {
+   const dict = getDictionary(lang);
+   console.log((await dict).projects.profile)
+   const page = await getFrontPage();
    return (
       <>
          <article className={`${style.front_page} flex-column`}>
