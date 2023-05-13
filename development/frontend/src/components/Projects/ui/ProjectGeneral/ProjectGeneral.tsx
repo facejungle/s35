@@ -2,8 +2,8 @@ import { MediaGallery } from '@/shared';
 import style from './ProjectGeneral.module.scss';
 import { TProject, ProjectSettingsData, TProjectProfile } from '../../model/type';
 
-import { Locale } from "@i18n/i18n";
-import { getDictionary } from "@i18n/getDictionary";
+import { Locale } from "@/shared/i18n/i18n";
+import { getDictionary } from "@/shared/i18n/getDictionary";
 import { use } from 'react';
 
 export function ProjectGeneral({ project, settings, lang }: { project: TProject, settings: ProjectSettingsData, lang?: Locale }) {

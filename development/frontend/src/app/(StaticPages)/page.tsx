@@ -5,8 +5,8 @@ import { getFrontPage } from "@components/StaticPages";
 import { Sidebar } from "@components/Sidebar";
 import style from '@components/StaticPages/ui/style/front.module.css';
 import { ImagePlaceholder } from "@/shared/index";
-import { Locale } from "@i18n/i18n";
-import { getDictionary } from "@i18n/getDictionary";
+import { Locale } from "@/shared/i18n/i18n";
+import { getDictionary } from "@/shared/i18n/getDictionary";
 
 
 export default async function Home({

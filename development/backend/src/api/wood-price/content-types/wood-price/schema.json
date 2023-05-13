@@ -10,12 +10,21 @@
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "log": {
       "type": "component",
       "repeatable": true,
-      "component": "price.wood-log"
+      "component": "price.wood-log",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

@@ -10,7 +10,11 @@
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "HeaderMenu": {
       "type": "dynamiczone",
@@ -21,7 +25,12 @@
         "link.portfolio",
         "link.project-category",
         "link.project"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "MainMenu": {
       "type": "dynamiczone",
@@ -32,7 +41,12 @@
         "link.portfolio",
         "link.project-category",
         "link.project"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

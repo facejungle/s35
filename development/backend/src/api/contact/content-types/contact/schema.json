@@ -10,27 +10,51 @@
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "name": {
       "type": "string",
       "required": true,
-      "default": "Алексей Алексеев"
+      "default": "Алексей Алексеев",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "email": {
       "type": "component",
       "repeatable": true,
-      "component": "contact.email"
+      "component": "contact.email",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "phone": {
       "type": "component",
       "repeatable": true,
-      "component": "contact.phone"
+      "component": "contact.phone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "social": {
       "type": "component",
       "repeatable": true,
-      "component": "contact.social"
+      "component": "contact.social",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

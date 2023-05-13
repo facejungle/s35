@@ -10,11 +10,20 @@
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "slug": {
       "type": "uid",
@@ -22,7 +31,12 @@
     },
     "description": {
       "type": "text",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "image": {
       "type": "media",
@@ -30,7 +44,12 @@
       "required": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "gallery": {
       "type": "media",
@@ -39,28 +58,53 @@
       "allowedTypes": [
         "images",
         "videos"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "profile": {
       "type": "component",
       "repeatable": false,
       "required": true,
-      "component": "project.profile"
+      "component": "project.profile",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "totalArea": {
       "type": "decimal",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "livingArea": {
       "type": "decimal",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "floors": {
       "type": "dynamiczone",
       "components": [
         "project.floor"
       ],
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "category": {
       "type": "relation",

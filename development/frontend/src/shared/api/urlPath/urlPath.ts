@@ -3,6 +3,7 @@ import { apiPathType } from "@/shared/model/type";
 export const urlPath = (path: apiPathType, slug?: string | number, filter?: string) => {
    const filterPath = filter ? `&filters${filter}` : '';
    if (path) {
+      if (path === 'siteLocales') return '/i18n/locales' + filterPath;
       if (path === 'siteSettings') return '/site-setting/?populate=*' + filterPath;
       if (path === 'contacts') return '/contact/?populate=*' + filterPath;
       if (path === 'headerMenu') return '/v2/menu?populate[0]=HeaderMenu.link.parent&populate[1]=HeaderMenu.link.category' + filterPath;
