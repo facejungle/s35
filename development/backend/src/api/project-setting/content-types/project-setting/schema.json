@@ -10,32 +10,19 @@
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
-    "lengthText": {
+    "test": {
       "type": "string",
-      "required": true,
-      "default": "Length:"
-    },
-    "widthText": {
-      "type": "string",
-      "default": "Width:",
-      "required": true
-    },
-    "heightText": {
-      "type": "string",
-      "default": "Height:",
-      "required": true
-    },
-    "gableText": {
-      "type": "string",
-      "default": "Gable:",
-      "required": true
-    },
-    "totalAreaText": {
-      "type": "string",
-      "required": true,
-      "default": "Total area"
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
