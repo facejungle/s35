@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { fetcher } from '@shared/index';
 
 export async function getContactData() {
-   const contactData = await fetcher({ host: 'api', path: 'contacts' });
+   const contactData = await fetcher({ host: 'API', path: 'CONTACTS' });
    if (contactData.data) {
       return contactData;
    } else {
@@ -11,7 +11,7 @@ export async function getContactData() {
 }
 
 export async function getSiteSettingsData() {
-   const data = await fetcher({ host: 'api', path: 'siteSettings' });
+   const data = await fetcher({ host: 'API', path: 'SETTINGS' });
    if (!data) {
       return {
          title: 'SEO - Проблема с данными',

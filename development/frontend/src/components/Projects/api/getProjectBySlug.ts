@@ -1,5 +1,4 @@
-import { fetcher, urlHost } from "@shared/index";
-import { notFound } from "next/navigation";
+import { fetcher } from "@shared/index";
 import { ProjectDataType, TProject } from "../model/type";
 import { getCategoryLink, getProjectLink, noCategory } from "..";
 

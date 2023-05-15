@@ -5,7 +5,7 @@ const dictionaries = {
    ru: () => import('./dictionaries/ru.json').then((module) => module.default),
 };
 
-export async function getDictionary(locale: Locale) {
+export async function getDictionary(locale: typeof i18n['locales'][number]) {
    if (i18n.locales.includes(locale)) {
       return dictionaries[locale]();
    }

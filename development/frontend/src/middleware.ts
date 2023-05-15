@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 import { i18n } from "@i18n/index";
 
 
-export async function middleware(request: NextRequest) {
+export function middleware(request: NextRequest) {
    const defaultLocale = i18n.defaultLocale;
    let language = request.nextUrl.locale;
    let currentURL = new URL(request.url);

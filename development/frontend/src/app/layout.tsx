@@ -6,14 +6,11 @@ import { AdaptiveDevice } from '@shared/index';
 import { SiteHeader } from '@widgets/index';
 import { SiteFooter } from '@/widgets/index';
 
-import { use } from "react";
-import { getLocales } from "@shared/index";
-export const dynamicParams = false;
+export const dynamicParams = true;
 export const revalidate = 60;
 
 
 export default async function RootLayout({ children, }: { children: React.ReactElement }) {
-   const test = await getLocales();
 
    return (
       <html lang="ru" className={InterFont.className}>

@@ -28,7 +28,7 @@
         "./src/*"
       ],
       "@i18n/*": [
-        "src/shared/i18n/*"
+        "./src/shared/i18n/*"
       ],
       "@components/*": [
         "./src/components/*"

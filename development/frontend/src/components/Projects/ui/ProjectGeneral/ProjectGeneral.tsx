@@ -1,13 +1,12 @@
 import { MediaGallery } from '@/shared';
 import style from './ProjectGeneral.module.scss';
 import { TProject } from '@components/Projects/model/type';
-
-import { Locale } from "@/shared/i18n/i18n";
+import { Locale } from "@i18n/index";
 import { getDictionary } from "@/shared/i18n/getDictionary";
-import { use } from 'react';
 
-export function ProjectGeneral({ project, lang }: { project: TProject, lang: Locale }) {
-   const dict = use(getDictionary(lang));
+export async function ProjectGeneral({ project, lang }: { project: TProject, lang: Locale }) {
+
+   const dict = await getDictionary(lang);
    return (
       <div className={`${style.project_general} flex-row`}>
          <MediaGallery images={project.gallery} />
