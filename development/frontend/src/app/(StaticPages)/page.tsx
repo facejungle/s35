@@ -6,7 +6,6 @@ import { Sidebar } from "@components/Sidebar";
 import style from '@components/StaticPages/ui/style/front.module.css';
 import { ImagePlaceholder } from "@/shared/index";
 import { Locale } from "@/shared/i18n/i18n";
-import { getDictionary } from "@/shared/i18n/getDictionary";
 
 
 export default async function Home({
@@ -14,8 +13,6 @@ export default async function Home({
 }: {
    searchParams: { lang: Locale }
 }): Promise<React.ReactElement> {
-   const dict = getDictionary(lang);
-   console.log((await dict).projects.profile)
    const page = await getFrontPage();
    return (
       <>

@@ -11,7 +11,7 @@ interface projectsPagePromise extends Metadata {
 };
 
 export async function getProjectsPage(): Promise<projectsPagePromise> {
-   const page = await fetcher({ host: 'api', path: 'pageProjects' });
+   const page = await fetcher({ host: 'API', path: 'PAGE_PROJECTS' });
    if (!page || page === null || undefined) {
       return notFound();
    }

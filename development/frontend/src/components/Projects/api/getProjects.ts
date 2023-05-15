@@ -5,7 +5,7 @@ import { getCategoryLink, getProjectLink, noCategory } from "..";
 
 export async function getProjects(): Promise<TProject[] | undefined> {
    try {
-      const projects: [ProjectDataType] = await fetcher({ host: 'api', path: 'projects' });
+      const projects: [ProjectDataType] = await fetcher({ host: 'API', path: 'PROJECTS' });
       if (!projects) return undefined;
       return projects.map(project => {
          return {

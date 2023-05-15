@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 
 export async function getFrontPage() {
-   const page = await fetcher({ host: 'api', path: 'pageFront' });
+   const page = await fetcher({ host: 'API', path: 'PAGE_FRONT' });
    if (!page) return notFound();
    return {
       title: page.title,

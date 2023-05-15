@@ -7,7 +7,7 @@ import { getCategoryLink } from "..";
 
 export async function getCategoryBySlug(categorySlug: string): Promise<TProjectCategory | undefined> {
    try {
-      const category: ProjectCategoryDataType = await fetcher({ host: 'api', path: 'projectCategoryBySlug', slug: categorySlug });
+      const category: ProjectCategoryDataType = await fetcher({ host: 'API', path: 'PROJECT_CATEGORY_BY_SLUG', slug: categorySlug });
       if (!category) return notFound();
       return {
          title: category.title,

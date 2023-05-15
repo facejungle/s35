@@ -2,7 +2,7 @@ import { fetcher } from "@/shared";
 import { ProjectSettingsData } from "../model/type";
 
 export async function getProjectSettings(): Promise<ProjectSettingsData> {
-   const projectSettings = await fetcher({ host: 'api', path: 'projectsSettings' });
+   const projectSettings = await fetcher({ host: 'API', path: 'PROJECT_SETTINGS' });
    if (!projectSettings) return {
       lengthText: 'Length',
       widthText: 'Width',

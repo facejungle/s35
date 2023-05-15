@@ -4,10 +4,6 @@ const nextConfig = {
     appDir: true,
     // outputStandalone: true,
   },
-  i18n: {
-    locales: ['en', 'ru'],
-    defaultLocale: 'ru',
-  },
   env: {
     CONTACTS_URI: 'kontakty',
     DYNAMIC_PAGES_URI: 'page',

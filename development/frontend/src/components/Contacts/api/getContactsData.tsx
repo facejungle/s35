@@ -23,7 +23,7 @@ export async function getContactsData(): Promise<contactPromiseType> {
       description: ''
    }];
 
-   const contactData = await fetcher({ host: 'api', path: 'contacts' });
+   const contactData = await fetcher({ host: 'API', path: 'CONTACTS' });
    if (contactData) {
       phones = contactData.data.attributes.phone;
       emails = contactData.data.attributes.email;
