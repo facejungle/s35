@@ -1,7 +1,7 @@
 import { siteLogoPromise } from "../model/type";
 import { fetcher } from "@/shared/index";
 export async function getSiteLogo(): Promise<siteLogoPromise> {
-   const data = await fetcher({ host: 'api', path: 'siteSettings' });
+   const data = await fetcher({ host: 'API', path: 'SETTINGS' });
    if (!data.ok) {
       console.log('Failed to fetch > site settings data | getSiteLogo()')
       // throw new Error('Failed to fetch > site settings data | getSiteLogo()');

@@ -1,14 +1,16 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { i18n } from "@i18n/index";
 
 
-export function middleware(request: NextRequest) {
-   const defaultLang = 'ru';
+export async function middleware(request: NextRequest) {
+   const defaultLocale = i18n.defaultLocale;
    let language = request.nextUrl.locale;
-   let CurrentURL = new URL(request.url);
-   if (!language?.includes(defaultLang)) {
-      CurrentURL.searchParams.set('lang', 'en');
-      return NextResponse.rewrite(new URL(CurrentURL));
+   let currentURL = new URL(request.url);
+   // If user locale != default locale, then add search params "lang" with user locale
+   if (!language?.includes(defaultLocale)) {
+      currentURL.searchParams.set('lang', defaultLocale);
+      return NextResponse.rewrite(new URL(currentURL));
    }
 }
 

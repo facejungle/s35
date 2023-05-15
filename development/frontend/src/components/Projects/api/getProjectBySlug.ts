@@ -5,7 +5,7 @@ import { getCategoryLink, getProjectLink, noCategory } from "..";
 
 export async function getProjectBySlug(projectSlug: string): Promise<TProject | undefined> {
    try {
-      const project: ProjectDataType = await fetcher({ host: 'api', path: 'projectBySlug', slug: projectSlug });
+      const project: ProjectDataType = await fetcher({ host: 'API', path: 'PROJECT_BY_SLUG', slug: projectSlug });
       return {
          title: project.title,
          link: getProjectLink(project),

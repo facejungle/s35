@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from "next/image"
 import { imageSizesType, urlHostType } from "@/shared/model/type";
 import { ImageStrapiData } from "../model/type";
-import { ImagePlaceholder, urlHost } from "@shared/index";
+import { ImagePlaceholder, getHost } from "@shared/index";
 import style from "./ImageStrapi.module.css";
 
 /**
@@ -16,7 +16,7 @@ import style from "./ImageStrapi.module.css";
 export function ImageStrapi({ image, size, host }: { image: ImageStrapiData | null, size: imageSizesType, host?: urlHostType }) {
    const blurData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkMAYAADkANVKH3ScAAAAASUVORK5CYII="
    if (image) {
-      const url = urlHost('strapi');
+      const url = getHost('STRAPI');
       if (size === 'original') {
          return <Image className={style.strapi_image} src={url + image.url} width={image.width} height={image.height} placeholder="blur" blurDataURL={blurData} alt="" />;
       }

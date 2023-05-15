@@ -4,10 +4,10 @@
          "length": "Length",
          "width": "Width",
          "height": "Height",
-         "gable": "Gable"
+         "gable": "Gable",
+         "Area": "Area",
+         "totalArea": "Total area",
+         "livingArea": "Living area"
       }
-   },
-   "products": {
-      "cart": "Add to Cart"
    }
 }

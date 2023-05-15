@@ -5,18 +5,22 @@ import { InterFont } from "@shared/styles/fonts";
 import { AdaptiveDevice } from '@shared/index';
 import { SiteHeader } from '@widgets/index';
 import { SiteFooter } from '@/widgets/index';
+
 import { use } from "react";
+import { getLocales } from "@shared/index";
 export const dynamicParams = false;
 export const revalidate = 60;
 
 
-export default function RootLayout({ children, }: { children: React.ReactElement }) {
+export default async function RootLayout({ children, }: { children: React.ReactElement }) {
+   const test = await getLocales();
+
    return (
       <html lang="ru" className={InterFont.className}>
          <body>
             <AdaptiveDevice>
                <div className="site-wrapper flex-column">
-                  {use(SiteHeader())}
+                  {await SiteHeader()}
                   <div className="main-wrapper">
                      <main className="flex-row container">
 

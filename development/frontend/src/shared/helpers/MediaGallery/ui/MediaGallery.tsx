@@ -1,6 +1,6 @@
 "use client"
 
-import { ImageCustom, urlHost } from "@shared/index";
+import { ImageCustom, getHost } from "@shared/index";
 import { ImageStrapiData } from "../../ImageStrapi/model/type"
 import style from './MediaGallery.module.css';
 import { useState } from "react";
@@ -12,7 +12,7 @@ export function MediaGallery({ images }: { images: [ImageStrapiData | null] | un
       const firstImage = images[0];
       const [previewImage, setPreviewImage] = useState(
          <Image
-            src={urlHost('strapiExt') + firstImage?.url}
+            src={getHost('STRAPI_EXT') + firstImage?.url}
             width={firstImage?.width || 750}
             height={firstImage?.height || 500}
             alt={firstImage?.alternativeText || ''}
@@ -24,7 +24,7 @@ export function MediaGallery({ images }: { images: [ImageStrapiData | null] | un
          return (
             <button key={index} onClick={() => setPreviewImage(
                <Image
-                  src={urlHost('strapiExt') + image?.url}
+                  src={getHost('STRAPI_EXT') + image?.url}
                   width={image?.width || 750}
                   height={image?.height || 500}
                   alt={image?.alternativeText || ''}
@@ -33,7 +33,7 @@ export function MediaGallery({ images }: { images: [ImageStrapiData | null] | un
                />
             )}>
                <Image
-                  src={urlHost('strapiExt') + image?.formats.logo?.url}
+                  src={getHost('STRAPI_EXT') + image?.formats.logo?.url}
                   width={image?.formats.logo?.width || 240}
                   height={image?.formats.logo?.height || 120}
                   alt={image?.alternativeText || ''}

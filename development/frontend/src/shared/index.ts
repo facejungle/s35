@@ -1,12 +1,15 @@
 // API
 export { fetcher } from "./api/fetcher/fetcher";
-export { urlHost } from "./api/urlHost/urlHost";
-export { urlPath } from "./api/urlPath/urlPath";
+export { getHost } from "./api/fetcher/getHost";
+export { getPath } from "./api/fetcher/getPath";
+
+// i18n
+export { getLocales } from "./i18n/getLocales";
 
 // TYPES
 export type { Locale } from './i18n/i18n';
-export type { FetcherLink, hostName, pathName } from './model/type';
-export { paths, hosts } from './model/type';
+export type { FetcherLinkType, hostNameType, pathNameType, paginationType } from './model/type';
+export { paths } from './model/type';
 
 // HELPERS
 export { AdaptiveDevice } from './helpers/AdaptiveDevice/AdaptiveDevice';
