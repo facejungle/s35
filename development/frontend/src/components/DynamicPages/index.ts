@@ -1,0 +1,1 @@
+export type {DynamicPageType, DynamicPageDataType} from './model/type';

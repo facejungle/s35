@@ -1,36 +1,11 @@
-import { fetcher } from "@shared/index";
-import { ProjectDataType, TProject } from "../model/type";
-import { getCategoryLink, getProjectLink, noCategory } from "..";
+import {fetcher} from "@shared/index";
+import {TDProject} from "../model/type";
 
-export async function getProjectBySlug(projectSlug: string): Promise<TProject | undefined> {
-   try {
-      const project: ProjectDataType = await fetcher({ host: 'API', path: 'PROJECT_BY_SLUG', slug: projectSlug });
-      return {
-         title: project.title,
-         link: getProjectLink(project),
-         slug: project.slug,
-         description: project.description,
-         image: project.image,
-         totalArea: project.totalArea,
-         livingArea: project.livingArea,
-         profile: {
-            length: project.profile.length,
-            width: project.profile.width,
-            height: project.profile.height,
-            gable: project.profile.height
-         },
-         category: {
-            title: project.category ? project.category.title : noCategory.title,
-            slug: project.category ? project.category.slug : noCategory.slug,
-            link: getCategoryLink(project.category),
-            description: project.category ? project.category.description : noCategory.description,
-            image: project.category?.image
-         },
-         gallery: project.gallery,
-      };
-   }
-   catch (err) {
-      console.log(`[${process.env.PROJECT_SLUG}][getProjectBySlug()] > ` + err);
-      return undefined;
-   }
+export async function getProjectBySlug(projectSlug: string): Promise<TDProject | undefined> {
+    try {
+        return await fetcher({host: 'API', path: 'PROJECT_BY_SLUG', slug: projectSlug});
+    } catch (err) {
+        console.log(`[${process.env.PROJECT_SLUG}][getProjectBySlug()] > ` + err);
+        return undefined;
+    }
 }

@@ -1,22 +1,13 @@
-import { fetcher } from "@/shared";
-import { ProjectSettingsData } from "../model/type";
+import {fetcher} from "@/shared";
+import {TProjectSettings} from "../index";
 
-export async function getProjectSettings(): Promise<ProjectSettingsData> {
-   const projectSettings = await fetcher({ host: 'API', path: 'PROJECT_SETTINGS' });
-   if (!projectSettings) return {
-      lengthText: 'Length',
-      widthText: 'Width',
-      heightText: 'Height',
-      gableText: 'Gable',
-      totalAreaText: 'Total area',
-   }
-   return {
-      lengthText: projectSettings.lengthText || 'Length',
-      widthText: projectSettings.widthText || 'Width',
-      heightText: projectSettings.heightText || 'Height',
-      gableText: projectSettings.gableText || 'Gable',
-      totalAreaText: projectSettings.totalAreaText || 'Total area',
-   };
+export async function getProjectSettings(): Promise<TProjectSettings | undefined> {
+    try {
+        return await fetcher({host: 'API', path: 'PROJECT_SETTINGS'});
+    } catch (err) {
+        console.log(`[${process.env.PROJECT_SLUG}][getProjectSettings()] > ` + err);
+        return undefined;
+    }
 }
 
 export default getProjectSettings

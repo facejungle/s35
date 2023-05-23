@@ -1,23 +1,26 @@
-import { Metadata } from "next/types";
-import { use } from 'react';
-import style from '@components/Projects/ui/style/card.module.css';
-import { getProjectsPage } from "@components/StaticPages"
-import { ProjectPreview, getProjects } from '@components/Projects';
-import { getSeo } from "@components/index";
-import { notFound } from "next/navigation";
+import {Metadata} from "next/types";
+import React, {use} from 'react';
+import style from '@components/Projects/style/card.module.scss';
+import {getProjectsPage} from "@components/StaticPages"
+import {ProjectPreview, getProjects, getProjectsLinks} from '@components/Projects';
+import {notFound} from "next/navigation";
 
-export const dynamicParams = false;
-
-export default function Projects(): React.ReactNode {
-   const projects = use(getProjects());
-   if (!projects) return notFound();
-   return projects.map(project => {
-      return (
-         <div key={project.slug} className={style.card}>
-            {ProjectPreview(project)}
-         </div >
-      );
-   });
+type TProjectsParams = {
+    params: {};
+    searchParams: {
+        page: number;
+    }
+}
+export default function Projects(searchParams: TProjectsParams): React.ReactElement[] {
+    const projects = use(getProjects());
+    if (!projects) return notFound();
+    return projects.map(project => {
+        return (
+            <div key={project.slug} className={style.card}>
+                {ProjectPreview(project)}
+            </div>
+        );
+    });
 }
 
 // export async function generateMetadata(): Promise<Metadata> {

@@ -1,11 +1,9 @@
-import { fetcher } from "@shared/index";
-import { checkLinkType } from "../helpers/checkLinkType";
+import {fetcher} from "@shared/index";
+import {checkLinkType, TLinkData, TMenusData} from "../index";
 
-export async function getHeaderMenu() {
-   const HeaderMenu = await fetcher({ host: 'API', path: 'MENU_HEADER' });
-   if (!HeaderMenu) return null;
+export async function getHeaderMenu(): Promise<TLinkData[]> {
+    const HeaderMenu: TMenusData = await fetcher({host: 'API', path: 'MENU_HEADER'});
+    if (!HeaderMenu) throw new Error(`[getHeaderMenu] > menuData undefined`);
 
-   return HeaderMenu.HeaderMenu.map((element: any) => {
-      return checkLinkType(element);
-   })
+    return HeaderMenu.HeaderMenu;
 }

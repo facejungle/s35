@@ -1,11 +1,5 @@
-import style from "./SiteFooter.module.css";
-
-export function SiteFooter() {
-   return (
-      <footer className={style.site_footer}>
-         <div className="flex-column container">
-            Footer
-         </div>
-      </footer>
-   )
+export function SiteFooter(): React.ReactElement {
+    return <>footer</>
 }
+
+export default SiteFooter;

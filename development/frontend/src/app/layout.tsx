@@ -1,57 +1,31 @@
-import { Metadata } from "next/types";
-import '@shared/styles/reset.css'
-import '@shared/styles/globals.css'
-import { InterFont } from "@shared/styles/fonts";
-import { AdaptiveDevice } from '@shared/index';
-import { SiteHeader } from '@widgets/index';
-import { SiteFooter } from '@/widgets/index';
+import {InterFont} from '@shared/style/fonts';
+import '@shared/style/globals.scss';
+import {SiteHeader} from "@widgets/SiteHeader/SiteHeader";
+import {SiteFooter} from "@widgets/SiteFooter/SiteFooter";
+import {getHeaderMenu} from "@components/Menus";
+import {getContacts, getSiteSettings} from "@/shared";
 
-export const dynamicParams = true;
-export const revalidate = 60;
-
-
-export default async function RootLayout({ children, }: { children: React.ReactElement }) {
-
-   return (
-      <html lang="ru" className={InterFont.className}>
-         <body>
-            <AdaptiveDevice>
-               <div className="site-wrapper flex-column">
-                  {await SiteHeader()}
-                  <div className="main-wrapper">
-                     <main className="flex-row container">
-
-                        {children}
-
-                     </main>
-                  </div>
-                  <SiteFooter />
-               </div>
-            </AdaptiveDevice>
-         </body>
-      </html>
-   )
+export default async function RootLayout(props: {
+    children: React.ReactNode;
+    Sidebar: React.ReactNode;
+}): Promise<React.ReactElement> {
+    const HeaderMenu = await getHeaderMenu();
+    const HeaderLogo = await getSiteSettings();
+    const HeaderContacts = await getContacts();
+    return (
+        <html lang="ru" className={InterFont.className}>
+        <body>
+        <div className="site-wrapper flex-column">
+            <SiteHeader menuData={HeaderMenu} imageData={HeaderLogo?.image} contactsData={HeaderContacts}/>
+            <div className="main-wrapper">
+                <main className="flex-row container">
+                    {props.children}
+                    {props.Sidebar}
+                </main>
+            </div>
+            <SiteFooter/>
+        </div>
+        </body>
+        </html>
+    )
 }
-
-// export async function generateMetadata(): Promise<Metadata> {
-//    const seo = await getSiteSettingsData();
-
-//    if (!seo) {
-//       return {
-//          title: 'Не найдено!',
-//          keywords: '404',
-//          description: 'Страница не найдена',
-//       }
-//    }
-//    const titleTemplate = seo !== null ? `%s | ${seo.data.attributes.title}` : 's35 app'
-//    const absoluteTemplate = seo !== null ? seo.data.attributes.title : 's35 app'
-//    return {
-//       title: {
-//          template: titleTemplate,
-//          absolute: absoluteTemplate,
-//          default: 'not'
-//       },
-//       keywords: seo !== null ? seo.data.attributes.keywords : 's35 app',
-//       description: seo !== null ? seo.data.attributes.description : 's35 app',
-//    };
-// }

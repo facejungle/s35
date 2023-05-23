@@ -1,4 +1,4 @@
-export default function Loading() {
+export default function Loading(): React.ReactElement {
    return (
       <>
          <div className="loader_wrapper flex-column">
