@@ -1,48 +1,57 @@
-import { ImageStrapiData } from "@/shared/helpers/ImageStrapi/model/type";
-import { PortfolioDataType } from "@/components/Portfolio/model/type";
-import { ProjectDataType } from "@/components/Projects/model/type";
-import type { MDXContent } from 'mdx/types';
+import {ImageDataType} from "@shared/index";
+import {PortfolioDataType} from "@/components/Portfolio";
+import {TProject} from "@/components/Projects/model/type";
+import type {MDXContent} from 'mdx/types';
 
-enum Components {
-   TITLE = 'content.title',
-   TEXT = 'content.text',
-   RICHTEXT = 'content.rich-text',
-   IMAGE = 'content.image',
-   GALLERY = 'content.gallery',
-   LOCATION = 'content.location',
-   PROJECT = 'content.project',
-   PORTFOLIO = 'content.portfolio',
+
+const Components = {
+    TITLE: 'content.title',
+    TEXT: 'content.text',
+    RICHTEXT: 'content.rich-text',
+    IMAGE: 'content.image',
+    GALLERY: 'content.gallery',
+    LOCATION: 'content.location',
+    PROJECT: 'content.project',
+    PORTFOLIO: 'content.portfolio',
+} as const;
+
+interface base<C = keyof typeof Components> {
+    __component: C;
+    id: number;
 }
 
-interface base<C = Components> {
-   __component: C;
-   id: number;
+export interface ContentTitleType extends base<typeof Components.TITLE> {
+    text: string;
+    size: number;
+    hashtag?: string;
 }
 
-export interface ContentTitleType extends base<Components.TITLE> {
-   text: string;
-   size: number;
-   hashtag?: string;
+export interface ContentTextType extends base<typeof Components.TEXT> {
+    text: string;
 }
-export interface ContentTextType extends base<Components.TEXT> {
-   text: string;
+
+export interface ContentRichTextType extends base<typeof Components.RICHTEXT> {
+    text: MDXContent;
 }
-export interface ContentRichTextType extends base<Components.RICHTEXT> {
-   text: MDXContent;
+
+export interface ContentImageType extends base<typeof Components.IMAGE> {
+    image: ImageDataType;
 }
-export interface ContentImageType extends base<Components.IMAGE> {
-   image: ImageStrapiData;
+
+export interface ContentGalleryType extends base<typeof Components.GALLERY> {
+    gallery: [ImageDataType];
 }
-export interface ContentGalleryType extends base<Components.GALLERY> {
-   image: [ImageStrapiData];
+
+export interface ContentLocationType extends base<typeof Components.LOCATION> {
+    name: string;
 }
-export interface ContentLocationType extends base<Components.LOCATION> {
-   name: string;
+
+export interface ContentProjectType extends base<typeof Components.PROJECT> {
+    projects: [TProject];
 }
-export interface ContentProjectType extends base<Components.PROJECT> {
-   projects: [ProjectDataType];
+
+export interface ContentPortfolioType extends base<typeof Components.PORTFOLIO> {
+    portfolio: [PortfolioDataType];
 }
-export interface ContentPortfolioType extends base<Components.PORTFOLIO> {
-   portfolio: [PortfolioDataType];
-}
+
 export type ContentDataType = [ContentTitleType | ContentTextType | ContentRichTextType | ContentImageType | ContentGalleryType | ContentLocationType | ContentProjectType | ContentPortfolioType];

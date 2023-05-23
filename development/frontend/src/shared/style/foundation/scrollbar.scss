@@ -1,0 +1,20 @@
+::-webkit-scrollbar {
+  position: absolute;
+  z-index: 48;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 100%;
+  background-color: var(--color_white);
+}
+
+::-webkit-scrollbar-thumb {
+  position: absolute;
+  z-index: 49;
+  top: 0;
+  left: 0;
+  width: 100%;
+  cursor: pointer;
+  background-color: var(--color_gray);
+  border-radius: 5px;
+}

@@ -1,44 +1,40 @@
-import { MediaGallery } from '@/shared';
+import {MediaGallery} from '@shared/index';
 import style from './ProjectGeneral.module.scss';
-import { TProject } from '@components/Projects/model/type';
+import {TDProject} from '@components/Projects/model/type';
+import dictionary from '@shared/dictionary.json';
 
-import { Locale } from "@/shared/i18n/i18n";
-import { getDictionary } from "@/shared/i18n/getDictionary";
-import { use } from 'react';
-
-export function ProjectGeneral({ project, lang }: { project: TProject, lang: Locale }) {
-   const dict = use(getDictionary(lang));
-   return (
-      <div className={`${style.project_general} flex-row`}>
-         <MediaGallery images={project.gallery} />
-         <div className={`${style.project_profile} flex-column`}>
-            <div className={`${style.profile_area} ${style.profile_child}`}>
-               <div className={style.profile_child__inner}>
-                  <p className={style.number}>{project.totalArea} / {project.livingArea} м²</p>
-                  <p className={`${style.desc} tooltip`} data-tooltip={`${dict.projects.profile.totalArea} / ${dict.projects.profile.livingArea}`}>
-                     {dict.projects.profile.Area}
-                  </p>
-               </div>
+export function ProjectGeneral({project}: { project: TDProject }): React.ReactElement {
+    const dict = dictionary.components.projects.ProjectGeneral;
+    return (
+        <div className={`${style.project_general} flex-row`}>
+            {project.gallery ? <MediaGallery images={project.gallery}/> : undefined}
+            <div className={`${style.project_profile} flex-column`}>
+                <div className={`${style.profile_area} ${style.profile_child}`}>
+                    <div className={style.profile_child__inner}>
+                        <p className={style.number}>{project.totalArea} / {project.livingArea} м²</p>
+                        <p className={`${style.desc} tooltip`}
+                           data-tooltip={`${dict.profile.totalArea} / ${dict.profile.livingArea}`}>
+                            {dict.profile.Area}
+                        </p>
+                    </div>
+                </div>
+                <div className={`${style.profile_length} ${style.profile_child}`}>
+                    <div className={style.profile_child__inner}>
+                        <p className={style.number}>
+                            {project.profile.length} x {project.profile.width}
+                        </p>
+                        <p className={style.desc}>
+                            {dict.profile.length} / {dict.profile.width}
+                        </p>
+                    </div>
+                </div>
+                <div className={`${style.profile_height} ${style.profile_child}`}>
+                    <div className={style.profile_child__inner}>
+                        <p className={style.number}>{project.profile.height} / {project.profile.gable}</p>
+                        <p className={style.desc}>{dict.profile.height} / {dict.profile.gable}</p>
+                    </div>
+                </div>
             </div>
-            <div className={`${style.profile_length} ${style.profile_child}`}>
-               <div className={style.profile_child__inner}>
-                  <p className={style.number}>
-                     {project.profile.length} x {project.profile.width}
-                  </p>
-                  <p className={style.desc}>
-                     {dict.projects.profile.length} / {dict.projects.profile.width}
-                  </p>
-               </div>
-            </div>
-            <div className={`${style.profile_height} ${style.profile_child}`}>
-               <div className={style.profile_child__inner}>
-                  <p className={style.number}>{project.profile.height} / {project.profile.gable}</p>
-                  <p className={style.desc}>{dict.projects.profile.height} / {dict.projects.profile.gable}</p>
-               </div>
-            </div>
-         </div>
-      </div>
-   )
+        </div>
+    )
 }
-
-export default ProjectGeneral

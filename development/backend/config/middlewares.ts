@@ -7,7 +7,7 @@ export default [
     config: {
       enabled: true,
       headers: '*',
-      origin: [process.env.API_EXT_URL, process.env.API_URL, , process.env.APP_URL, process.env.PROXY_URL]
+      origin: [process.env.API_URL, process.env.API_EXT_URL, process.env.PROXY_URL, process.env.APP_URL]
     }
   },
   'strapi::poweredBy',

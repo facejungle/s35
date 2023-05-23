@@ -1,24 +1,16 @@
-import { fetcher } from "@shared/index";
-import { notFound } from "next/navigation";
-import { ProjectCategoryDataType, TProjectCategory } from "../model/type";
-import { getCategoryLink } from "..";
+import {fetcher} from "@shared/index";
+import {TDProjectCategory} from "../model/type";
 
 
-
-export async function getCategoryBySlug(categorySlug: string): Promise<TProjectCategory | undefined> {
-   try {
-      const category: ProjectCategoryDataType = await fetcher({ host: 'API', path: 'PROJECT_CATEGORY_BY_SLUG', slug: categorySlug });
-      if (!category) return notFound();
-      return {
-         title: category.title,
-         slug: category.slug,
-         link: getCategoryLink(category),
-         description: category.description,
-         image: category?.image
-      };
-   }
-   catch (err) {
-      console.log(`[${process.env.PROJECT_SLUG}][getCategoryBySlug()] > ` + err);
-      return undefined;
-   }
+export async function getCategoryBySlug(categorySlug: string): Promise<TDProjectCategory | undefined> {
+    try {
+        return await fetcher({
+            host: 'API',
+            path: 'PROJECT_CATEGORY_BY_SLUG',
+            slug: categorySlug
+        });
+    } catch (err) {
+        console.log(`[${process.env.PROJECT_SLUG}][getCategoryBySlug()] > ` + err);
+        return undefined;
+    }
 }

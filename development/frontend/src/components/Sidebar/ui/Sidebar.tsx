@@ -1,11 +1,11 @@
-import style from './Sidebar.module.css';
-import { Menu } from "./widgets";
-import { widgetType } from '../model/type';
+import style from './Sidebar.module.scss';
+import {Menu} from "./widgets";
+import {widgetType} from '../model/type';
 
-export function Sidebar({ widgets }: widgetType) {
-   return (
-      <aside className={style.sidebar}>
-         <Menu />
-      </aside>
-   );
+export function Sidebar({widgets}: widgetType) {
+    return (
+        <aside className={style.sidebar}>
+            <Menu/>
+        </aside>
+    );
 }

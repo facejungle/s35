@@ -13,15 +13,19 @@
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.4.2",
     "@types/mdx": "^2.0.5",
-    "@types/node": "18.16.3",
-    "@types/react": "18.2.5",
-    "@types/react-dom": "18.2.3",
-    "next": "13.4.2",
+    "@types/node": "20.1.5",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
+    "next": "13.4.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.62.1",
     "sharp": "^0.32.1",
     "swr": "^2.1.5",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "eslint": "8.40.0",
+    "eslint-config-next": "13.4.2"
   }
 }

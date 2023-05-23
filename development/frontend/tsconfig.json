@@ -27,9 +27,6 @@
       "@/*": [
         "./src/*"
       ],
-      "@i18n/*": [
-        "src/shared/i18n/*"
-      ],
       "@components/*": [
         "./src/components/*"
       ],
@@ -45,11 +42,9 @@
     }
   },
   "include": [
-    "middleware.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next.config.js",
     ".next/types/**/*.ts"
   ],
   "exclude": [

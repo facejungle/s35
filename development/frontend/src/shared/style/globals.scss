@@ -1,0 +1,95 @@
+@import "foundation/reset";
+@import "foundation/variables";
+@import "foundation/container";
+@import "foundation/scrollbar";
+@import "foundation/loader";
+@import "foundation/sidebar";
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.site-wrapper {
+  height: 100vh;
+}
+
+.main-wrapper {
+  flex: 1 0 auto;
+  background-color: var(--color_white);
+  border-top: 1px solid var(--color_gray0);
+  border-bottom: 1px solid var(--color_gray0);
+
+  main {
+    height: 100%;
+    align-items: stretch;
+    justify-content: center;
+
+    article {
+      flex: 1 1 100%;
+      padding: var(--padding25);
+      gap: var(--padding25)
+    }
+  }
+}
+
+
+h1 {
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.6em;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+p.tooltip {
+  cursor: help;
+  text-decoration: underline dotted;
+  position: relative;
+
+  &::after,
+  &::after {
+    background: var(--color_gray0);
+    border-radius: var(--radius);
+    top: 250%;
+    opacity: 0;
+    content: "⚠️ " attr(data-tooltip);
+    display: block;
+    left: -50%;
+    padding: 10px;
+    position: absolute;
+    min-width: 280px;
+    transition: opacity .4s, top .3s, visibility .4s;
+    pointer-events: none;
+    visibility: hidden;
+    z-index: 1;
+  }
+
+  &:target::after,
+  &:hover::after {
+    top: 150%;
+    opacity: 100;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+

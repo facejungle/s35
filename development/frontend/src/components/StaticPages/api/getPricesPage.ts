@@ -1,17 +1,17 @@
-import { fetcher } from "@shared/index";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import {fetcher} from "@shared/index";
+import {Metadata} from "next";
+import {notFound} from "next/navigation";
 
 
 interface pricesPagePromise extends Metadata {
-   data: any;
-   slug?: string;
-   image?: {};
+    data: any;
+    slug?: string;
+    image?: {};
 };
 
 export async function getPricesPage(): Promise<pricesPagePromise> {
-   const page = await fetcher({ host: 'API', path: 'PAGE_PRICES' });
-   if (!page) return notFound();
+    const pricesPage = await fetcher({host: 'API', path: 'PAGE_PRICES'});
+    if (!pricesPage) return notFound();
 
-   return page;
+    return pricesPage;
 }

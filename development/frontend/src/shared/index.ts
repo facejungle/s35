@@ -1,20 +1,18 @@
-// API
-export { fetcher } from "./api/fetcher/fetcher";
-export { getHost } from "./api/fetcher/getHost";
-export { getPath } from "./api/fetcher/getPath";
+export type {hostNameType, pathNameType, FetcherLinkType, paginationType, sortType} from './model/fetcher';
+export {paths, apiUrls} from './model/fetcher';
+export {getPath} from './helpers/getPath';
+export {getHost} from './helpers/getHost';
+export {fetcher} from './helpers/fetcher';
 
-// i18n
-export { getLocales } from "./i18n/getLocales";
+export type {ImageSizesType, ImageFormatsType, ImageDataType} from './model/image';
+export {ImageSizes} from './model/image';
+export {ImagePlaceholder} from './ui/ImagePlaceholder';
+export {ImageStrapi} from './ui/ImageStrapi';
+export {MediaGallery} from './ui/MediaGallery/MediaGallery';
 
-// TYPES
-export type { Locale } from './i18n/i18n';
-export type { FetcherLinkType, hostNameType, pathNameType, paginationType } from './model/type';
-export { paths } from './model/type';
+export type {SiteSettingsDataType} from './model/settings';
+export {getSiteSettings} from "@shared/api/getSiteSettings";
 
-// HELPERS
-export { AdaptiveDevice } from './helpers/AdaptiveDevice/AdaptiveDevice';
-export { ImagePlaceholder } from "./helpers/ImagePlaceholder/ui/ImagePlaceholder";
-export { ImageStrapi } from './helpers/ImageStrapi/ui/ImageStrapi';
-export { MediaGallery } from './helpers/MediaGallery/ui/MediaGallery';
-export { ImageCustom } from './helpers/ImageCustom/ImageCustom';
-export { getDictionary } from './i18n/getDictionary';
+export type {ContactsDataType} from './model/contacts';
+export {getContacts} from "./api/getContacts";
+export {Contacts} from './ui/Contacts';

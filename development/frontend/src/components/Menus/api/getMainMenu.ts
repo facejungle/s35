@@ -1,11 +1,9 @@
-import { fetcher } from "@shared/index";
-import { checkLinkType } from "../helpers/checkLinkType";
+import {fetcher} from "@shared/index";
+import {checkLinkType} from "../index";
 
-export async function getHeaderMenu() {
-   const HeaderMenu = await fetcher({ host: 'API', path: 'MENU_MAIN' });
-   if (!HeaderMenu) return null;
+export async function getMainMenu() {
+    const mainMenu = await fetcher({host: 'API', path: 'MENU_MAIN'});
+    if (!mainMenu) throw new Error(`[getMainMenu] > menuData undefined`);
 
-   return HeaderMenu.HeaderMenu.map((element: any) => {
-      return checkLinkType(element);
-   })
+    return mainMenu.MainMenu;
 }
