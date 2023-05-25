@@ -1,5 +1,5 @@
 import {StaticImageData} from "next/image";
-import {ImageDataType} from "@/shared";
+import {TImageData} from "@/shared";
 
 
 interface baseCategory<I> {
@@ -27,10 +27,10 @@ export interface PortfolioCategoryType<I = StaticImageData> extends baseCategory
 }
 
 
-export interface PortfolioDataType<I = ImageDataType> extends basePortfolio<I, PortfolioCategoryDataType | null> {
+export interface PortfolioDataType<I = TImageData> extends basePortfolio<I, PortfolioCategoryDataType | null> {
     id: number;
 }
 
-export interface PortfolioCategoryDataType<I = ImageDataType> extends baseCategory<I> {
+export interface PortfolioCategoryDataType<I = TImageData> extends baseCategory<I> {
     id: number;
 }

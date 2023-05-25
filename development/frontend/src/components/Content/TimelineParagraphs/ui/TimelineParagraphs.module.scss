@@ -1,0 +1,108 @@
+.TimelineParagraphs {
+  padding: var(--padding25);
+  text-align: justify;
+
+  h2 {
+    text-align: right;
+  }
+
+  @media only screen and (max-width: 400px) {
+    .card:nth-child(odd)::before {
+      top: -5px;
+      bottom: -5px;
+    }
+  }
+
+  .card {
+    position: relative;
+
+    &:nth-child(odd) {
+      padding: var(--padding25);
+      padding-right: 0;
+
+      .info {
+        .title::before {
+          left: calc(var(--padding50) * -1);
+        }
+      }
+    }
+
+    &:nth-child(even) {
+      padding: var(--padding25);
+      padding-left: 0;
+
+      .info {
+        .title {
+          text-align: right;
+
+          &::before {
+            right: calc(var(--padding50) * -1);
+          }
+        }
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 50%;
+      border: solid var(--color_primary);
+    }
+
+    &:nth-child(odd)::before {
+      left: 0;
+      top: -4.5px;
+      bottom: -4.5px;
+      border-width: 5px 0 5px 5px;
+      border-radius: 50px 0 0 50px;
+    }
+
+    &:nth-child(even)::before {
+      right: 0;
+      top: 0;
+      bottom: 0;
+      border-width: 5px 5px 5px 0;
+      border-radius: 0 50px 50px 0;
+    }
+
+    &:first-child::before {
+      border-top: 0;
+      border-top-left-radius: 0;
+    }
+
+    &:last-child:nth-child(odd)::before {
+      border-bottom: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &:last-child:nth-child(even)::before {
+      border-bottom: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .title {
+      color: var(--color_primary);
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: white;
+        border-radius: 999px;
+        border: 3px solid var(--color_primary);
+      }
+    }
+
+    .info {
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+      background: var(--color_gray0);
+      color: var(--color_black_trans3);
+      border-radius: 25px;
+      padding: var(--padding25);
+    }
+  }
+}

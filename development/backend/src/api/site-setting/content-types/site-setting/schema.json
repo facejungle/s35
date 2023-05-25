@@ -12,26 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true,
-      "default": "srub35",
-      "pluginOptions": {}
-    },
-    "description": {
-      "type": "text",
-      "required": true,
-      "default": "app srub35",
-      "pluginOptions": {}
-    },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {}
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

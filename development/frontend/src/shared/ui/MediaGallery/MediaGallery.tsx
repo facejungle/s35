@@ -7,7 +7,7 @@ import {getHost, TImageData, ImagePlaceholder, ImageStrapi, TImagesData} from "@
 import Loading from "@/app/loading";
 
 export function MediaGallery({images}: { images: TImagesData }) {
-    if (images) {
+    if (images.data) {
         const [previewImage, setPreviewImage] = useState(images.data[0]);
         const thumbs = images.data.map((image, index) => {
             if (image) {

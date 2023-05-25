@@ -10,6 +10,9 @@ export function getPath(path: TPathNames, slug?: string, pagination?: TPaginatio
     if (path === 'MENU_HEADER') fetchPath = paths.MENU_HEADER.valueOf();
     if (path === 'MENU_MAIN') fetchPath = paths.MENU_MAIN.valueOf();
 
+    if (path === 'PAGES') fetchPath = paths.PAGES.valueOf();
+    if (path === 'PAGE_BY_SLUG') fetchPath = paths.PAGE_BY_SLUG.valueOf();
+
     if (path === 'PAGE_FRONT') fetchPath = paths.PAGE_FRONT.valueOf();
     if (path === 'PAGE_CONTACTS') fetchPath = paths.PAGE_CONTACTS.valueOf();
     if (path === 'PAGE_PRICES') fetchPath = paths.PAGE_PRICES.valueOf();

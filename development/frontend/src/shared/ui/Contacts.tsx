@@ -6,9 +6,9 @@ export function Contacts({contactsData, isDefault}: {
     contactsData: TContactsData, isDefault?: boolean
 }): React.ReactElement {
     const contacts = contactsData;
-    let defaultPhone = <>default phone</>;
-    let defaultEmail = <>default email</>;
-    if (contacts) {
+    let defaultPhone = <Link href="/">default phone</Link>;
+    let defaultEmail = <Link href="/">default email</Link>;
+    if (contacts.data) {
         if (isDefault) {
             const phone = contacts.data.attributes.phone.map(phone => {
                 if (phone.default) {

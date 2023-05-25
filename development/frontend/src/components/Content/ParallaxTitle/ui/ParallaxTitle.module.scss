@@ -1,0 +1,31 @@
+.HeroTitle {
+  display: flex;
+  min-height: 30vh;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  border-radius: var(--radius);
+
+  img {
+    position: absolute;
+    object-position: center top;
+    object-fit: none;
+
+  }
+
+  h1 {
+    padding: var(--padding25);
+    background-color: var(--color_white_trans1);
+    border-radius: var(--radius);
+    backdrop-filter: blur(var(--blur));
+    color: var(--color_black_trans3);
+    z-index: 1;
+  }
+}

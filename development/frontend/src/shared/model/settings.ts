@@ -1,9 +1,15 @@
 import {TApiData, TImageData} from "../index";
+import {TSeoData} from "@components/MetaSeo";
+import {TPageData} from "@components/DynamicPages";
+
 
 export type TSiteSettingsAttributes = {
-    title: string;
-    description: string;
-    image: TImageData;
+    createdAt: string;
+    updatedAt: string;
+    seo: TSeoData | null;
+    frontPage: TPageData;
+    projectsPage: TPageData;
+    portfolioPage: TPageData;
 }
 type SiteSettingsData = {
     id: number;

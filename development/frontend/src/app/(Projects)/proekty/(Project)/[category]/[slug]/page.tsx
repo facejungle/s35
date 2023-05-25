@@ -11,12 +11,12 @@ type Props = {
 
 export default async function ProjectPage({params}: { params: Props }): Promise<React.ReactElement> {
     const project = await getProjectBySlug(params.slug);
-    if (!project || params.category !== project.data?.attributes.category?.data.attributes.slug) return notFound();
+    if (!project || params.category !== project.data?.attributes.category.data?.attributes.slug) return notFound();
     return (
         <>
             <div className={`${style.project_header} flex-column`}>
-                <h1>{project.data.attributes.title}</h1>
-                <ProjectGeneral project={project.data.attributes}/>
+                <h1>{project.data.attributes.seo.metaTitle}</h1>
+                <ProjectGeneral project={project.data}/>
             </div>
         </>
     );
