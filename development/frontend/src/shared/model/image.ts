@@ -1,29 +1,6 @@
-export type ImageFormatsType = {
-    url: string;
-    width: number;
-    height: number;
-    name: string;
-    hash: string;
-    ext: string;
-    mime: string;
-}
-export type ImageDataType = {
-    id: number;
-    url: string;
-    width: number;
-    height: number;
-    name: string;
-    alternativeText: string;
-    caption?: string;
-    formats: {
-        logo?: ImageFormatsType;
-        thumbnail?: ImageFormatsType;
-        preview?: ImageFormatsType;
-        large?: ImageFormatsType;
-        xlarge?: ImageFormatsType;
-    };
-}
-export type ImageSizesType = keyof ImageDataType["formats"] | 'original';
+import {TApiData} from "@shared/index";
+import {StaticImageData} from "next/image";
+
 
 export const ImageSizes = {
     logo: {
@@ -47,3 +24,42 @@ export const ImageSizes = {
         height: 1080
     },
 } as const;
+
+
+export type TImageFormat = {
+    url: string;
+    width: number;
+    height: number;
+    name: string;
+    hash: string;
+    ext: string;
+    mime: string;
+}
+
+export type TImageAttributes = {
+    url: string;
+    width: number;
+    height: number;
+    name: string;
+    alternativeText: string;
+    caption?: string;
+    formats: {
+        [Property in keyof typeof ImageSizes]-?: TImageFormat
+    };
+}
+
+export type ImageData = {
+    id: number;
+    attributes: TImageAttributes;
+}
+
+export type TImage = {
+    url: string | StaticImageData;
+    width: number;
+    height: number;
+    alt?: string;
+}
+export type TImageData = TApiData<ImageData>;
+export type TImagesData = TApiData<ImageData[]>;
+export type TImageSizes = keyof typeof ImageSizes | 'original';
+

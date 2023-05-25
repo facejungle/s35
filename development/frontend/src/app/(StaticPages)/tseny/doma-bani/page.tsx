@@ -1,7 +1,7 @@
 export default function PagePriceHouse() {
-   return (
-      <>
-         doma-bani
-      </>
-   );
+    return (
+        <article>
+            doma-bani
+        </article>
+    );
 }

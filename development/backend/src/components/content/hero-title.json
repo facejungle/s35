@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_content_hero_titles",
+  "info": {
+    "displayName": "Hero Title"
+  },
+  "options": {},
+  "attributes": {
+    "titleFirstRow": {
+      "type": "string",
+      "required": true
+    },
+    "titleTwoRow": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

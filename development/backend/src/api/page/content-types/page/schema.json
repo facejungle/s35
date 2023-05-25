@@ -12,28 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true,
-      "pluginOptions": {}
-    },
-    "slug": {
-      "type": "uid",
-      "required": true
-    },
-    "description": {
-      "type": "text",
-      "required": true,
-      "pluginOptions": {}
-    },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {}
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     },
     "parent": {
       "type": "relation",
@@ -44,14 +26,19 @@
       "type": "dynamiczone",
       "components": [
         "content.gallery",
+        "content.hero-title",
         "content.image",
         "content.location",
+        "content.portfolio",
         "content.project",
         "content.rich-text",
         "content.text",
         "content.title"
-      ],
-      "pluginOptions": {}
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
     }
   }
 }

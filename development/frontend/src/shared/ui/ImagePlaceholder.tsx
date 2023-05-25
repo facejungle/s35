@@ -1,5 +1,5 @@
 import Image from "next/image"
-import {ImageSizesType} from "../index";
+import {TImageSizes} from "../index";
 import placeholderLogo from '@public/images/240x120.webp';
 import placeholderThumbnail from '@public/images/500x300.webp';
 import placeholderPreview from '@public/images/750x500.webp';
@@ -15,7 +15,7 @@ import placeholderXLarge from '@public/images/1920x1080.webp';
  *
  * @returns Image from "next/image"
  */
-export function ImagePlaceholder({size}: { size: ImageSizesType }) {
+export function ImagePlaceholder({size}: { size: TImageSizes }) {
     if (size === 'logo') return <Image
         src={placeholderLogo}
         width={240} height={120} quality={100}

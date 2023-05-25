@@ -9,14 +9,14 @@ type Props = {
     slug: string;
 };
 
-export default function ProjectPage({params}: { params: Props }): React.ReactElement {
-    const project = use(getProjectBySlug(params.slug));
-    if (!project || params.category !== project.category?.slug) return notFound();
+export default async function ProjectPage({params}: { params: Props }): Promise<React.ReactElement> {
+    const project = await getProjectBySlug(params.slug);
+    if (!project || params.category !== project.data?.attributes.category?.data.attributes.slug) return notFound();
     return (
         <>
             <div className={`${style.project_header} flex-column`}>
-                <h1>{project.title}</h1>
-                <ProjectGeneral project={project}/>
+                <h1>{project.data.attributes.title}</h1>
+                <ProjectGeneral project={project.data.attributes}/>
             </div>
         </>
     );
@@ -25,5 +25,5 @@ export default function ProjectPage({params}: { params: Props }): React.ReactEle
 export async function generateStaticParams() {
     const projects = await getProjects();
     if (!projects) return notFound();
-    return getProjectsLinks(projects);
+    return getProjectsLinks(projects.data);
 }

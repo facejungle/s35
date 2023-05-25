@@ -1,7 +1,7 @@
 import {fetcher} from "@shared/index";
-import {TDProject} from "../model/type";
+import {TProjectData} from "../model/type";
 
-export async function getProjectBySlug(projectSlug: string): Promise<TDProject | undefined> {
+export async function getProjectBySlug(projectSlug: string): Promise<TProjectData | undefined> {
     try {
         return await fetcher({host: 'API', path: 'PROJECT_BY_SLUG', slug: projectSlug});
     } catch (err) {

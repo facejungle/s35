@@ -1,9 +1,9 @@
 import {MediaGallery} from '@shared/index';
 import style from './ProjectGeneral.module.scss';
-import {TDProject} from '@components/Projects/model/type';
+import {TProjectData} from '@components/Projects/model/type';
 import dictionary from '@shared/dictionary.json';
 
-export function ProjectGeneral({project}: { project: TDProject }): React.ReactElement {
+export function ProjectGeneral({project}: { project: TProjectData['data']['attributes'] }): React.ReactElement {
     const dict = dictionary.components.projects.ProjectGeneral;
     return (
         <div className={`${style.project_general} flex-row`}>

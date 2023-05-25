@@ -1,14 +1,38 @@
-export interface FetcherLinkType {
-    host?: hostNameType;
-    path: pathNameType;
-    slug?: string;
+export type TMetaData = {
+    pagination: {
+        page: number;
+        pageSize: number;
+        pageCount: number;
+        total: number;
+    }
+}
 
-    pagination?: paginationType;
-    sort?: sortType;
+export interface TApiData<D> {
+    data: D;
+    meta: TMetaData;
 }
 
 
-export type hostNameType = 'API' | 'API_EXT' | 'STRAPI' | 'STRAPI_EXT';
+export type THostNames = 'API' | 'API_EXT' | 'STRAPI' | 'STRAPI_EXT';
+export type TPathNames = keyof typeof paths;
+export type TPaginationUrl = {
+    page: number;
+    pageSize?: number;
+};
+
+export type TSortUrl = {
+    fieldName: string;
+    direction: 'asc' | 'desc';
+}
+
+export interface TFetcherLink {
+    host?: THostNames;
+    path: TPathNames;
+    slug?: string;
+
+    pagination?: TPaginationUrl;
+    sort?: TSortUrl;
+}
 
 
 export const apiUrls = {
@@ -18,32 +42,25 @@ export const apiUrls = {
 
 
 export const paths = {
-    SETTINGS: '/v2/site-setting?populate=*',
-    CONTACTS: '/v2/contacts?populate=phone,email,social.image',
+    SETTINGS: '/site-setting?populate=*',
+    CONTACTS: '/contact?populate=phone,email,social.image',
 
-    MENU_HEADER: '/v2/menu?populate[HeaderMenu][populate]=link.parent&populate[HeaderMenu][populate]=link.category',
-    MENU_MAIN: '/v2/menu?populate[MainMenu][populate]=link.parent&populate[MainMenu][populate]=link.category',
+    MENU_HEADER: '/menu?populate[HeaderMenu][populate]=link.parent&populate[HeaderMenu][populate]=link.category',
+    MENU_MAIN: '/menu?populate[MainMenu][populate]=link.parent&populate[MainMenu][populate]=link.category',
 
-    PAGE_FRONT: '/v2/page-front?populate[content][populate]=*',
-    PAGE_CONTACTS: '/v2/page-contact?populate[content][populate]=*',
-    PAGE_PRICES: '/v2/page-price?populate[content][populate]=*',
-    PAGE_PORTFOLIO: '/v2/page-portfolio?populate[content][populate]=*',
-    PAGE_PROJECTS: '/v2/page-project?populate[content][populate]=*',
+    PAGE_FRONT: '/page-front?populate[content][populate]=*',
+    PAGE_CONTACTS: '/page-contact?populate[content][populate]=*',
+    PAGE_PRICES: '/page-price?populate[content][populate]=*',
+    PAGE_PORTFOLIO: '/page-portfolio?populate[content][populate]=*',
+    PAGE_PROJECTS: '/page-project?populate[content][populate]=*',
 
-    PROJECTS: '/v2/projects?populate=image&populate=category.image',
-    PROJECTS_CATEGORIES: '/v2/project-categories',
+    PROJECTS: '/projects?populate=image&populate=category.image',
+    PROJECTS_CATEGORIES: '/project-categories',
     PROJECT_BY_SLUG: '/v2/projects/%slug%?populate=*',
     PROJECT_CATEGORY_BY_SLUG: '/v2/project-categories/%slug%',
-    PROJECT_SETTINGS: '/v2/project-setting',
-}
-export type pathNameType = keyof typeof paths;
+} as const;
 
 
-export type paginationType = {
-    start: number;
-    limit: number;
-}
-export type sortType = {
-    fieldName: string;
-    direction: 'asc' | 'desc';
-}
+
+
+

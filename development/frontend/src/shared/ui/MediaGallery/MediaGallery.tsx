@@ -3,13 +3,13 @@
 import style from './MediaGallery.module.scss';
 import {Suspense, useState} from "react";
 import Image from "next/image"
-import {getHost, ImageDataType, ImagePlaceholder, ImageStrapi} from "@shared/index";
+import {getHost, TImageData, ImagePlaceholder, ImageStrapi, TImagesData} from "@shared/index";
 import Loading from "@/app/loading";
 
-export function MediaGallery({images}: { images: [ImageDataType | null] }) {
-    if (images && images !== null) {
-        const [previewImage, setPreviewImage] = useState(images[0]);
-        const thumbs = images.map((image, index) => {
+export function MediaGallery({images}: { images: TImagesData }) {
+    if (images) {
+        const [previewImage, setPreviewImage] = useState(images.data[0]);
+        const thumbs = images.data.map((image, index) => {
             if (image) {
                 return (
                     <button key={index} onClick={() => setPreviewImage(image)}>

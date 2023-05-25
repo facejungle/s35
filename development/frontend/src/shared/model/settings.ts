@@ -1,7 +1,12 @@
-import {ImageDataType} from "../index";
+import {TApiData, TImageData} from "../index";
 
-export type SiteSettingsDataType = {
+export type TSiteSettingsAttributes = {
     title: string;
     description: string;
-    image: ImageDataType;
-};
+    image: TImageData;
+}
+type SiteSettingsData = {
+    id: number;
+    attributes: TSiteSettingsAttributes;
+}
+export type TSiteSettingsData = TApiData<SiteSettingsData>;

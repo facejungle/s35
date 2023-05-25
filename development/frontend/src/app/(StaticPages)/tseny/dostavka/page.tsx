@@ -1,7 +1,7 @@
 export default function PageDelivery() {
-   return (
-      <>
-         dostavka
-      </>
-   );
+    return (
+        <article>
+            dostavka
+        </article>
+    );
 }

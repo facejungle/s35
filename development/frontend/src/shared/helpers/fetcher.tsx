@@ -1,10 +1,8 @@
-import {FetcherLinkType, getHost, getPath, paths} from '../index';
-import useSWR from "swr";
+import {TFetcherLink, getHost, getPath, paths} from '../index';
 
-export async function fetcher(link: FetcherLinkType): Promise<any> {
+export async function fetcher(link: TFetcherLink): Promise<any> {
     let fetchHost: string = getHost(link.host);
     let fetchPath: string = getPath(link.path, link.slug, link.pagination, link.sort);
-
     try {
         const data = await fetch(fetchHost + fetchPath);
         if (!data.ok) {

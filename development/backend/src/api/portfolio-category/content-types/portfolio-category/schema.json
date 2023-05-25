@@ -12,28 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true,
-      "pluginOptions": {}
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     },
     "slug": {
       "type": "uid",
       "required": true
-    },
-    "description": {
-      "type": "text",
-      "required": true,
-      "pluginOptions": {}
-    },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {}
     }
   }
 }

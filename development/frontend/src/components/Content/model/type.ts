@@ -1,4 +1,4 @@
-import {ImageDataType} from "@shared/index";
+import {TImageData, TImagesData} from "@shared/index";
 import {PortfolioDataType} from "@/components/Portfolio";
 import {TProject} from "@/components/Projects/model/type";
 import type {MDXContent} from 'mdx/types';
@@ -35,11 +35,11 @@ export interface ContentRichTextType extends base<typeof Components.RICHTEXT> {
 }
 
 export interface ContentImageType extends base<typeof Components.IMAGE> {
-    image: ImageDataType;
+    image: TImageData;
 }
 
 export interface ContentGalleryType extends base<typeof Components.GALLERY> {
-    gallery: [ImageDataType];
+    gallery: TImagesData;
 }
 
 export interface ContentLocationType extends base<typeof Components.LOCATION> {

@@ -1,17 +1,21 @@
 import {DynamicPageDataType} from "@/components/DynamicPages";
 import {PortfolioDataType} from "@/components/Portfolio";
-import {TProjectCategory, TProject} from "@/components/Projects";
+import {TProjectData, TProjectCatData} from "@/components/Projects";
+import {TApiData} from "@/shared";
 
-export interface LinkType {
+export type TLink = {
     text: string;
     link: string;
 }
 
-interface LinkBase<T> {
+
+type BaseLink<C, L> = {
     id: number;
-    __component: T;
+    __component: C;
     text: string;
+    link: L;
 }
+
 
 export const Components = {
     PAGE_STATIC: 'link.page-static',
@@ -22,35 +26,32 @@ export const Components = {
     PORTFOLIO_CATEGORY: 'link.portfolio-category',
 } as const;
 
-export interface TLinkPageStatic extends LinkBase<typeof Components.PAGE_STATIC> {
-    slug: string;
+
+export type TLinkPageStatic = BaseLink<typeof Components.PAGE_STATIC, string>;
+export type TLinkPageDynamic = BaseLink<typeof Components.PAGE_DYNAMIC, DynamicPageDataType>;
+export type TLinkProject = BaseLink<typeof Components.PROJECT, TProjectData>;
+export type TLinkProjectCategory = BaseLink<typeof Components.PROJECT_CATEGORY, TProjectCatData>;
+export type TLinkPortfolio = BaseLink<typeof Components.PORTFOLIO, PortfolioDataType>;
+export type TLinkPortfolioCategory = BaseLink<typeof Components.PORTFOLIO_CATEGORY, PortfolioDataType>;
+
+
+export enum EnumMenus {
+    HeaderMenu,
+    MainMenu
 }
 
-export interface TLinkPageDynamic extends LinkBase<typeof Components.PAGE_DYNAMIC> {
-    link: DynamicPageDataType;
-}
-
-export interface TLinkProject extends LinkBase<typeof Components.PROJECT> {
-    link: TProject;
-}
-
-export interface TLinkProjectCategory extends LinkBase<typeof Components.PROJECT_CATEGORY> {
-    link: TProjectCategory;
-}
-
-export interface TLinkPortfolio extends LinkBase<typeof Components.PORTFOLIO> {
-    link: PortfolioDataType;
-}
-
-export interface TLinkPortfolioCategory extends LinkBase<typeof Components.PORTFOLIO_CATEGORY> {
-    link: PortfolioDataType;
-}
-
-export type TLinkData = TLinkPageStatic | TLinkPageDynamic | TLinkProject |
+export type TComponent = TLinkPageStatic | TLinkPageDynamic | TLinkProject |
     TLinkProjectCategory | TLinkPortfolio | TLinkPortfolioCategory;
 
-export type TMenusData = {
-    id: number;
-    HeaderMenu: TLinkData[];
-    MainMenu: TLinkData[];
+export type TLinkAttributes<Type = typeof EnumMenus> = {
+    [Property in keyof Type]: [TComponent];
 }
+
+
+type LinkData = {
+    id: number;
+    attributes: TLinkAttributes;
+}
+
+
+export type TLinkData = TApiData<LinkData>;

@@ -12,38 +12,20 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true,
-      "pluginOptions": {}
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.hero-title"
     },
-    "description": {
-      "type": "text",
-      "required": true,
-      "pluginOptions": {}
+    "portfolioCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.portfolio"
     },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {}
-    },
-    "content": {
-      "type": "dynamiczone",
-      "components": [
-        "content.gallery",
-        "content.image",
-        "content.location",
-        "content.portfolio",
-        "content.project",
-        "content.rich-text",
-        "content.text",
-        "content.title"
-      ],
-      "pluginOptions": {}
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

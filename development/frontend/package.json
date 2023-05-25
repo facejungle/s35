@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@mdx-js/loader": "^2.3.0",
@@ -25,6 +26,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "cypress": "^12.13.0",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2"
   }

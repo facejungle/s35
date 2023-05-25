@@ -1,8 +1,8 @@
 import {fetcher} from "@shared/index";
-import {TDProjectCategory} from "../model/type";
+import {TProjectCatData} from "../model/type";
 
 
-export async function getCategoryBySlug(categorySlug: string): Promise<TDProjectCategory | undefined> {
+export async function getCategoryBySlug(categorySlug: string): Promise<TProjectCatData | undefined> {
     try {
         return await fetcher({
             host: 'API',
