@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_content_advantage_paragraphs",
+  "info": {
+    "displayName": "Timeline Paragraphs",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.title",
+      "required": true
+    },
+    "paragraphs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.paragraph",
+      "required": true
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import {DynamicPageDataType} from "@/components/DynamicPages";
+import {TPageData} from "@/components/DynamicPages";
 import {PortfolioDataType} from "@/components/Portfolio";
 import {TProjectData, TProjectCatData} from "@/components/Projects";
 import {TApiData} from "@/shared";
@@ -18,7 +18,6 @@ type BaseLink<C, L> = {
 
 
 export const Components = {
-    PAGE_STATIC: 'link.page-static',
     PAGE_DYNAMIC: 'link.page',
     PROJECT: 'link.project',
     PROJECT_CATEGORY: 'link.project-category',
@@ -27,8 +26,7 @@ export const Components = {
 } as const;
 
 
-export type TLinkPageStatic = BaseLink<typeof Components.PAGE_STATIC, string>;
-export type TLinkPageDynamic = BaseLink<typeof Components.PAGE_DYNAMIC, DynamicPageDataType>;
+export type TLinkPageDynamic = BaseLink<typeof Components.PAGE_DYNAMIC, TPageData>;
 export type TLinkProject = BaseLink<typeof Components.PROJECT, TProjectData>;
 export type TLinkProjectCategory = BaseLink<typeof Components.PROJECT_CATEGORY, TProjectCatData>;
 export type TLinkPortfolio = BaseLink<typeof Components.PORTFOLIO, PortfolioDataType>;
@@ -40,7 +38,7 @@ export enum EnumMenus {
     MainMenu
 }
 
-export type TComponent = TLinkPageStatic | TLinkPageDynamic | TLinkProject |
+export type TComponent = TLinkPageDynamic | TLinkProject |
     TLinkProjectCategory | TLinkPortfolio | TLinkPortfolioCategory;
 
 export type TLinkAttributes<Type = typeof EnumMenus> = {

@@ -1,16 +1,19 @@
 {
   "collectionName": "components_content_hero_titles",
   "info": {
-    "displayName": "Hero Title"
+    "displayName": "Paralax Title",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "titleFirstRow": {
-      "type": "string",
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.title",
       "required": true
     },
-    "titleTwoRow": {
-      "type": "string",
+    "text": {
+      "type": "text",
       "required": true
     },
     "image": {

@@ -1,20 +1,27 @@
-import {ContentDataType} from "@/components/Content";
-import {StaticImageData} from "next/image";
-import {ImageDataType} from "@shared/index";
+import {TContentData} from "@/components/Content";
+import {TApiData, TImageData} from "@shared/index";
+import {TSeoData} from "@components/MetaSeo";
 
-interface base<I> {
-    title: string,
-    slug: string,
-    description: string,
-    image: I,
-    content: ContentDataType;
+export type TPageAttributes = {
+    slug: string;
+    createdAt: string,
+    updatedAt: string,
+    seo: TSeoData;
+    parent: {
+        data: PageData | null;
+    };
+    content: TContentData;
 }
 
-export interface DynamicPageDataType<I = ImageDataType> extends base<I | null> {
-    id: number,
-    parent: base<I> | null;
-}
+type PageData = {
+    id: number;
+    attributes: TPageAttributes;
+} | null;
 
-export interface DynamicPageType<I = StaticImageData> extends base<I> {
-    parent: base<I> | null;
+export type TPageData = TApiData<PageData>;
+export type TPagesData = TApiData<[PageData]>;
+
+
+export type TPageParams = {
+    slug: string[];
 }

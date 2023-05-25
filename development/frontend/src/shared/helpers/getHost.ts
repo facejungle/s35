@@ -1,6 +1,6 @@
-import {apiUrls, hostNameType} from "../index";
+import {apiUrls, THostNames} from "../index";
 
-export function getHost(host?: hostNameType): string {
+export function getHost(host?: THostNames): string {
     if (host === 'API') {
         return `${apiUrls.DEFAULT}/api`;
     }

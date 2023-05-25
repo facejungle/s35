@@ -16,13 +16,13 @@ export const noCategory: TProjectCategory = {
     link: `/${projectsFolder}/${process.env.PROJECTS_NO_CATEGORY_SLUG || 'no-category'}`,
 };
 
-export function getCategoryLink(attributes: TProjectCatData['data']['attributes']): string {
-    const category = attributes;
-    const categoryLink = !category ? noCategory.slug : category.slug;
+export function getProjectCategoryLink(data: TProjectCatData['data']): string {
+    const category = data;
+    const categoryLink = !category ? noCategory.slug : category.attributes.slug;
     return `/${projectsFolder}/${categoryLink}`;
 }
 
-export function getCategoriesLinks(data: TProjectCatsData['data']): object[] {
+export function getProjectCategoriesLinks(data: TProjectCatsData['data']): object[] {
     const categories = data;
     if (categories !== null) {
         return categories.map(category => {
@@ -32,12 +32,11 @@ export function getCategoriesLinks(data: TProjectCatsData['data']): object[] {
     throw new Error("getCategoriesLinks() > categories data is null");
 }
 
-export function getProjectLink(attributes: TProjectData['data']['attributes']): string {
-    if (attributes) {
-
-        const project = attributes;
-        const projectCategory = project.category.data;
-        const projectLink = project.slug;
+export function getProjectLink(data: TProjectData['data']): string {
+    if (data) {
+        const project = data;
+        const projectCategory = project.attributes.category.data;
+        const projectLink = project.attributes.slug;
         const categoryLink = !projectCategory ? noCategory.slug : projectCategory.attributes.slug;
         return `/${projectsFolder}/${categoryLink}/${projectLink}`;
     }
@@ -53,9 +52,9 @@ export function getProjectsLinks(data: TProjectsData['data']): TProjectsLinks[] 
     const projects = data;
     if (projects !== null) {
         return projects.map(project => {
-            const projectCategory = project.attributes.category;
+            const projectCategory = project.attributes.category.data;
             const projectLink = project.attributes.slug;
-            const categoryLink = !projectCategory ? noCategory.slug : projectCategory.data.attributes.slug;
+            const categoryLink = !projectCategory ? noCategory.slug : projectCategory.attributes.slug;
             return {
                 category: categoryLink,
                 project: projectLink,

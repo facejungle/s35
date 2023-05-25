@@ -8,7 +8,7 @@ export type TMetaData = {
 }
 
 export interface TApiData<D> {
-    data: D;
+    data: D | null;
     meta: TMetaData;
 }
 
@@ -42,22 +42,25 @@ export const apiUrls = {
 
 
 export const paths = {
-    SETTINGS: '/site-setting?populate=*',
+    SETTINGS: '/site-setting?populate=seo.metaImage&populate=frontPage.parent&populate=projectsPage.parent&populate=portfolioPage.parent',
     CONTACTS: '/contact?populate=phone,email,social.image',
 
     MENU_HEADER: '/menu?populate[HeaderMenu][populate]=link.parent&populate[HeaderMenu][populate]=link.category',
     MENU_MAIN: '/menu?populate[MainMenu][populate]=link.parent&populate[MainMenu][populate]=link.category',
 
-    PAGE_FRONT: '/page-front?populate[content][populate]=*',
-    PAGE_CONTACTS: '/page-contact?populate[content][populate]=*',
-    PAGE_PRICES: '/page-price?populate[content][populate]=*',
-    PAGE_PORTFOLIO: '/page-portfolio?populate[content][populate]=*',
-    PAGE_PROJECTS: '/page-project?populate[content][populate]=*',
+    PAGES: '/pages?populate=*',
+    PAGE_BY_SLUG: '/v2/pages/%slug%?populate=*',
 
-    PROJECTS: '/projects?populate=image&populate=category.image',
-    PROJECTS_CATEGORIES: '/project-categories',
-    PROJECT_BY_SLUG: '/v2/projects/%slug%?populate=*',
-    PROJECT_CATEGORY_BY_SLUG: '/v2/project-categories/%slug%',
+    PAGE_FRONT: '/page-front?populate=seo.metaImage&populate=hero.image&populate=advantage.paragraphs',
+    PAGE_CONTACTS: '/page-contact?populate=seo.metaImage',
+    PAGE_PRICES: '/page-price?populate=seo.metaImage',
+    PAGE_PORTFOLIO: '/page-portfolio?populate=seo.metaImage',
+    PAGE_PROJECTS: '/page-project?populate=seo.metaImage',
+
+    PROJECTS: '/projects?populate=seo.metaImage&populate=category.seo.metaImage',
+    PROJECTS_CATEGORIES: '/project-categories?populate=seo.metaImage',
+    PROJECT_BY_SLUG: '/v2/projects/%slug%?populate=seo.metaImage&populate=category.seo.metaImage&populate=profile&populate=gallery',
+    PROJECT_CATEGORY_BY_SLUG: '/v2/project-categories/%slug%?populate=seo.metaImage',
 } as const;
 
 

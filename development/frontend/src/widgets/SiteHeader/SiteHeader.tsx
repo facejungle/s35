@@ -1,18 +1,16 @@
 'use client'
 import style from "./SiteHeader.module.scss";
-import {SiteLogo} from "@components/SiteLogo/SiteLogo";
-import {Menu, TComponent, TLinkData, ToggleMenu} from "@components/Menus";
-import {use, useEffect, useRef} from "react";
-import {Contacts, TContactsData, getContacts, TImageData, ImageStrapi} from "@shared/index";
+import {Menu, TComponent, ToggleMenu} from "@components/Menus";
+import {useEffect, useRef} from "react";
+import {Contacts, TContactsData, TImageData, ImageStrapi, ImagePlaceholder} from "@shared/index";
 import Link from "next/link";
 
 
 export function SiteHeader({menuData, imageData, contactsData}: {
     menuData: [TComponent],
-    imageData: TImageData,
+    imageData: TImageData["data"] | undefined,
     contactsData: TContactsData
 }): React.ReactElement {
-
     const headerRef = useRef<HTMLDivElement>(null);
     const isSticky = () => {
         const header = headerRef.current;
@@ -32,16 +30,18 @@ export function SiteHeader({menuData, imageData, contactsData}: {
                 <div className={`${style.logo_contacts_wrapper} flex-row`}>
                     <div className={style.logo_wrapper}>
                         <Link key={'logo'} href='/'>
-                            <ImageStrapi image={imageData.data} size={'logo'}/>
+                            {imageData ? <ImageStrapi image={imageData} size={'logo'}/> :
+                                <ImagePlaceholder size={'logo'}/>}
                         </Link>
                     </div>
                     <div className={`${style.contacts_wrapper} flex-column`}>
-                        <Contacts contactsData={contactsData} isDefault={true}/>
+                        {contactsData ? <Contacts contactsData={contactsData} isDefault={true}/> : <>Contacts data
+                            undefined</>}
                     </div>
                 </div>
                 <div className={`${style.menu_wrapper} flex-row`}>
                     <div className={style.header_menu}>
-                        <Menu menuData={menuData}/>
+                        {menuData ? <Menu menuData={menuData}/> : <>HeaderMenu</>}
                     </div>
                     <ToggleMenu/>
                 </div>

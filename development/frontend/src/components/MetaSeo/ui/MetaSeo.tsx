@@ -2,6 +2,7 @@ import {TSeoData} from "../index";
 import {Metadata} from "next/types";
 
 export default function MetaSeo(metaSeo: TSeoData): Metadata {
+    if (!metaSeo || !metaSeo.metaImage.data) return {};
     return {
         title: metaSeo.metaTitle,
         description: metaSeo.metaDescription,
