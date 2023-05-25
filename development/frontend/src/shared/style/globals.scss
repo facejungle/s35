@@ -39,6 +39,13 @@
   }
 }
 
+article {
+  flex: 1 0 auto;
+}
+
+a {
+  text-decoration: underline;
+}
 
 h1 {
   font-size: 1.8em;

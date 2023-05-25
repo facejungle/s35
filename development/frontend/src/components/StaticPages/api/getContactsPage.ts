@@ -5,12 +5,12 @@ import {notFound} from "next/navigation";
 
 interface contactsPagePromise extends Metadata {
     data: any;
-    slug?: string;
     image?: {};
 }
 
 export async function getContactsPage(): Promise<contactsPagePromise> {
     const page = await fetcher({host: 'API', path: 'PAGE_CONTACTS'});
+    console.log(page)
     if (!page) return notFound();
 
     return page;

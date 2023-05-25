@@ -1,32 +1,33 @@
-import {ImageDataType} from "../index";
+import {TApiData, TImageData} from "../index";
 
-export type ContactsDataType = {
+export type TEmailData = {
     id: number;
+    url: string;
+    description: string;
+    text: string;
+    default: boolean;
+}
+export type TPhoneData = {
+    id: number;
+    url: string;
+    description: string;
+    text: string;
+    default: boolean;
+}
+export type TSocialData = {
+    id: number;
+    url: string;
+    text: string;
+    image: TImageData;
+}
+export type TContactsAttributes = {
     name: string;
-    createdAt: string;
-    updatedAt: string;
-    email: [
-        {
-            id: number;
-            url: string;
-            description: string;
-            text: string;
-            default: boolean;
-        }
-    ],
-    phone: [
-        {
-            id: number;
-            url: string;
-            description: string;
-            text: string;
-            default: boolean;
-        }
-    ],
-    social: [{
-        id: number;
-        url: string;
-        text: string;
-        image: ImageDataType;
-    }]
-} | undefined;
+    email: [TEmailData];
+    phone: [TPhoneData];
+    social: [TSocialData];
+}
+type ContactsData = {
+    id: number;
+    attributes: TContactsAttributes;
+}
+export type TContactsData = TApiData<ContactsData>;

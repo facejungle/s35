@@ -1,10 +1,10 @@
 import Image from "next/image"
-import {ImageSizes, ImageDataType, apiUrls, ImagePlaceholder, getHost, ImageFormatsType} from "../index";
+import {ImageSizes, TImageData, apiUrls, ImagePlaceholder, getHost, TImageFormat} from "../index";
 import React from "react";
 import Loading from "@/app/loading";
 
 export function ImageStrapi({image, size, host}: {
-    image: ImageDataType,
+    image: TImageData['data'],
     size: keyof typeof ImageSizes | 'original',
     host?: keyof typeof apiUrls
 }): React.ReactElement {
@@ -15,11 +15,10 @@ export function ImageStrapi({image, size, host}: {
     if (!image) {
         return ImagePlaceholder({size});
     } else {
-
         if (size === 'original') {
             return <Image
-                src={url + image.url}
-                width={image.width} height={image.height}
+                src={url + image.attributes.url}
+                width={image.attributes.width} height={image.attributes.height}
                 alt=""/>;
         }
 
@@ -28,8 +27,8 @@ export function ImageStrapi({image, size, host}: {
         let imageUrl;
 
         for (let imageSizesKey in ImageSizes) {
-            let imageKey: keyof typeof ImageSizes = imageSizesKey as keyof typeof ImageSizes;
-            let imageFormat = image.formats[imageKey];
+            let imageKey = imageSizesKey as keyof typeof ImageSizes;
+            let imageFormat = image.attributes.formats[imageKey];
             if (!imageFormat) break;
             imageWidth = imageFormat.width;
             imageHeight = imageFormat.height;

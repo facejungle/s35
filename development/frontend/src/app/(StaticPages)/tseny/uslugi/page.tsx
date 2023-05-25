@@ -1,7 +1,7 @@
 export default function PageServices(): React.ReactElement {
-   return (
-      <>
-         uslugi
-      </>
-   );
+    return (
+        <article>
+            uslugi
+        </article>
+    );
 }

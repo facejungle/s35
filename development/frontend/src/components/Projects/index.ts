@@ -6,7 +6,17 @@ export {getCategoryBySlug} from "./api/getCategoryBySlug";
 // HELPERS
 export {getCategoryLink, getCategoriesLinks, getProjectLink, getProjectsLinks, noCategory} from "./helpers/getLink";
 // TYPES
-export type {TProject, TDProject, TProjectCategory, TDProjectCategory, TProjectSettings} from './model/type';
+export type {
+    TProjectCategory,
+    TProjectCatAttributes,
+    TProjectCatData,
+    TProjectCatsData,
+
+    TProject,
+    TProjectAttributes,
+    TProjectData,
+    TProjectsData,
+} from './model/type';
 // UI
 export {ProjectPreview} from "./ui/ProjectPreview/ProjectPreview";
 export {ProjectGeneral} from "./ui/ProjectGeneral/ProjectGeneral";

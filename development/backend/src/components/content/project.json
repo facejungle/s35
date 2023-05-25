@@ -10,6 +10,10 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::project.project"
+    },
+    "title": {
+      "type": "string",
+      "required": true
     }
   }
 }

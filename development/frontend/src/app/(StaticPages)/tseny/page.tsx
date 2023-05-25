@@ -1,8 +1,8 @@
 export default function PagePrices({searchParams}: { searchParams: { lang: string } }) {
     return (
-        <>
+        <article>
             pagePrices
-        </>
+        </article>
     )
 }
 

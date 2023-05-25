@@ -1,7 +1,8 @@
 {
   "collectionName": "components_shared_seos",
   "info": {
-    "displayName": "seo"
+    "displayName": "seo",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,7 +12,7 @@
       "maxLength": 60
     },
     "metaDescription": {
-      "type": "string",
+      "type": "text",
       "required": true,
       "maxLength": 160,
       "minLength": 50
@@ -26,11 +27,6 @@
         "videos"
       ]
     },
-    "metaSocial": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.meta-social"
-    },
     "keywords": {
       "type": "text",
       "regex": "[^,]+"
@@ -38,9 +34,6 @@
     "metaRobots": {
       "type": "string",
       "regex": "[^,]+"
-    },
-    "structuredData": {
-      "type": "json"
     },
     "metaViewport": {
       "type": "string"

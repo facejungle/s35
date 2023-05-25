@@ -1,7 +1,7 @@
-import {paginationType, pathNameType, paths, sortType} from "../index";
+import {TPaginationUrl, TPathNames, paths, TSortUrl} from "../index";
 
 
-export function getPath(path: pathNameType, slug?: string, pagination?: paginationType, sort?: sortType) {
+export function getPath(path: TPathNames, slug?: string, pagination?: TPaginationUrl, sort?: TSortUrl) {
     let fetchPath = '';
 
     if (path === 'SETTINGS') fetchPath = paths.SETTINGS.valueOf();
@@ -20,14 +20,13 @@ export function getPath(path: pathNameType, slug?: string, pagination?: paginati
     if (path === 'PROJECTS_CATEGORIES') fetchPath = paths.PROJECTS_CATEGORIES.valueOf();
     if (path === 'PROJECT_BY_SLUG') fetchPath = paths.PROJECT_BY_SLUG.valueOf();
     if (path === 'PROJECT_CATEGORY_BY_SLUG') fetchPath = paths.PROJECT_CATEGORY_BY_SLUG.valueOf();
-    if (path === 'PROJECT_SETTINGS') fetchPath = paths.PROJECT_SETTINGS.valueOf();
 
     if (slug) {
         fetchPath = fetchPath.replace('%slug%', slug);
     }
 
     if (pagination) {
-        fetchPath = fetchPath + `&start=${pagination.start}&limit=${pagination.limit}`;
+        fetchPath = fetchPath + `&pagination[page]=${pagination.page}&pagination[pageSize]=${pagination.pageSize}`;
     }
 
     if (sort) {

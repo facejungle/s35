@@ -1,33 +1,22 @@
 /**
- * test controller
+ * page controller
  */
 
-import { factories } from '@strapi/strapi'
+import {factories} from '@strapi/strapi'
+import {getIdBySlug} from "../../../helpers/getIdBySlug";
 
-const { sanitize } = require('@strapi/utils')
-const { contentAPI } = sanitize;
+const {sanitize} = require('@strapi/utils')
+const {contentAPI} = sanitize;
 
-export default factories.createCoreController('api::page.page', ({ strapi }) => ({
-   async v2findOne(ctx) {
-      const contentType = strapi.contentType('api::page.page');
+export default factories.createCoreController('api::page.page', ({strapi}) => ({
+  async v2findOne(ctx) {
+    const contentType = strapi.contentType('api::page.page');
+    const {slug} = ctx.params;
+    const projectId = await getIdBySlug(slug, contentType);
 
-      // Finding a project by slug and getting the project ID.
-      const { slug } = ctx.params;
-      const page = await strapi.db.query(contentType.uid).findOne({
-         select: ['id'],
-         where: { slug }
-      });
-      const sanitizedQueryParams = await contentAPI.query(ctx.query, contentType, ctx.state.auth);
-      const entry = await strapi.entityService.findOne(contentType.uid, page.id, sanitizedQueryParams);
+    ctx.params.id = projectId ? projectId : 0;
 
-      return await contentAPI.output(entry, contentType, ctx.state.auth);
-   },
-   async v2find(ctx) {
-      const contentType = strapi.contentType('api::page.page');
-
-      const sanitizedQueryParams = await contentAPI.query(ctx.query, contentType, ctx.state.auth);
-      const entities = await strapi.entityService.findMany(contentType.uid, sanitizedQueryParams);
-
-      return await contentAPI.output(entities, contentType, ctx.state.auth);
-   }
+    const response = await super.findOne(ctx);
+    return await contentAPI.output(response, contentType, ctx.state.auth);
+  }
 }));

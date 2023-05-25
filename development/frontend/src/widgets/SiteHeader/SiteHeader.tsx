@@ -1,16 +1,16 @@
 'use client'
 import style from "./SiteHeader.module.scss";
 import {SiteLogo} from "@components/SiteLogo/SiteLogo";
-import {Menu, TLinkData, ToggleMenu} from "@components/Menus";
+import {Menu, TComponent, TLinkData, ToggleMenu} from "@components/Menus";
 import {use, useEffect, useRef} from "react";
-import {Contacts, ContactsDataType, getContacts, ImageDataType, ImageStrapi} from "@shared/index";
+import {Contacts, TContactsData, getContacts, TImageData, ImageStrapi} from "@shared/index";
 import Link from "next/link";
 
 
 export function SiteHeader({menuData, imageData, contactsData}: {
-    menuData: TLinkData[],
-    imageData: ImageDataType,
-    contactsData: ContactsDataType
+    menuData: [TComponent],
+    imageData: TImageData,
+    contactsData: TContactsData
 }): React.ReactElement {
 
     const headerRef = useRef<HTMLDivElement>(null);
@@ -32,7 +32,7 @@ export function SiteHeader({menuData, imageData, contactsData}: {
                 <div className={`${style.logo_contacts_wrapper} flex-row`}>
                     <div className={style.logo_wrapper}>
                         <Link key={'logo'} href='/'>
-                            <ImageStrapi image={imageData} size={'logo'}/>
+                            <ImageStrapi image={imageData.data} size={'logo'}/>
                         </Link>
                     </div>
                     <div className={`${style.contacts_wrapper} flex-column`}>

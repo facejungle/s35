@@ -16,7 +16,8 @@ export default async function RootLayout(props: {
         <html lang="ru" className={InterFont.className}>
         <body>
         <div className="site-wrapper flex-column">
-            <SiteHeader menuData={HeaderMenu} imageData={HeaderLogo?.image} contactsData={HeaderContacts}/>
+            <SiteHeader menuData={HeaderMenu} imageData={HeaderLogo?.data.attributes.image}
+                        contactsData={HeaderContacts}/>
             <div className="main-wrapper">
                 <main className="flex-row container">
                     {props.children}

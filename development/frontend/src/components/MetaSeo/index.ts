@@ -1,0 +1,1 @@
+export type {TSeoData, TSeo} from './model/type';

@@ -10,7 +10,7 @@
       "type": "string",
       "required": true
     },
-    "slug": {
+    "link": {
       "type": "enumeration",
       "enum": [
         "front page",

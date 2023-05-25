@@ -5,6 +5,7 @@ services:
     image: facej/s35-frontend:latest
     restart: unless-stopped
     volumes:
+      - ./frontend/public:/app/public
       - ./logs/frontend:/root/.npm/_logs
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
@@ -23,6 +24,7 @@ services:
     restart: unless-stopped
     env_file: .env.backend
     volumes:
+      - ./backend/public:/opt/backend/public
       - ./logs/backend:/root/.npm/_logs
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro

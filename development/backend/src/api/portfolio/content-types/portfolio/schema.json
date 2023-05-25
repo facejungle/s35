@@ -12,33 +12,19 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true,
-      "pluginOptions": {}
-    },
-    "slug": {
-      "type": "uid",
-      "required": true
-    },
-    "description": {
-      "type": "text",
-      "required": true,
-      "pluginOptions": {}
-    },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {}
-    },
     "category": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::portfolio-category.portfolio-category"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
     }
   }
 }

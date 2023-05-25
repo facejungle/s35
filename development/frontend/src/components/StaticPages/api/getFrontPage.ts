@@ -1,10 +1,10 @@
 import {fetcher} from "@shared/index";
-import {Metadata} from "next";
 import {notFound} from "next/navigation";
+import {TFrontPageData} from "@components/StaticPages";
 
 
 export async function getFrontPage() {
-    const page = await fetcher({host: 'API', path: 'PAGE_FRONT'});
+    const page: TFrontPageData = await fetcher({host: 'API', path: 'PAGE_FRONT'});
     if (!page) return notFound();
     return page
 }
